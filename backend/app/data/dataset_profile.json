@@ -1,0 +1,166 @@
+{
+  "status": "available",
+  "source": "User-provided dataset (Indian CPCB Water Quality Monitoring Network format)",
+  "rows": 1991,
+  "columns_count": 12,
+  "duplicate_rows": 1,
+  "has_label": false,
+  "label_column": null,
+  "columns": {
+    "STATION CODE": {
+      "dtype": "numeric",
+      "missing_count": 122,
+      "non_null_count": 1869,
+      "mean": 1953.64,
+      "std": 744.96,
+      "min": 2.0,
+      "p5": 1026.0,
+      "p50": 1861.0,
+      "p95": 3362.0,
+      "max": 3473.0
+    },
+    "LOCATIONS": {
+      "dtype": "categorical",
+      "missing_count": 184,
+      "non_null_count": 1807,
+      "unique_count": 665,
+      "sample_values": [
+        "DAMANGANGA AT D/S OF MADHUBAN, DAMAN",
+        "ZUARI AT D/S OF PT. WHERE KUMBARJRIA CANAL JOINS, GOA",
+        "ZUARI AT PANCHAWADI",
+        "RIVER ZUARI AT BORIM BRIDGE",
+        "RIVER ZUARI AT MARCAIM JETTY"
+      ]
+    },
+    "STATE": {
+      "dtype": "categorical",
+      "missing_count": 761,
+      "non_null_count": 1230,
+      "unique_count": 202,
+      "sample_values": [
+        "DAMAN & DIU",
+        "GOA",
+        "MAHARASHTRA",
+        "KERALA",
+        "ANDHRA PRADESH"
+      ]
+    },
+    "Temp": {
+      "dtype": "numeric",
+      "missing_count": 92,
+      "non_null_count": 1899,
+      "mean": 26.21,
+      "std": 3.37,
+      "min": 10.0,
+      "p5": 19.0,
+      "p50": 27.0,
+      "p95": 30.0,
+      "max": 35.0
+    },
+    "D.O. (mg/l)": {
+      "dtype": "numeric",
+      "missing_count": 31,
+      "non_null_count": 1960,
+      "mean": 6.39,
+      "std": 1.33,
+      "min": 0.0,
+      "p5": 3.8,
+      "p50": 6.7,
+      "p95": 8.0,
+      "max": 11.4
+    },
+    "PH": {
+      "dtype": "numeric",
+      "missing_count": 8,
+      "non_null_count": 1983,
+      "mean": 7.23,
+      "std": 0.65,
+      "min": 0.0,
+      "p5": 6.4,
+      "p50": 7.3,
+      "p95": 8.1,
+      "max": 9.01
+    },
+    "CONDUCTIVITY (umhos/cm)": {
+      "dtype": "numeric",
+      "missing_count": 25,
+      "non_null_count": 1966,
+      "mean": 1786.47,
+      "std": 5552.28,
+      "min": 0.4,
+      "p5": 31.0,
+      "p50": 183.0,
+      "p95": 12764.5,
+      "max": 65700.0
+    },
+    "B.O.D. (mg/l)": {
+      "dtype": "numeric",
+      "missing_count": 43,
+      "non_null_count": 1948,
+      "mean": 6.94,
+      "std": 29.4,
+      "min": 0.1,
+      "p5": 0.6,
+      "p50": 1.9,
+      "p95": 22.59,
+      "max": 534.5
+    },
+    "NITRATENAN N+ NITRITENANN (mg/l)": {
+      "dtype": "numeric",
+      "missing_count": 225,
+      "non_null_count": 1766,
+      "mean": 1.62,
+      "std": 4.09,
+      "min": 0.0,
+      "p5": 0.08,
+      "p50": 0.52,
+      "p95": 5.9,
+      "max": 108.7
+    },
+    "FECAL COLIFORM (MPN/100ml)": {
+      "dtype": "numeric",
+      "missing_count": 316,
+      "non_null_count": 1675,
+      "mean": 362529.36,
+      "std": 8764767.45,
+      "min": 0.0,
+      "p5": 3.0,
+      "p50": 221.0,
+      "p95": 19119.8,
+      "max": 272521616.0
+    },
+    "TOTAL COLIFORM (MPN/100ml)Mean": {
+      "dtype": "numeric",
+      "missing_count": 132,
+      "non_null_count": 1859,
+      "mean": 533687.17,
+      "std": 14234282.67,
+      "min": 0.0,
+      "p5": 20.0,
+      "p50": 468.0,
+      "p95": 41625.0,
+      "max": 511090873.0
+    },
+    "year": {
+      "dtype": "numeric",
+      "missing_count": 0,
+      "non_null_count": 1991,
+      "mean": 2010.04,
+      "std": 3.06,
+      "min": 2003.0,
+      "p5": 2005.0,
+      "p50": 2011.0,
+      "p95": 2014.0,
+      "max": 2014.0
+    }
+  },
+  "calibration": {
+    "signal_column": "CONDUCTIVITY (umhos/cm)",
+    "unit": "umhos/cm",
+    "description": "Electrical conductivity indicating dissolved ionic contaminants and mineral intrusion.",
+    "baseline_mean": 183.0,
+    "noise_sigma": 30.0,
+    "alert_threshold": 273.0,
+    "contamination_gain": 400.0
+  }
+}

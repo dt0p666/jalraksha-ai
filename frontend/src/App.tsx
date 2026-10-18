@@ -1,0 +1,52 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AppProvider } from './state/appStore';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
+import { CookieBanner } from './components/layout/CookieBanner';
+import { ScrollProgressBar } from './components/layout/ScrollProgressBar';
+import { BackToTop } from './components/layout/BackToTop';
+import { FloatingContactButton } from './components/layout/FloatingContactButton';
+import { SiteSearchModal } from './components/layout/SiteSearchModal';
+import { ContactModal } from './components/layout/ContactModal';
+
+import { Home } from './pages/Home';
+import { CommandCenter } from './pages/CommandCenter';
+import { Learn } from './pages/Learn';
+import { Faq } from './pages/Faq';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
+
+export const App: React.FC = () => {
+  return (
+    <AppProvider>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col bg-[#0D1630] text-[#EAF1F8] selection:bg-[#76C0EC]/30 selection:text-white transition-colors">
+          <ScrollProgressBar />
+          <Header />
+
+          <div className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/command-center" element={<CommandCenter />} />
+              <Route path="/learn" element={<Learn />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
+
+          <Footer />
+          <CookieBanner />
+          <BackToTop />
+          <FloatingContactButton />
+          <SiteSearchModal />
+          <ContactModal />
+        </div>
+      </BrowserRouter>
+    </AppProvider>
+  );
+};
+
+export default App;

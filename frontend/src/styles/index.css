@@ -1,0 +1,104 @@
+@import '@fontsource/fraunces/400.css';
+@import '@fontsource/fraunces/600.css';
+@import '@fontsource/fraunces/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0D1630;
+  --color-panel: #141E3D;
+  --color-panel-raised: #1D2A52;
+  --color-border: rgba(66, 91, 154, 0.35);
+  --color-text: #EAF1F8;
+  --color-text-muted: #9FB0C9;
+  --color-brand-blue: #425B9A;
+  --color-brand-sky: #76C0EC;
+  --color-brand-olive: #597928;
+  --color-brand-sage: #91AC67;
+  --color-warning: #E8A33D;
+  --color-critical: #D9534F;
+}
+
+html.light {
+  --color-bg: #F3F7FB;
+  --color-panel: #FFFFFF;
+  --color-panel-raised: #EBF2F9;
+  --color-border: rgba(66, 91, 154, 0.20);
+  --color-text: #14203F;
+  --color-text-muted: #5A6B85;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Accessible focus visible outline */
+*:focus-visible {
+  outline: 2px solid var(--color-brand-sky);
+  outline-offset: 2px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(66, 91, 154, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 192, 236, 0.6);
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+  }
+  header, footer, .no-print, .floating-contact-btn, .cookie-banner, .timeline-controls, .network-canvas {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

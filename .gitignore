@@ -1,0 +1,23 @@
+# Python
+backend/venv/
+backend/.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Raw dataset (license unknown / user provided - profile is committed)
+water_dataX.csv
+backend/app/data/water_dataX.csv
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,848 @@
+{
+  "nodes": [
+    {
+      "id": "R1",
+      "label": "North High Reservoir",
+      "type": "reservoir",
+      "x": 280,
+      "y": 80,
+      "elevation_m": 340.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "R2",
+      "label": "East Hill Reservoir",
+      "type": "reservoir",
+      "x": 780,
+      "y": 90,
+      "elevation_m": 325.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-01",
+      "label": "Junction J-01",
+      "type": "junction",
+      "x": 290,
+      "y": 160,
+      "elevation_m": 276.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-02",
+      "label": "Junction J-02",
+      "type": "junction",
+      "x": 320,
+      "y": 240,
+      "elevation_m": 264.0,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-03",
+      "label": "Junction J-03",
+      "type": "junction",
+      "x": 350,
+      "y": 310,
+      "elevation_m": 253.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-04",
+      "label": "Junction J-04",
+      "type": "junction",
+      "x": 760,
+      "y": 170,
+      "elevation_m": 274.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-05",
+      "label": "Junction J-05",
+      "type": "junction",
+      "x": 720,
+      "y": 250,
+      "elevation_m": 262.5,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-06",
+      "label": "Junction J-06",
+      "type": "junction",
+      "x": 680,
+      "y": 320,
+      "elevation_m": 252.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-07",
+      "label": "Junction J-07",
+      "type": "junction",
+      "x": 240,
+      "y": 370,
+      "elevation_m": 244.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-08",
+      "label": "Junction J-08",
+      "type": "junction",
+      "x": 420,
+      "y": 380,
+      "elevation_m": 243.0,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-09",
+      "label": "Junction J-09",
+      "type": "junction",
+      "x": 610,
+      "y": 390,
+      "elevation_m": 241.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-10",
+      "label": "Junction J-10",
+      "type": "junction",
+      "x": 800,
+      "y": 380,
+      "elevation_m": 243.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-11",
+      "label": "Junction J-11",
+      "type": "junction",
+      "x": 510,
+      "y": 440,
+      "elevation_m": 234.0,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-12",
+      "label": "Junction J-12",
+      "type": "junction",
+      "x": 440,
+      "y": 510,
+      "elevation_m": 223.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-13",
+      "label": "Junction J-13",
+      "type": "junction",
+      "x": 580,
+      "y": 510,
+      "elevation_m": 223.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-14",
+      "label": "Junction J-14",
+      "type": "junction",
+      "x": 180,
+      "y": 440,
+      "elevation_m": 234.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-15",
+      "label": "Junction J-15",
+      "type": "junction",
+      "x": 280,
+      "y": 450,
+      "elevation_m": 232.5,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-16",
+      "label": "Junction J-16",
+      "type": "junction",
+      "x": 740,
+      "y": 460,
+      "elevation_m": 231.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-17",
+      "label": "Junction J-17",
+      "type": "junction",
+      "x": 860,
+      "y": 450,
+      "elevation_m": 232.5,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-18",
+      "label": "Junction J-18",
+      "type": "junction",
+      "x": 140,
+      "y": 520,
+      "elevation_m": 222.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-19",
+      "label": "Junction J-19",
+      "type": "junction",
+      "x": 190,
+      "y": 590,
+      "elevation_m": 211.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-20",
+      "label": "Junction J-20",
+      "type": "junction",
+      "x": 160,
+      "y": 670,
+      "elevation_m": 199.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-21",
+      "label": "Junction J-21",
+      "type": "junction",
+      "x": 270,
+      "y": 540,
+      "elevation_m": 219.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-22",
+      "label": "Junction J-22",
+      "type": "junction",
+      "x": 290,
+      "y": 630,
+      "elevation_m": 205.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-23",
+      "label": "Junction J-23",
+      "type": "junction",
+      "x": 380,
+      "y": 580,
+      "elevation_m": 213.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-24",
+      "label": "Junction J-24",
+      "type": "junction",
+      "x": 410,
+      "y": 660,
+      "elevation_m": 201.0,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-25",
+      "label": "Junction J-25",
+      "type": "junction",
+      "x": 610,
+      "y": 590,
+      "elevation_m": 211.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-26",
+      "label": "Junction J-26",
+      "type": "junction",
+      "x": 590,
+      "y": 670,
+      "elevation_m": 199.5,
+      "households": 0,
+      "has_sensor": true
+    },
+    {
+      "id": "J-27",
+      "label": "Junction J-27",
+      "type": "junction",
+      "x": 720,
+      "y": 540,
+      "elevation_m": 219.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-28",
+      "label": "Junction J-28",
+      "type": "junction",
+      "x": 740,
+      "y": 640,
+      "elevation_m": 204.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-29",
+      "label": "Junction J-29",
+      "type": "junction",
+      "x": 840,
+      "y": 540,
+      "elevation_m": 219.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-30",
+      "label": "Junction J-30",
+      "type": "junction",
+      "x": 860,
+      "y": 640,
+      "elevation_m": 204.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-31",
+      "label": "Junction J-31",
+      "type": "junction",
+      "x": 120,
+      "y": 750,
+      "elevation_m": 187.5,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "J-32",
+      "label": "Junction J-32",
+      "type": "junction",
+      "x": 560,
+      "y": 760,
+      "elevation_m": 186.0,
+      "households": 0,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-A",
+      "label": "Zone A - West Orchard",
+      "type": "zone",
+      "x": 100,
+      "y": 830,
+      "elevation_m": 200.0,
+      "households": 145,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-B",
+      "label": "Zone B - Old Basti",
+      "type": "zone",
+      "x": 220,
+      "y": 840,
+      "elevation_m": 200.0,
+      "households": 310,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-C",
+      "label": "Zone C - Market Square",
+      "type": "zone",
+      "x": 330,
+      "y": 810,
+      "elevation_m": 200.0,
+      "households": 240,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-D",
+      "label": "Zone D - Primary Health Subcentre",
+      "type": "zone",
+      "x": 440,
+      "y": 830,
+      "elevation_m": 200.0,
+      "households": 190,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-E",
+      "label": "Zone E - Central Hamlet",
+      "type": "zone",
+      "x": 550,
+      "y": 840,
+      "elevation_m": 200.0,
+      "households": 380,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-F",
+      "label": "Zone F - South Farms",
+      "type": "zone",
+      "x": 660,
+      "y": 830,
+      "elevation_m": 200.0,
+      "households": 175,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-G",
+      "label": "Zone G - School & Anganwadi",
+      "type": "zone",
+      "x": 770,
+      "y": 820,
+      "elevation_m": 200.0,
+      "households": 215,
+      "has_sensor": false
+    },
+    {
+      "id": "Z-H",
+      "label": "Zone H - East Hamlet",
+      "type": "zone",
+      "x": 890,
+      "y": 830,
+      "elevation_m": 200.0,
+      "households": 260,
+      "has_sensor": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "P-01",
+      "from": "R1",
+      "to": "J-01",
+      "delay_steps": 1,
+      "dilution": 0.95,
+      "length_m": 350.0,
+      "diameter_mm": 300.0
+    },
+    {
+      "id": "P-02",
+      "from": "J-01",
+      "to": "J-02",
+      "delay_steps": 2,
+      "dilution": 0.92,
+      "length_m": 420.0,
+      "diameter_mm": 250.0
+    },
+    {
+      "id": "P-03",
+      "from": "J-02",
+      "to": "J-03",
+      "delay_steps": 1,
+      "dilution": 0.9,
+      "length_m": 380.0,
+      "diameter_mm": 250.0
+    },
+    {
+      "id": "P-04",
+      "from": "R2",
+      "to": "J-04",
+      "delay_steps": 1,
+      "dilution": 0.95,
+      "length_m": 320.0,
+      "diameter_mm": 300.0
+    },
+    {
+      "id": "P-05",
+      "from": "J-04",
+      "to": "J-05",
+      "delay_steps": 2,
+      "dilution": 0.91,
+      "length_m": 410.0,
+      "diameter_mm": 250.0
+    },
+    {
+      "id": "P-06",
+      "from": "J-05",
+      "to": "J-06",
+      "delay_steps": 1,
+      "dilution": 0.89,
+      "length_m": 390.0,
+      "diameter_mm": 250.0
+    },
+    {
+      "id": "P-07",
+      "from": "J-03",
+      "to": "J-07",
+      "delay_steps": 1,
+      "dilution": 0.88,
+      "length_m": 360.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-08",
+      "from": "J-03",
+      "to": "J-08",
+      "delay_steps": 2,
+      "dilution": 0.87,
+      "length_m": 430.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-09",
+      "from": "J-06",
+      "to": "J-09",
+      "delay_steps": 2,
+      "dilution": 0.86,
+      "length_m": 440.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-10",
+      "from": "J-06",
+      "to": "J-10",
+      "delay_steps": 1,
+      "dilution": 0.88,
+      "length_m": 370.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-11",
+      "from": "J-08",
+      "to": "J-11",
+      "delay_steps": 2,
+      "dilution": 0.82,
+      "length_m": 480.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-12",
+      "from": "J-09",
+      "to": "J-11",
+      "delay_steps": 2,
+      "dilution": 0.83,
+      "length_m": 470.0,
+      "diameter_mm": 200.0
+    },
+    {
+      "id": "P-13",
+      "from": "J-11",
+      "to": "J-12",
+      "delay_steps": 1,
+      "dilution": 0.85,
+      "length_m": 390.0,
+      "diameter_mm": 180.0
+    },
+    {
+      "id": "P-14",
+      "from": "J-11",
+      "to": "J-13",
+      "delay_steps": 1,
+      "dilution": 0.85,
+      "length_m": 410.0,
+      "diameter_mm": 180.0
+    },
+    {
+      "id": "P-15",
+      "from": "J-07",
+      "to": "J-14",
+      "delay_steps": 1,
+      "dilution": 0.84,
+      "length_m": 380.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-16",
+      "from": "J-07",
+      "to": "J-15",
+      "delay_steps": 2,
+      "dilution": 0.82,
+      "length_m": 400.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-17",
+      "from": "J-14",
+      "to": "J-18",
+      "delay_steps": 2,
+      "dilution": 0.8,
+      "length_m": 420.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-18",
+      "from": "J-18",
+      "to": "J-19",
+      "delay_steps": 1,
+      "dilution": 0.82,
+      "length_m": 360.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-19",
+      "from": "J-19",
+      "to": "J-20",
+      "delay_steps": 2,
+      "dilution": 0.81,
+      "length_m": 410.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-20",
+      "from": "J-18",
+      "to": "J-21",
+      "delay_steps": 2,
+      "dilution": 0.78,
+      "length_m": 450.0,
+      "diameter_mm": 100.0
+    },
+    {
+      "id": "P-21",
+      "from": "J-15",
+      "to": "J-21",
+      "delay_steps": 1,
+      "dilution": 0.82,
+      "length_m": 380.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-22",
+      "from": "J-21",
+      "to": "J-22",
+      "delay_steps": 2,
+      "dilution": 0.8,
+      "length_m": 410.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-23",
+      "from": "J-12",
+      "to": "J-23",
+      "delay_steps": 2,
+      "dilution": 0.81,
+      "length_m": 420.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-24",
+      "from": "J-23",
+      "to": "J-24",
+      "delay_steps": 1,
+      "dilution": 0.83,
+      "length_m": 370.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-25",
+      "from": "J-23",
+      "to": "J-25",
+      "delay_steps": 2,
+      "dilution": 0.76,
+      "length_m": 460.0,
+      "diameter_mm": 100.0
+    },
+    {
+      "id": "P-26",
+      "from": "J-13",
+      "to": "J-25",
+      "delay_steps": 1,
+      "dilution": 0.83,
+      "length_m": 390.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-27",
+      "from": "J-25",
+      "to": "J-26",
+      "delay_steps": 2,
+      "dilution": 0.8,
+      "length_m": 430.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-28",
+      "from": "J-10",
+      "to": "J-16",
+      "delay_steps": 2,
+      "dilution": 0.84,
+      "length_m": 410.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-29",
+      "from": "J-10",
+      "to": "J-17",
+      "delay_steps": 1,
+      "dilution": 0.85,
+      "length_m": 380.0,
+      "diameter_mm": 150.0
+    },
+    {
+      "id": "P-30",
+      "from": "J-16",
+      "to": "J-27",
+      "delay_steps": 1,
+      "dilution": 0.82,
+      "length_m": 390.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-31",
+      "from": "J-27",
+      "to": "J-28",
+      "delay_steps": 2,
+      "dilution": 0.79,
+      "length_m": 440.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-32",
+      "from": "J-27",
+      "to": "J-29",
+      "delay_steps": 2,
+      "dilution": 0.77,
+      "length_m": 450.0,
+      "diameter_mm": 100.0
+    },
+    {
+      "id": "P-33",
+      "from": "J-17",
+      "to": "J-29",
+      "delay_steps": 1,
+      "dilution": 0.82,
+      "length_m": 380.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-34",
+      "from": "J-29",
+      "to": "J-30",
+      "delay_steps": 2,
+      "dilution": 0.81,
+      "length_m": 420.0,
+      "diameter_mm": 125.0
+    },
+    {
+      "id": "P-35",
+      "from": "J-20",
+      "to": "J-31",
+      "delay_steps": 1,
+      "dilution": 0.8,
+      "length_m": 390.0,
+      "diameter_mm": 100.0
+    },
+    {
+      "id": "P-36",
+      "from": "J-26",
+      "to": "J-32",
+      "delay_steps": 1,
+      "dilution": 0.79,
+      "length_m": 400.0,
+      "diameter_mm": 100.0
+    },
+    {
+      "id": "P-37",
+      "from": "J-31",
+      "to": "Z-A",
+      "delay_steps": 1,
+      "dilution": 0.75,
+      "length_m": 350.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-38",
+      "from": "J-20",
+      "to": "Z-B",
+      "delay_steps": 1,
+      "dilution": 0.77,
+      "length_m": 360.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-39",
+      "from": "J-22",
+      "to": "Z-C",
+      "delay_steps": 1,
+      "dilution": 0.76,
+      "length_m": 380.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-40",
+      "from": "J-24",
+      "to": "Z-D",
+      "delay_steps": 1,
+      "dilution": 0.78,
+      "length_m": 370.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-41",
+      "from": "J-26",
+      "to": "Z-E",
+      "delay_steps": 1,
+      "dilution": 0.79,
+      "length_m": 390.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-42",
+      "from": "J-32",
+      "to": "Z-F",
+      "delay_steps": 1,
+      "dilution": 0.75,
+      "length_m": 360.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-43",
+      "from": "J-28",
+      "to": "Z-G",
+      "delay_steps": 1,
+      "dilution": 0.77,
+      "length_m": 370.0,
+      "diameter_mm": 90.0
+    },
+    {
+      "id": "P-44",
+      "from": "J-30",
+      "to": "Z-H",
+      "delay_steps": 1,
+      "dilution": 0.78,
+      "length_m": 380.0,
+      "diameter_mm": 90.0
+    }
+  ],
+  "sensors": [
+    "J-02",
+    "J-05",
+    "J-08",
+    "J-11",
+    "J-15",
+    "J-17",
+    "J-24",
+    "J-26"
+  ],
+  "zones": [
+    "Z-A",
+    "Z-B",
+    "Z-C",
+    "Z-D",
+    "Z-E",
+    "Z-F",
+    "Z-G",
+    "Z-H"
+  ],
+  "reservoirs": [
+    "R1",
+    "R2"
+  ],
+  "total_nodes": 42,
+  "total_edges": 44
+}

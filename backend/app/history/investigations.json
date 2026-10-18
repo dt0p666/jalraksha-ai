@@ -1,0 +1,57 @@
+[
+  {
+    "timestamp": "2026-10-18T07:30:49.145534+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-01",
+    "top1_candidate": "J-14",
+    "is_correct": false,
+    "hop_error": 4,
+    "samples_used": 1,
+    "final_step": 6
+  },
+  {
+    "timestamp": "2026-10-18T07:32:16.996638+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-01",
+    "top1_candidate": "J-14",
+    "is_correct": false,
+    "hop_error": 4,
+    "samples_used": 1,
+    "final_step": 6
+  },
+  {
+    "timestamp": "2026-10-18T07:51:07.012982+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-01",
+    "top1_candidate": "J-14",
+    "is_correct": false,
+    "hop_error": 4,
+    "samples_used": 1,
+    "final_step": 6
+  },
+  {
+    "timestamp": "2026-10-18T07:55:34.398761+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-02",
+    "top1_candidate": "J-02",
+    "is_correct": true,
+    "hop_error": 0,
+    "samples_used": 0,
+    "final_step": 6
+  },
+  {
+    "timestamp": "2026-10-18T08:13:17.163300+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-01",
+    "top1_candidate": "J-14",
+    "is_correct": false,
+    "hop_error": 4,
+    "samples_used": 1,
+    "final_step": 6
+  }
+]
