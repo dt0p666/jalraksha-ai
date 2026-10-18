@@ -27,7 +27,7 @@ export const CinematicHero: React.FC = () => {
       )}
 
       {/* Hero Section on clean Warm Sand (#F2EFE7) background */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-16 max-w-5xl mx-auto space-y-8">
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 pt-6 pb-10 max-w-5xl mx-auto space-y-6">
         {/* Top category badge in Deep Blue */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3368A0] text-xs font-semibold text-[#F2EFE7] shadow-md">
           <span className="w-2 h-2 rounded-full bg-[#C8DFDB] animate-pulse" />
