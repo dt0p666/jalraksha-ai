@@ -12,6 +12,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure clean, high-contrast typography strictly adhering to 6-color system */
 :root {
   --color-bg: #086288;
   --color-panel: #007979;
@@ -22,7 +23,7 @@
   --color-border: rgba(120, 164, 203, 0.25);
 }
 
-body {
+html, body {
   background-color: #086288;
   color: #95BDD7;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -32,15 +33,27 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(36, 177, 177, 0.08) 0%, transparent 70%),
+    radial-gradient(circle at 50% 0%, rgba(36, 177, 177, 0.08) 0%, rgba(8, 98, 136, 0.95) 100%),
     linear-gradient(to right, rgba(120, 164, 203, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(120, 164, 203, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
 }
 
-h1, h2, h3, h4, .font-heading, .font-serif {
+/* Headings: Space Grotesk font. DO NOT force color on .font-heading so buttons inherit button text color! */
+h1, h2, h3, h4 {
   font-family: 'Space Grotesk', -apple-system, sans-serif;
   letter-spacing: -0.02em;
+  color: #D9D28B;
+}
+
+.font-heading, .font-serif {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Body text default foreground */
+p, span, li, td, th {
+  color: inherit;
 }
 
 code, kbd, samp, pre, .font-mono {
@@ -51,8 +64,8 @@ code, kbd, samp, pre, .font-mono {
 .engineering-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(36, 177, 177, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(36, 177, 177, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(36, 177, 177, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(36, 177, 177, 0.05) 1px, transparent 1px);
 }
 
 .glow-active {
@@ -79,14 +92,14 @@ code, kbd, samp, pre, .font-mono {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #086288;
+  background: #021520;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(36, 177, 177, 0.35);
+  background: rgba(36, 177, 177, 0.3);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(36, 177, 177, 0.65);
+  background: rgba(36, 177, 177, 0.6);
 }
 
 /* Motion preferences */
@@ -102,7 +115,7 @@ code, kbd, samp, pre, .font-mono {
 /* Print Stylesheet */
 @media print {
   body {
-    background: #086288 !important;
+    background: #021520 !important;
     color: #95BDD7 !important;
   }
   header, footer, .no-print, .floating-contact-btn, .cookie-banner, .timeline-controls, .network-canvas {

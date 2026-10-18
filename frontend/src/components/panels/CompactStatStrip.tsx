@@ -107,33 +107,33 @@ export const CompactStatStrip: React.FC = () => {
 
         {/* 3D | 2D Graph View Toggle */}
         <div
-          className="flex items-center p-0.5 rounded-lg bg-[#086288] border border-[#24B1B1]/30 text-xs font-medium"
+          className="flex items-center p-0.5 rounded-lg bg-[#007979] border border-[#24B1B1]/30 text-xs font-medium"
           role="group"
           aria-label="View Mode Toggle"
         >
           <button
             onClick={() => setViewMode('3d')}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
               viewMode === '3d'
-                ? 'bg-[#24B1B1] text-[#086288] shadow-sm font-bold'
-                : 'text-[#95BDD7] hover:text-[#95BDD7]'
+                ? 'bg-[#24B1B1] text-[#086288] shadow-md font-extrabold'
+                : 'text-[#95BDD7] hover:text-[#24B1B1]'
             }`}
             aria-pressed={viewMode === '3d'}
           >
             <Box size={13} />
-            <span>3D View</span>
+            <span>3D Infrastructure</span>
           </button>
           <button
             onClick={() => setViewMode('2d')}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
               viewMode === '2d'
-                ? 'bg-[#24B1B1] text-[#086288] shadow-sm font-bold'
-                : 'text-[#95BDD7] hover:text-[#95BDD7]'
+                ? 'bg-[#24B1B1] text-[#086288] shadow-md font-extrabold'
+                : 'text-[#95BDD7] hover:text-[#24B1B1]'
             }`}
             aria-pressed={viewMode === '2d'}
           >
             <Map size={13} />
-            <span>2D Flow</span>
+            <span>2D Network</span>
           </button>
         </div>
       </div>

@@ -229,5 +229,16 @@
     "hop_error": 4,
     "samples_used": 1,
     "final_step": 6
+  },
+  {
+    "timestamp": "2026-10-18T14:38:42.746823+00:00",
+    "session_id": "default",
+    "seed": 42,
+    "true_source": "J-01",
+    "top1_candidate": "J-14",
+    "is_correct": false,
+    "hop_error": 4,
+    "samples_used": 1,
+    "final_step": 6
   }
 ]

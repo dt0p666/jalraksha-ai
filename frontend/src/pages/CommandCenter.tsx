@@ -204,25 +204,34 @@ export const CommandCenter: React.FC = () => {
         {/* Top Compact Stat Strip + View Mode Toggle */}
         <CompactStatStrip />
 
-        {/* Main Interface: Large Network (Center 8-cols) + Investigation Panel (Right 4-cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 flex-1 min-h-[540px]">
-          {/* CENTER: Large interactive water network infrastructure intelligence */}
-          <div className="lg:col-span-8 flex flex-col gap-2.5 relative">
-            <div className="w-full h-full min-h-[500px] flex-1 rounded-xl overflow-hidden border border-[#24B1B1]/25 relative bg-[#086288]">
-              {viewMode === '3d' ? <NetworkScene3D /> : <NetworkCanvas />}
+        {/* Main Interface: Full-width SCADA facility in 3D mode; 8-col graph + 4-col panel in 2D mode */}
+        {viewMode === '3d' ? (
+          <div className="w-full flex-1 min-h-[740px] flex flex-col gap-2.5 relative">
+            <div className="w-full h-full min-h-[680px] flex-1 rounded-xl overflow-hidden border border-[#24B1B1]/25 relative bg-[#086288] shadow-2xl">
+              <NetworkScene3D />
             </div>
-
             {/* BOTTOM: Simulation Journey Stepper Bar */}
             <div className="w-full">
               <JourneyBar />
             </div>
           </div>
-
-          {/* RIGHT: Context-sensitive intelligence & investigation panel */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
-            <InvestigationStepCard />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 flex-1 min-h-[540px]">
+            {/* CENTER: 2D interactive water network */}
+            <div className="lg:col-span-8 flex flex-col gap-2.5 relative">
+              <div className="w-full h-full min-h-[500px] flex-1 rounded-xl overflow-hidden border border-[#24B1B1]/25 relative bg-[#086288]">
+                <NetworkCanvas />
+              </div>
+              <div className="w-full">
+                <JourneyBar />
+              </div>
+            </div>
+            {/* RIGHT: Investigation Step Card */}
+            <div className="lg:col-span-4 flex flex-col gap-3">
+              <InvestigationStepCard />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Collapsible Bottom Drawer: Sensor readings telemetry charts */}
         <SensorDrawer />
