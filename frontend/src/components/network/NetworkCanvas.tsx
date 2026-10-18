@@ -107,13 +107,13 @@ export const NetworkCanvas: React.FC = () => {
   }, [setInspectedNodeId]);
 
   return (
-    <div className="relative w-full h-full min-h-[500px] bg-[#086288] rounded-xl overflow-hidden border border-[#24B1B1]/25 network-canvas select-none shadow-2xl">
+    <div className="relative w-full h-full min-h-[500px] bg-[#1C3C53] rounded-xl overflow-hidden border border-[#08C4E1]/25 network-canvas select-none shadow-2xl">
       {/* Terrain contour illustration background */}
       <ContourBackground />
 
       {/* Floating telemetry status tag */}
-      <div className="absolute top-3 left-4 z-10 px-3 py-1 rounded-md bg-[#007979]/85 backdrop-blur-md border border-[#24B1B1]/30 text-[11px] font-mono text-[#95BDD7] pointer-events-none flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-[#24B1B1] animate-pulse" />
+      <div className="absolute top-3 left-4 z-10 px-3 py-1 rounded-md bg-[#446882]/85 backdrop-blur-md border border-[#08C4E1]/30 text-[11px] font-mono text-[#F8F3EF] pointer-events-none flex items-center gap-2">
+        <span className="w-2 h-2 rounded-full bg-[#08C4E1] animate-pulse" />
         <span>EPANET Infrastructure Intelligence • 42 Junctions</span>
       </div>
 
@@ -132,14 +132,14 @@ export const NetworkCanvas: React.FC = () => {
         proOptions={{ hideAttribution: true }}
       >
         <Controls
-          className="!bg-[#007979] !border-[#24B1B1]/30 !rounded-lg !overflow-hidden [&>button]:!bg-[#007979] [&>button]:!border-[#24B1B1]/20 [&>button]:!text-[#24B1B1] [&>button:hover]:!bg-[#007979]"
+          className="!bg-[#446882] !border-[#08C4E1]/30 !rounded-lg !overflow-hidden [&>button]:!bg-[#446882] [&>button]:!border-[#08C4E1]/20 [&>button]:!text-[#08C4E1] [&>button:hover]:!bg-[#446882]"
           showInteractive={false}
         />
         <Background
           variant={BackgroundVariant.Dots}
           gap={28}
           size={1.5}
-          color="rgba(36, 177, 177, 0.12)"
+          color="rgba(8, 196, 225, 0.12)"
         />
       </ReactFlow>
     </div>

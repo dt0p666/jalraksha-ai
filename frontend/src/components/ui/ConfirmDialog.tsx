@@ -38,18 +38,18 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       <div className="space-y-4">
         <div className="flex items-start gap-3">
           {isDestructive && (
-            <div className="p-2 bg-[#D9D28B]/20 text-[#D9D28B] rounded-lg shrink-0 mt-0.5">
+            <div className="p-2 bg-[#F5E6BB]/20 text-[#F5E6BB] rounded-lg shrink-0 mt-0.5">
               <AlertTriangle size={20} />
             </div>
           )}
-          <p className="text-[#95BDD7] text-xs sm:text-sm leading-relaxed">{message}</p>
+          <p className="text-[#F8F3EF] text-xs sm:text-sm leading-relaxed">{message}</p>
         </div>
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#24B1B1]/20">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#08C4E1]/20">
           <button
             ref={cancelBtnRef}
             onClick={onClose}
-            className="px-4 py-2 text-xs font-medium rounded-lg text-[#95BDD7] hover:text-[#95BDD7] bg-[#086288] hover:bg-[#007979] border border-[#24B1B1]/20 transition-colors"
+            className="px-4 py-2 text-xs font-medium rounded-lg text-[#F8F3EF] hover:text-[#F8F3EF] bg-[#1C3C53] hover:bg-[#446882] border border-[#08C4E1]/20 transition-colors"
           >
             {cancelLabel}
           </button>
@@ -60,8 +60,8 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             }}
             className={`px-4 py-2 text-xs font-heading font-bold rounded-lg transition-all ${
               isDestructive
-                ? 'bg-[#D9D28B] hover:bg-[#D9D28B]/90 text-white shadow-lg shadow-[#D9D28B]/25'
-                : 'bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] shadow-lg shadow-[#24B1B1]/25'
+                ? 'bg-[#F5E6BB] hover:bg-[#F5E6BB]/90 text-white shadow-lg shadow-[#F5E6BB]/25'
+                : 'bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] shadow-lg shadow-[#08C4E1]/25'
             }`}
           >
             {confirmLabel}

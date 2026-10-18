@@ -50,66 +50,66 @@ export const SplashIntro: React.FC<SplashIntroProps> = ({ onComplete }) => {
           : 'opacity-100 scale-100'
       }`}
       style={{
-        backgroundColor: '#086288',
+        backgroundColor: '#1C3C53',
         backgroundImage: `
-          radial-gradient(circle at 50% 50%, rgba(36, 177, 177, 0.08) 0%, transparent 65%),
-          linear-gradient(to right, rgba(36, 177, 177, 0.03) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(36, 177, 177, 0.03) 1px, transparent 1px)
+          radial-gradient(circle at 50% 50%, rgba(8, 196, 225, 0.08) 0%, transparent 65%),
+          linear-gradient(to right, rgba(8, 196, 225, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(8, 196, 225, 0.03) 1px, transparent 1px)
         `,
         backgroundSize: '100% 100%, 32px 32px, 32px 32px',
       }}
     >
       {/* Laser scan lines */}
       <div 
-        className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#24B1B1] to-transparent opacity-60 animate-bounce duration-1000"
+        className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#08C4E1] to-transparent opacity-60 animate-bounce duration-1000"
       />
 
       {/* Central Brand Badge with Ripple Waves */}
       <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center max-w-md">
         {/* Animated Water Droplet Icon with Concentric Waves */}
         <div className="relative flex items-center justify-center">
-          <div className="w-24 h-24 rounded-2xl bg-[#007979] border-2 border-[#24B1B1] shadow-[0_0_40px_rgba(36,177,177,0.5)] flex items-center justify-center text-[#24B1B1] relative z-10">
-            <Droplet size={46} className="fill-[#24B1B1] animate-pulse" />
+          <div className="w-24 h-24 rounded-2xl bg-[#446882] border-2 border-[#08C4E1] shadow-[0_0_40px_rgba(8,196,225,0.5)] flex items-center justify-center text-[#08C4E1] relative z-10">
+            <Droplet size={46} className="fill-[#08C4E1] animate-pulse" />
           </div>
-          <div className="absolute w-32 h-32 rounded-2xl border border-[#24B1B1]/30 animate-ping" />
-          <div className="absolute w-40 h-40 rounded-2xl border border-[#D9D28B]/20 animate-pulse" />
+          <div className="absolute w-32 h-32 rounded-2xl border border-[#08C4E1]/30 animate-ping" />
+          <div className="absolute w-40 h-40 rounded-2xl border border-[#F5E6BB]/20 animate-pulse" />
         </div>
 
         {/* Title & Tagline in Brand Typography */}
         <div className="space-y-1.5">
-          <h1 className="text-3xl sm:text-4xl font-heading font-bold text-[#95BDD7] tracking-tight flex items-center justify-center gap-2">
-            JALRAKSHAK <span className="text-[#24B1B1]">AI</span>
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold text-[#F8F3EF] tracking-tight flex items-center justify-center gap-2">
+            JALRAKSHAK <span className="text-[#08C4E1]">AI</span>
           </h1>
-          <p className="text-xs sm:text-sm font-mono text-[#95BDD7] tracking-wider uppercase">
+          <p className="text-xs sm:text-sm font-mono text-[#F8F3EF] tracking-wider uppercase">
             Drinking-Water Infrastructure Infrastructure Intelligence
           </p>
         </div>
 
         {/* Kinetic Loading Bar */}
         <div className="w-72 space-y-2">
-          <div className="w-full h-1.5 rounded-full bg-[#007979] border border-[#24B1B1]/30 p-0.2 overflow-hidden">
+          <div className="w-full h-1.5 rounded-full bg-[#446882] border border-[#08C4E1]/30 p-0.2 overflow-hidden">
             <div
               className="h-full rounded-full transition-all duration-75"
               style={{
                 width: `${progress}%`,
-                background: 'linear-gradient(90deg, #24B1B1, #D9D28B)',
-                boxShadow: '0 0 10px rgba(36, 177, 177, 0.6)',
+                background: 'linear-gradient(90deg, #08C4E1, #F5E6BB)',
+                boxShadow: '0 0 10px rgba(8, 196, 225, 0.6)',
               }}
             />
           </div>
 
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#95BDD7]">
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#F8F3EF]">
             <span className="flex items-center gap-1.5">
-              <Activity size={10} className="text-[#24B1B1] animate-spin" />
+              <Activity size={10} className="text-[#08C4E1] animate-spin" />
               <span>Calibrating 42-node distribution network...</span>
             </span>
-            <span className="font-bold text-[#24B1B1]">{Math.round(progress)}%</span>
+            <span className="font-bold text-[#08C4E1]">{Math.round(progress)}%</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-[10px] font-mono text-[#95BDD7]/60">
+        <div className="flex items-center gap-3 text-[10px] font-mono text-[#F8F3EF]/60">
           <span className="flex items-center gap-1">
-            <ShieldCheck size={11} className="text-[#D9D28B]" /> EPANET Topology
+            <ShieldCheck size={11} className="text-[#F5E6BB]" /> EPANET Topology
           </span>
           <span>•</span>
           <span>Bayesian Likelihood</span>
@@ -124,7 +124,7 @@ export const SplashIntro: React.FC<SplashIntroProps> = ({ onComplete }) => {
             setPhase('done');
             onComplete();
           }}
-          className="text-[11px] font-mono text-[#95BDD7] hover:text-[#24B1B1] transition-colors pt-2"
+          className="text-[11px] font-mono text-[#F8F3EF] hover:text-[#08C4E1] transition-colors pt-2"
         >
           Skip initialization →
         </button>

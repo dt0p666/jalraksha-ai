@@ -12,20 +12,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ensure clean, high-contrast typography strictly adhering to 6-color system */
+/* Centralized CSS variables from dual reference palette */
 :root {
-  --color-bg: #086288;
-  --color-panel: #007979;
-  --color-active: #24B1B1;
-  --color-tech: #78A4CB;
-  --color-text: #95BDD7;
-  --color-alert: #D9D28B;
-  --color-border: rgba(120, 164, 203, 0.25);
+  --color-bg: #1C3C53;
+  --color-panel: #446882;
+  --color-active: #08C4E1;
+  --color-tech: #0892C1;
+  --color-taupe: #D2C1B7;
+  --color-text: #F8F3EF;
+  --color-alert: #F5E6BB;
+  --color-royal: #0C2D74;
+  --color-border: rgba(210, 193, 183, 0.25);
 }
 
 html, body {
-  background-color: #086288;
-  color: #95BDD7;
+  background-color: #1C3C53;
+  color: #F8F3EF;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -33,17 +35,17 @@ html, body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(36, 177, 177, 0.08) 0%, rgba(8, 98, 136, 0.95) 100%),
-    linear-gradient(to right, rgba(120, 164, 203, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(120, 164, 203, 0.04) 1px, transparent 1px);
+    radial-gradient(circle at 50% 0%, rgba(8, 196, 225, 0.08) 0%, rgba(28, 60, 83, 0.95) 100%),
+    linear-gradient(to right, rgba(210, 193, 183, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(210, 193, 183, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
 }
 
-/* Headings: Space Grotesk font. DO NOT force color on .font-heading so buttons inherit button text color! */
+/* Headings */
 h1, h2, h3, h4 {
   font-family: 'Space Grotesk', -apple-system, sans-serif;
   letter-spacing: -0.02em;
-  color: #D9D28B;
+  color: #F8F3EF;
 }
 
 .font-heading, .font-serif {
@@ -64,25 +66,25 @@ code, kbd, samp, pre, .font-mono {
 .engineering-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(36, 177, 177, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(36, 177, 177, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(8, 196, 225, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 196, 225, 0.05) 1px, transparent 1px);
 }
 
 .glow-active {
-  box-shadow: 0 0 20px -3px rgba(36, 177, 177, 0.4);
+  box-shadow: 0 0 20px -3px rgba(8, 196, 225, 0.4);
 }
 
 .glow-active-sm {
-  box-shadow: 0 0 10px -2px rgba(36, 177, 177, 0.3);
+  box-shadow: 0 0 10px -2px rgba(8, 196, 225, 0.3);
 }
 
 .glow-alert {
-  box-shadow: 0 0 20px -3px rgba(217, 210, 139, 0.45);
+  box-shadow: 0 0 20px -3px rgba(245, 230, 187, 0.45);
 }
 
 /* Accessible focus visible outline */
 *:focus-visible {
-  outline: 2px solid #24B1B1;
+  outline: 2px solid #08C4E1;
   outline-offset: 2px;
 }
 
@@ -92,14 +94,18 @@ code, kbd, samp, pre, .font-mono {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #021520;
+  background: #1C3C53;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(36, 177, 177, 0.3);
+  background: rgba(8, 196, 225, 0.35);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(36, 177, 177, 0.6);
+  background: rgba(8, 196, 225, 0.65);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(210, 193, 183, 0.7);
 }
 
 /* Motion preferences */
@@ -115,8 +121,8 @@ code, kbd, samp, pre, .font-mono {
 /* Print Stylesheet */
 @media print {
   body {
-    background: #021520 !important;
-    color: #95BDD7 !important;
+    background: #1C3C53 !important;
+    color: #F8F3EF !important;
   }
   header, footer, .no-print, .floating-contact-btn, .cookie-banner, .timeline-controls, .network-canvas {
     display: none !important;

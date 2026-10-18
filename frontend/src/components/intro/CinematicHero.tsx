@@ -27,18 +27,18 @@ export const CinematicHero: React.FC = () => {
 
   return (
     <div 
-      className="w-full relative bg-[#086288] text-[#95BDD7] overflow-hidden"
+      className="w-full relative bg-[#1C3C53] text-[#F8F3EF] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Preloader */}
       {isLoadingNetwork && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#086288] space-y-4">
-          <div className="w-12 h-12 border-3 border-[#24B1B1]/30 border-t-[#24B1B1] rounded-full animate-spin" />
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#1C3C53] space-y-4">
+          <div className="w-12 h-12 border-3 border-[#08C4E1]/30 border-t-[#08C4E1] rounded-full animate-spin" />
           <div className="text-center space-y-1">
-            <span className="font-heading font-bold text-lg text-[#95BDD7]">
+            <span className="font-heading font-bold text-lg text-[#F8F3EF]">
               Initializing Water Infrastructure Intelligence
             </span>
-            <span className="text-xs text-[#95BDD7] font-mono block">
+            <span className="text-xs text-[#F8F3EF] font-mono block">
               Calibrating EPANET hydraulic topology & sensor nodes...
             </span>
           </div>
@@ -48,7 +48,7 @@ export const CinematicHero: React.FC = () => {
       {/* Background Subtle Animated Engineering Grid & Cyan Glows */}
       <div className="absolute inset-0 engineering-grid opacity-70 pointer-events-none" />
       <div 
-        className="absolute w-[600px] h-[600px] rounded-full bg-[#24B1B1]/5 blur-[120px] pointer-events-none transition-transform duration-500 ease-out"
+        className="absolute w-[600px] h-[600px] rounded-full bg-[#08C4E1]/5 blur-[120px] pointer-events-none transition-transform duration-500 ease-out"
         style={{
           transform: `translate(${mousePos.x * 40}px, ${mousePos.y * 40}px)`,
           top: '10%',
@@ -56,7 +56,7 @@ export const CinematicHero: React.FC = () => {
         }}
       />
       <div 
-        className="absolute w-[500px] h-[500px] rounded-full bg-[#D9D28B]/4 blur-[100px] pointer-events-none transition-transform duration-700 ease-out"
+        className="absolute w-[500px] h-[500px] rounded-full bg-[#F5E6BB]/4 blur-[100px] pointer-events-none transition-transform duration-700 ease-out"
         style={{
           transform: `translate(${mousePos.x * -30}px, ${mousePos.y * -30}px)`,
           bottom: '10%',
@@ -68,24 +68,24 @@ export const CinematicHero: React.FC = () => {
       <section className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-16 max-w-6xl mx-auto space-y-8 z-10">
         
         {/* Top category badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#007979] border border-[#24B1B1]/30 text-xs font-mono text-[#24B1B1] shadow-lg shadow-[#24B1B1]/5">
-          <span className="w-2 h-2 rounded-full bg-[#24B1B1] animate-pulse" />
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#446882] border border-[#08C4E1]/30 text-xs font-mono text-[#08C4E1] shadow-lg shadow-[#08C4E1]/5">
+          <span className="w-2 h-2 rounded-full bg-[#08C4E1] animate-pulse" />
           <span className="tracking-wide uppercase font-semibold">
             NASA Mission Control × Water Intelligence Platform
           </span>
-          <span className="text-[#95BDD7]">•</span>
-          <span className="text-[#95BDD7] font-mono">{nodeCount} Nodes / {sensorCount} Sensors</span>
+          <span className="text-[#F8F3EF]">•</span>
+          <span className="text-[#F8F3EF] font-mono">{nodeCount} Nodes / {sensorCount} Sensors</span>
         </div>
 
         {/* Main Headline & Subheading */}
         <div className="space-y-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-[#95BDD7] tracking-tight leading-[1.08]">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-[#F8F3EF] tracking-tight leading-[1.08]">
             THE NEXT WATER CRISIS <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#24B1B1] via-[#D9D28B] to-[#24B1B1] animate-pulse">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#08C4E1] via-[#F5E6BB] to-[#08C4E1] animate-pulse">
               STARTS INVISIBLE.
             </span>
           </h1>
-          <p className="text-base sm:text-xl text-[#95BDD7] font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-[#F8F3EF] font-medium max-w-2xl mx-auto leading-relaxed">
             Detect contamination. Trace its origin. Protect communities.
           </p>
         </div>
@@ -93,9 +93,9 @@ export const CinematicHero: React.FC = () => {
         {/* Interactive Circular Water-Network Infrastructure Visual */}
         <div className="relative w-full max-w-xl aspect-square max-h-[380px] my-4 flex items-center justify-center">
           {/* Subtle Outer Concentric Orbit Rings */}
-          <div className="absolute inset-0 rounded-full border border-[#24B1B1]/10 animate-[spin_60s_linear_infinite]" />
-          <div className="absolute inset-6 rounded-full border border-dashed border-[#24B1B1]/20 animate-[spin_40s_linear_infinite_reverse]" />
-          <div className="absolute inset-16 rounded-full border border-[#D9D28B]/15 animate-[spin_25s_linear_infinite]" />
+          <div className="absolute inset-0 rounded-full border border-[#08C4E1]/10 animate-[spin_60s_linear_infinite]" />
+          <div className="absolute inset-6 rounded-full border border-dashed border-[#08C4E1]/20 animate-[spin_40s_linear_infinite_reverse]" />
+          <div className="absolute inset-16 rounded-full border border-[#F5E6BB]/15 animate-[spin_25s_linear_infinite]" />
 
           {/* SVG Pipeline Graph with Parallax Mouse Interaction */}
           <div 
@@ -105,14 +105,14 @@ export const CinematicHero: React.FC = () => {
             }}
           >
             <svg 
-              className="w-full h-full filter drop-shadow-[0_0_25px_rgba(36,177,177,0.25)]" 
+              className="w-full h-full filter drop-shadow-[0_0_25px_rgba(8,196,225,0.25)]" 
               viewBox="0 0 400 400"
             >
               {/* Defs for gradients & filters */}
               <defs>
                 <linearGradient id="pipeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#24B1B1" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#D9D28B" stopOpacity="0.3" />
+                  <stop offset="0%" stopColor="#08C4E1" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#F5E6BB" stopOpacity="0.3" />
                 </linearGradient>
                 <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="3" result="blur" />
@@ -141,62 +141,62 @@ export const CinematicHero: React.FC = () => {
               </g>
 
               {/* Flow Pulses on pipes */}
-              <circle r="2.5" fill="#24B1B1" className="animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]">
+              <circle r="2.5" fill="#08C4E1" className="animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]">
                 <animateMotion path="M 200 200 L 200 70" dur="2s" repeatCount="indefinite" />
               </circle>
-              <circle r="2.5" fill="#D9D28B">
+              <circle r="2.5" fill="#F5E6BB">
                 <animateMotion path="M 200 200 L 310 135" dur="2.4s" repeatCount="indefinite" />
               </circle>
-              <circle r="2" fill="#24B1B1">
+              <circle r="2" fill="#08C4E1">
                 <animateMotion path="M 200 200 L 90 265" dur="2.8s" repeatCount="indefinite" />
               </circle>
 
               {/* Central Reservoir Node (Primary Cyan) */}
-              <circle cx="200" cy="200" r="18" fill="#007979" stroke="#24B1B1" strokeWidth="2.5" />
-              <circle cx="200" cy="200" r="10" fill="#24B1B1" opacity="0.8" />
-              <circle cx="200" cy="200" r="26" fill="none" stroke="#24B1B1" strokeWidth="1" opacity="0.3" className="animate-ping" />
+              <circle cx="200" cy="200" r="18" fill="#446882" stroke="#08C4E1" strokeWidth="2.5" />
+              <circle cx="200" cy="200" r="10" fill="#08C4E1" opacity="0.8" />
+              <circle cx="200" cy="200" r="26" fill="none" stroke="#08C4E1" strokeWidth="1" opacity="0.3" className="animate-ping" />
 
               {/* Surrounding Junction & Sensor Nodes */}
               {/* Sensor Node Top */}
-              <circle cx="200" cy="70" r="8" fill="#007979" stroke="#D9D28B" strokeWidth="2" />
-              <circle cx="200" cy="70" r="3" fill="#D9D28B" />
+              <circle cx="200" cy="70" r="8" fill="#446882" stroke="#F5E6BB" strokeWidth="2" />
+              <circle cx="200" cy="70" r="3" fill="#F5E6BB" />
 
               {/* Sensor Node Right-Top */}
-              <circle cx="310" cy="135" r="7" fill="#007979" stroke="#24B1B1" strokeWidth="2" />
-              <circle cx="310" cy="135" r="3" fill="#24B1B1" />
+              <circle cx="310" cy="135" r="7" fill="#446882" stroke="#08C4E1" strokeWidth="2" />
+              <circle cx="310" cy="135" r="3" fill="#08C4E1" />
 
               {/* Suspected Junction Node Right-Bottom */}
-              <circle cx="310" cy="265" r="7" fill="#007979" stroke="#D9D28B" strokeWidth="2" />
-              <circle cx="310" cy="265" r="3" fill="#D9D28B" />
+              <circle cx="310" cy="265" r="7" fill="#446882" stroke="#F5E6BB" strokeWidth="2" />
+              <circle cx="310" cy="265" r="3" fill="#F5E6BB" />
 
               {/* Sensor Node Bottom */}
-              <circle cx="200" cy="330" r="8" fill="#007979" stroke="#D9D28B" strokeWidth="2" />
-              <circle cx="200" cy="330" r="3" fill="#D9D28B" />
+              <circle cx="200" cy="330" r="8" fill="#446882" stroke="#F5E6BB" strokeWidth="2" />
+              <circle cx="200" cy="330" r="3" fill="#F5E6BB" />
 
               {/* Junction Node Left-Bottom */}
-              <circle cx="90" cy="265" r="7" fill="#007979" stroke="#24B1B1" strokeWidth="2" />
-              <circle cx="90" cy="265" r="3" fill="#24B1B1" />
+              <circle cx="90" cy="265" r="7" fill="#446882" stroke="#08C4E1" strokeWidth="2" />
+              <circle cx="90" cy="265" r="3" fill="#08C4E1" />
 
               {/* Sensor Node Left-Top */}
-              <circle cx="90" cy="135" r="8" fill="#007979" stroke="#D9D28B" strokeWidth="2" />
-              <circle cx="90" cy="135" r="3" fill="#D9D28B" />
+              <circle cx="90" cy="135" r="8" fill="#446882" stroke="#F5E6BB" strokeWidth="2" />
+              <circle cx="90" cy="135" r="3" fill="#F5E6BB" />
 
               {/* Outer Peripheral micro-nodes */}
-              <circle cx="270" cy="40" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="130" cy="40" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="360" cy="180" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="360" cy="220" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="260" cy="370" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="140" cy="370" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="40" cy="220" r="3" fill="#95BDD7" opacity="0.7" />
-              <circle cx="40" cy="180" r="3" fill="#95BDD7" opacity="0.7" />
+              <circle cx="270" cy="40" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="130" cy="40" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="360" cy="180" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="360" cy="220" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="260" cy="370" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="140" cy="370" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="40" cy="220" r="3" fill="#F8F3EF" opacity="0.7" />
+              <circle cx="40" cy="180" r="3" fill="#F8F3EF" opacity="0.7" />
             </svg>
 
             {/* Live readout telemetry overlay tags */}
-            <div className="absolute top-2 left-4 px-2.5 py-1 rounded bg-[#007979]/80 border border-[#24B1B1]/30 text-[10px] font-mono text-[#24B1B1] backdrop-blur-sm">
+            <div className="absolute top-2 left-4 px-2.5 py-1 rounded bg-[#446882]/80 border border-[#08C4E1]/30 text-[10px] font-mono text-[#08C4E1] backdrop-blur-sm">
               NODE S-01: 284 µS/cm [SAFE]
             </div>
-            <div className="absolute bottom-4 right-4 px-2.5 py-1 rounded bg-[#007979]/80 border border-[#D9D28B]/40 text-[10px] font-mono text-[#D9D28B] backdrop-blur-sm">
+            <div className="absolute bottom-4 right-4 px-2.5 py-1 rounded bg-[#446882]/80 border border-[#F5E6BB]/40 text-[10px] font-mono text-[#F5E6BB] backdrop-blur-sm">
               TRACE: J-08 Δt = +14m
             </div>
           </div>
@@ -206,7 +206,7 @@ export const CinematicHero: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <button
             onClick={() => navigate('/command-center')}
-            className="px-8 py-3.5 rounded-xl bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] font-heading font-bold text-sm shadow-[0_0_25px_rgba(36,177,177,0.45)] hover:scale-105 active:scale-100 transition-all flex items-center gap-2.5 group"
+            className="px-8 py-3.5 rounded-xl bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] font-heading font-bold text-sm shadow-[0_0_25px_rgba(8,196,225,0.45)] hover:scale-105 active:scale-100 transition-all flex items-center gap-2.5 group"
           >
             <Play size={16} className="fill-current group-hover:translate-x-0.5 transition-transform" />
             <span>LAUNCH COMMAND CENTER</span>
@@ -214,17 +214,17 @@ export const CinematicHero: React.FC = () => {
 
           <button
             onClick={scrollToMethodology}
-            className="px-6 py-3.5 rounded-xl bg-[#007979] hover:bg-[#007979] text-[#95BDD7] font-medium text-sm border border-[#24B1B1]/30 hover:border-[#24B1B1] transition-all flex items-center gap-2 group"
+            className="px-6 py-3.5 rounded-xl bg-[#446882] hover:bg-[#446882] text-[#F8F3EF] font-medium text-sm border border-[#08C4E1]/30 hover:border-[#08C4E1] transition-all flex items-center gap-2 group"
           >
             <span>EXPLORE THE TECHNOLOGY</span>
-            <ArrowRight size={15} className="text-[#24B1B1] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={15} className="text-[#08C4E1] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
         {/* Subtle Scroll Indicator */}
         <div 
           onClick={scrollToMethodology}
-          className="pt-6 flex flex-col items-center gap-1.5 cursor-pointer text-[#95BDD7] hover:text-[#24B1B1] transition-colors"
+          className="pt-6 flex flex-col items-center gap-1.5 cursor-pointer text-[#F8F3EF] hover:text-[#08C4E1] transition-colors"
         >
           <span className="text-[10px] font-mono uppercase tracking-widest">Scroll to explore</span>
           <ChevronDown size={14} className="animate-bounce" />
@@ -232,15 +232,15 @@ export const CinematicHero: React.FC = () => {
       </section>
 
       {/* DETECT → INVESTIGATE → SAMPLE → VERIFY Storytelling Section */}
-      <section id="methodology-flow" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#24B1B1]/15">
+      <section id="methodology-flow" className="relative py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#08C4E1]/15">
         <div className="text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007979] border border-[#24B1B1]/25 text-xs font-mono text-[#24B1B1]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#446882] border border-[#08C4E1]/25 text-xs font-mono text-[#08C4E1]">
             <span>ENGINEERING PIPELINE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-[#95BDD7]">
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-[#F8F3EF]">
             How Contamination Localization Works
           </h2>
-          <p className="text-sm text-[#95BDD7] max-w-2xl mx-auto">
+          <p className="text-sm text-[#F8F3EF] max-w-2xl mx-auto">
             A 4-stage physics-informed inference cycle that narrows down unknown contamination origins from sparse sensor signals.
           </p>
         </div>
@@ -249,100 +249,100 @@ export const CinematicHero: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           
           {/* Card 1: DETECT */}
-          <div className="p-6 rounded-xl bg-[#007979] border border-[#24B1B1]/25 hover:border-[#24B1B1]/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div className="p-6 rounded-xl bg-[#446882] border border-[#08C4E1]/25 hover:border-[#08C4E1]/60 transition-all flex flex-col justify-between group shadow-xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-heading font-extrabold text-[#24B1B1]">01</span>
-                <div className="w-10 h-10 rounded-lg bg-[#086288] border border-[#24B1B1]/30 flex items-center justify-center text-[#24B1B1] group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-heading font-extrabold text-[#08C4E1]">01</span>
+                <div className="w-10 h-10 rounded-lg bg-[#1C3C53] border border-[#08C4E1]/30 flex items-center justify-center text-[#08C4E1] group-hover:scale-110 transition-transform">
                   <Activity size={20} />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-heading font-bold text-[#95BDD7] flex items-center gap-2">
+                <h3 className="text-lg font-heading font-bold text-[#F8F3EF] flex items-center gap-2">
                   DETECT
                 </h3>
-                <span className="text-xs font-mono text-[#24B1B1]">Sensor Telemetry</span>
+                <span className="text-xs font-mono text-[#08C4E1]">Sensor Telemetry</span>
               </div>
-              <p className="text-xs leading-relaxed text-[#95BDD7]">
+              <p className="text-xs leading-relaxed text-[#F8F3EF]">
                 IoT sensors measure continuous conductivity and turbidity across key distribution branches. When values breach physical thresholds, alerts register with precise arrival timestamps.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#24B1B1]/10 text-[11px] font-mono text-[#24B1B1] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#08C4E1]/10 text-[11px] font-mono text-[#08C4E1] flex items-center justify-between">
               <span>8 Sparse IoT Sensors</span>
               <span>100 Hz Sampling</span>
             </div>
           </div>
 
           {/* Card 2: INVESTIGATE */}
-          <div className="p-6 rounded-xl bg-[#007979] border border-[#24B1B1]/25 hover:border-[#24B1B1]/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div className="p-6 rounded-xl bg-[#446882] border border-[#08C4E1]/25 hover:border-[#08C4E1]/60 transition-all flex flex-col justify-between group shadow-xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-heading font-extrabold text-[#24B1B1]">02</span>
-                <div className="w-10 h-10 rounded-lg bg-[#086288] border border-[#24B1B1]/30 flex items-center justify-center text-[#24B1B1] group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-heading font-extrabold text-[#08C4E1]">02</span>
+                <div className="w-10 h-10 rounded-lg bg-[#1C3C53] border border-[#08C4E1]/30 flex items-center justify-center text-[#08C4E1] group-hover:scale-110 transition-transform">
                   <Search size={20} />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-heading font-bold text-[#95BDD7]">
+                <h3 className="text-lg font-heading font-bold text-[#F8F3EF]">
                   INVESTIGATE
                 </h3>
-                <span className="text-xs font-mono text-[#D9D28B]">Bayesian Inversion</span>
+                <span className="text-xs font-mono text-[#F5E6BB]">Bayesian Inversion</span>
               </div>
-              <p className="text-xs leading-relaxed text-[#95BDD7]">
+              <p className="text-xs leading-relaxed text-[#F8F3EF]">
                 The simulator evaluates water travel times and dilution factors through network pipes, generating Bayesian likelihood rankings across all 42 potential injection junctions.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#24B1B1]/10 text-[11px] font-mono text-[#D9D28B] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#08C4E1]/10 text-[11px] font-mono text-[#F5E6BB] flex items-center justify-between">
               <span>Hydraulic Delay Model</span>
               <span>Posterior Ranking</span>
             </div>
           </div>
 
           {/* Card 3: SAMPLE */}
-          <div className="p-6 rounded-xl bg-[#007979] border border-[#24B1B1]/25 hover:border-[#24B1B1]/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div className="p-6 rounded-xl bg-[#446882] border border-[#08C4E1]/25 hover:border-[#08C4E1]/60 transition-all flex flex-col justify-between group shadow-xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-heading font-extrabold text-[#24B1B1]">03</span>
-                <div className="w-10 h-10 rounded-lg bg-[#086288] border border-[#24B1B1]/30 flex items-center justify-center text-[#24B1B1] group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-heading font-extrabold text-[#08C4E1]">03</span>
+                <div className="w-10 h-10 rounded-lg bg-[#1C3C53] border border-[#08C4E1]/30 flex items-center justify-center text-[#08C4E1] group-hover:scale-110 transition-transform">
                   <Droplets size={20} />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-heading font-bold text-[#95BDD7]">
+                <h3 className="text-lg font-heading font-bold text-[#F8F3EF]">
                   SAMPLE
                 </h3>
-                <span className="text-xs font-mono text-[#D9D28B]">Entropy Reduction</span>
+                <span className="text-xs font-mono text-[#F5E6BB]">Entropy Reduction</span>
               </div>
-              <p className="text-xs leading-relaxed text-[#95BDD7]">
+              <p className="text-xs leading-relaxed text-[#F8F3EF]">
                 The system recommends the next optimal grab sample location that will eliminate the most uncertainty (Shannon entropy), directing field technicians to high-value junctions.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#24B1B1]/10 text-[11px] font-mono text-[#D9D28B] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#08C4E1]/10 text-[11px] font-mono text-[#F5E6BB] flex items-center justify-between">
               <span>Next-Best-Sample</span>
               <span>Max Info Gain</span>
             </div>
           </div>
 
           {/* Card 4: VERIFY */}
-          <div className="p-6 rounded-xl bg-[#007979] border border-[#24B1B1]/25 hover:border-[#24B1B1]/60 transition-all flex flex-col justify-between group shadow-xl">
+          <div className="p-6 rounded-xl bg-[#446882] border border-[#08C4E1]/25 hover:border-[#08C4E1]/60 transition-all flex flex-col justify-between group shadow-xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-heading font-extrabold text-[#24B1B1]">04</span>
-                <div className="w-10 h-10 rounded-lg bg-[#086288] border border-[#24B1B1]/30 flex items-center justify-center text-[#24B1B1] group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-heading font-extrabold text-[#08C4E1]">04</span>
+                <div className="w-10 h-10 rounded-lg bg-[#1C3C53] border border-[#08C4E1]/30 flex items-center justify-center text-[#08C4E1] group-hover:scale-110 transition-transform">
                   <ShieldCheck size={20} />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-heading font-bold text-[#95BDD7]">
+                <h3 className="text-lg font-heading font-bold text-[#F8F3EF]">
                   VERIFY
                 </h3>
-                <span className="text-xs font-mono text-[#D9D28B]">Audit & Report</span>
+                <span className="text-xs font-mono text-[#F5E6BB]">Audit & Report</span>
               </div>
-              <p className="text-xs leading-relaxed text-[#95BDD7]">
+              <p className="text-xs leading-relaxed text-[#F8F3EF]">
                 Gemma 4 synthesizes an actionable incident briefing with containment priorities. Users can reveal the ground truth to objectively evaluate localisation accuracy and pipe-hop error.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#24B1B1]/10 text-[11px] font-mono text-[#D9D28B] flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#08C4E1]/10 text-[11px] font-mono text-[#F5E6BB] flex items-center justify-between">
               <span>Ground Truth Check</span>
               <span>Gemma 4 Synthesis</span>
             </div>
@@ -350,18 +350,18 @@ export const CinematicHero: React.FC = () => {
         </div>
 
         {/* Bottom Banner to Enter Command Center */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-[#007979] via-[#007979] to-[#007979] border border-[#24B1B1]/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-[#446882] via-[#446882] to-[#446882] border border-[#08C4E1]/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-xl font-heading font-bold text-[#95BDD7]">
+            <h3 className="text-xl font-heading font-bold text-[#F8F3EF]">
               Ready to investigate a live network scenario?
             </h3>
-            <p className="text-xs text-[#95BDD7] max-w-lg">
+            <p className="text-xs text-[#F8F3EF] max-w-lg">
               Launch the full-viewport command center to run flow simulations, inspect sensor curves, and trace contamination in real time.
             </p>
           </div>
           <button
             onClick={() => navigate('/command-center')}
-            className="px-6 py-3 rounded-xl bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] font-heading font-bold text-xs shadow-lg shadow-[#24B1B1]/30 transition-all hover:scale-105 active:scale-100 whitespace-nowrap"
+            className="px-6 py-3 rounded-xl bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] font-heading font-bold text-xs shadow-lg shadow-[#08C4E1]/30 transition-all hover:scale-105 active:scale-100 whitespace-nowrap"
           >
             ENTER COMMAND CENTER →
           </button>

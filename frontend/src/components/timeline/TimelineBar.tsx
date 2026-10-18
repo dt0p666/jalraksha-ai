@@ -38,7 +38,7 @@ export const TimelineBar: React.FC = () => {
   return (
     <div
       data-tour="timeline-controls"
-      className="p-3 bg-[#086288] border border-[#24B1B1]/25 rounded-xl text-[#95BDD7] shadow-xl flex flex-col gap-2 timeline-controls"
+      className="p-3 bg-[#1C3C53] border border-[#08C4E1]/25 rounded-xl text-[#F8F3EF] shadow-xl flex flex-col gap-2 timeline-controls"
     >
       {/* Upper bar: Playback controls, step counter, and status */}
       <div className="flex items-center justify-between gap-4">
@@ -48,8 +48,8 @@ export const TimelineBar: React.FC = () => {
             onClick={togglePlay}
             className={`p-2 rounded-lg font-semibold text-xs border transition-colors flex items-center gap-1.5 shadow-sm ${
               isPlaying
-                ? 'bg-[#D9D28B] text-[#086288] border-[#D9D28B]'
-                : 'bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] border-[#24B1B1]'
+                ? 'bg-[#F5E6BB] text-[#1C3C53] border-[#F5E6BB]'
+                : 'bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] border-[#08C4E1]'
             }`}
             aria-label={isPlaying ? 'Pause simulation timeline' : 'Play simulation timeline'}
             title={isPlaying ? 'Pause' : 'Play'}
@@ -60,7 +60,7 @@ export const TimelineBar: React.FC = () => {
 
           <button
             onClick={stepForward}
-            className="p-2 rounded-lg bg-[#007979] hover:bg-[#007979] text-[#24B1B1] border border-[#24B1B1]/30 transition-colors flex items-center gap-1 text-xs"
+            className="p-2 rounded-lg bg-[#446882] hover:bg-[#446882] text-[#08C4E1] border border-[#08C4E1]/30 transition-colors flex items-center gap-1 text-xs"
             aria-label="Step forward one timeline step"
             title="Step Forward (+1)"
           >
@@ -70,7 +70,7 @@ export const TimelineBar: React.FC = () => {
 
           <button
             onClick={handleReset}
-            className="p-2 rounded-lg bg-[#007979] hover:bg-[#D9D28B]/20 text-[#95BDD7] hover:text-[#D9D28B] border border-[#24B1B1]/30 transition-colors text-xs"
+            className="p-2 rounded-lg bg-[#446882] hover:bg-[#F5E6BB]/20 text-[#F8F3EF] hover:text-[#F5E6BB] border border-[#08C4E1]/30 transition-colors text-xs"
             aria-label="Reset timeline to step 0"
             title="Reset timeline"
           >
@@ -81,16 +81,16 @@ export const TimelineBar: React.FC = () => {
         {/* Step Counter Display */}
         <div className="flex items-center gap-3">
           <div className="flex items-baseline gap-1 text-xs font-mono">
-            <span className="text-[#95BDD7]">Step</span>
-            <span className="text-base font-bold text-[#24B1B1]">{currentStep}</span>
-            <span className="text-[#95BDD7]">of {totalSteps}</span>
+            <span className="text-[#F8F3EF]">Step</span>
+            <span className="text-base font-bold text-[#08C4E1]">{currentStep}</span>
+            <span className="text-[#F8F3EF]">of {totalSteps}</span>
           </div>
 
           <span
             className={`hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
               simState?.status === 'INCIDENT'
-                ? 'bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40'
-                : 'bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40'
+                ? 'bg-[#F5E6BB]/20 text-[#F5E6BB] border border-[#F5E6BB]/40'
+                : 'bg-[#F5E6BB]/20 text-[#F5E6BB] border border-[#F5E6BB]/40'
             }`}
           >
             {simState?.status || 'NORMAL'}
@@ -106,27 +106,27 @@ export const TimelineBar: React.FC = () => {
           max={totalSteps}
           value={currentStep}
           onChange={handleScrub}
-          className="w-full h-1.5 bg-[#007979] rounded-lg appearance-none cursor-pointer accent-[#24B1B1] focus:outline-none"
+          className="w-full h-1.5 bg-[#446882] rounded-lg appearance-none cursor-pointer accent-[#08C4E1] focus:outline-none"
         />
 
         {/* Event Marker Chips */}
-        <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full text-[11px] text-[#95BDD7]">
-          <span className="text-[10px] uppercase font-mono text-[#95BDD7]/60 shrink-0">Events:</span>
+        <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full text-[11px] text-[#F8F3EF]">
+          <span className="text-[10px] uppercase font-mono text-[#F8F3EF]/60 shrink-0">Events:</span>
           {timelineEvents.map((evt, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#007979] border border-[#24B1B1]/25 text-[10px] whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#446882] border border-[#08C4E1]/25 text-[10px] whitespace-nowrap shrink-0"
               title={evt.description}
             >
               {evt.type.includes('ALERT') ? (
-                <AlertTriangle size={11} className="text-[#D9D28B]" />
+                <AlertTriangle size={11} className="text-[#F5E6BB]" />
               ) : evt.type.includes('SAMPLE') ? (
-                <Target size={11} className="text-[#D9D28B]" />
+                <Target size={11} className="text-[#F5E6BB]" />
               ) : evt.type.includes('REVEAL') ? (
-                <Eye size={11} className="text-[#24B1B1]" />
+                <Eye size={11} className="text-[#08C4E1]" />
               ) : null}
-              <span className="font-mono text-[#24B1B1]">T+{evt.step}</span>
-              <span className="text-[#95BDD7] max-w-[140px] truncate">{evt.description}</span>
+              <span className="font-mono text-[#08C4E1]">T+{evt.step}</span>
+              <span className="text-[#F8F3EF] max-w-[140px] truncate">{evt.description}</span>
             </div>
           ))}
         </div>

@@ -6,12 +6,12 @@
  * investigation and source-localisation platform.
  *
  * Strict 6-colour design system:
- *   #086288 — Primary dark structural background & foundation
- *   #007979 — Panels, structural surfaces & inactive infrastructure
- *   #24B1B1 — Primary interactive accent, glowing pipelines, active controls
- *   #78A4CB — Secondary technical accent, charts, indicators, borders
- *   #95BDD7 — High-readability foreground text, labels, telemetry values
- *   #D9D28B — Attention & investigation accent, alerts, contamination highlights
+ *   #1C3C53 — Primary dark structural background & foundation
+ *   #446882 — Panels, structural surfaces & inactive infrastructure
+ *   #08C4E1 — Primary interactive accent, glowing pipelines, active controls
+ *   #0892C1 — Secondary technical accent, charts, indicators, borders
+ *   #F8F3EF — High-readability foreground text, labels, telemetry values
+ *   #F5E6BB — Attention & investigation accent, alerts, contamination highlights
  */
 
 import React, {
@@ -38,12 +38,12 @@ import {
 // PALETTE
 // ─────────────────────────────────────────────────────────────
 const C = {
-  foundation: '#086288',
-  panel:      '#007979',
-  flow:       '#24B1B1',
-  tech:       '#78A4CB',
-  text:       '#95BDD7',
-  alert:      '#D9D28B',
+  foundation: '#1C3C53',
+  panel:      '#446882',
+  flow:       '#08C4E1',
+  tech:       '#0892C1',
+  text:       '#F8F3EF',
+  alert:      '#F5E6BB',
 } as const;
 
 const LabelsCtx = createContext<boolean>(false);
@@ -200,10 +200,10 @@ const ReservoirClarifier: React.FC<EqProps> = ({
           <div
             className={`pointer-events-none select-none px-2 py-0.5 rounded border text-[10px] font-mono font-bold whitespace-nowrap shadow-xl ${
               isAlert
-                ? 'bg-[#086288] text-[#D9D28B] border-[#D9D28B]'
+                ? 'bg-[#1C3C53] text-[#F5E6BB] border-[#F5E6BB]'
                 : isSelected || hov
-                ? 'bg-[#086288] text-[#24B1B1] border-[#24B1B1]'
-                : 'bg-[#086288]/95 text-[#95BDD7] border-[#78A4CB]/40'
+                ? 'bg-[#1C3C53] text-[#08C4E1] border-[#08C4E1]'
+                : 'bg-[#1C3C53]/95 text-[#F8F3EF] border-[#0892C1]/40'
             }`}
           >
             {node.id} • {node.label}
@@ -298,10 +298,10 @@ const FiltrationColumn: React.FC<EqProps> = ({
           <div
             className={`pointer-events-none select-none px-1.5 py-0.5 rounded border text-[9px] font-mono font-bold whitespace-nowrap shadow-lg ${
               isAlert
-                ? 'bg-[#086288] text-[#D9D28B] border-[#D9D28B]'
+                ? 'bg-[#1C3C53] text-[#F5E6BB] border-[#F5E6BB]'
                 : isSelected || hov
-                ? 'bg-[#086288] text-[#24B1B1] border-[#24B1B1]'
-                : 'bg-[#086288]/90 text-[#95BDD7] border-[#78A4CB]/30'
+                ? 'bg-[#1C3C53] text-[#08C4E1] border-[#08C4E1]'
+                : 'bg-[#1C3C53]/90 text-[#F8F3EF] border-[#0892C1]/30'
             }`}
           >
             {node.id}{node.has_sensor ? ' [SENSOR]' : ''}
@@ -396,10 +396,10 @@ const PumpUnit: React.FC<EqProps> = ({
           <div
             className={`pointer-events-none select-none px-1.5 py-0.5 rounded border text-[9px] font-mono font-bold whitespace-nowrap shadow-md ${
               isAlert
-                ? 'bg-[#086288] text-[#D9D28B] border-[#D9D28B]'
+                ? 'bg-[#1C3C53] text-[#F5E6BB] border-[#F5E6BB]'
                 : isSelected || hov
-                ? 'bg-[#086288] text-[#24B1B1] border-[#24B1B1]'
-                : 'bg-[#086288]/90 text-[#95BDD7] border-[#78A4CB]/30'
+                ? 'bg-[#1C3C53] text-[#08C4E1] border-[#08C4E1]'
+                : 'bg-[#1C3C53]/90 text-[#F8F3EF] border-[#0892C1]/30'
             }`}
           >
             {node.id} [PUMP]
@@ -444,7 +444,7 @@ const VillageTerminal: React.FC<EqProps> = ({
 
       {(showLabels || hov || isSelected || isAlert) && (
         <Html position={[0, 0.35, 0]} center distanceFactor={20} zIndexRange={[100, 0]}>
-          <div className="pointer-events-none select-none px-1 py-0.5 rounded border text-[8px] font-mono font-bold bg-[#086288]/90 text-[#D9D28B] border-[#78A4CB]/30">
+          <div className="pointer-events-none select-none px-1 py-0.5 rounded border text-[8px] font-mono font-bold bg-[#1C3C53]/90 text-[#F5E6BB] border-[#0892C1]/30">
             {node.id}
           </div>
         </Html>
@@ -655,10 +655,10 @@ const CircularScadaGauge: React.FC<GaugeProps> = ({ value, title, isAlert }) => 
       </svg>
       {/* Centered value reading */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-        <span className="text-xl font-mono font-bold text-[#95BDD7] tracking-tight">
+        <span className="text-xl font-mono font-bold text-[#F8F3EF] tracking-tight">
           {value.toFixed(1)}
         </span>
-        <span className="text-[8px] font-mono text-[#78A4CB] uppercase">
+        <span className="text-[8px] font-mono text-[#0892C1] uppercase">
           {title}
         </span>
       </div>
@@ -687,10 +687,10 @@ const SparklineChart: React.FC<SparklineProps> = ({ title, data, unit = '' }) =>
   }).join(' ');
 
   return (
-    <div className="flex flex-col gap-1 p-2 rounded-lg bg-[#007979]/70 border border-[#78A4CB]/25 backdrop-blur-md">
+    <div className="flex flex-col gap-1 p-2 rounded-lg bg-[#446882]/70 border border-[#0892C1]/25 backdrop-blur-md">
       <div className="flex items-center justify-between text-[10px] font-mono">
-        <span className="text-[#95BDD7] font-semibold">{title}</span>
-        <span className="text-[#24B1B1] font-bold">{data[data.length - 1]} {unit}</span>
+        <span className="text-[#F8F3EF] font-semibold">{title}</span>
+        <span className="text-[#08C4E1] font-bold">{data[data.length - 1]} {unit}</span>
       </div>
       <div className="relative h-10 w-full overflow-hidden">
         <svg viewBox="0 0 140 40" className="w-full h-full overflow-visible">
@@ -770,14 +770,14 @@ export const NetworkScene3D: React.FC = () => {
 
   return (
     <LabelsCtx.Provider value={showLabels}>
-      <div className="w-full h-full relative select-none overflow-hidden bg-[#086288]">
+      <div className="w-full h-full relative select-none overflow-hidden bg-[#1C3C53]">
 
         {/* ── 3D CANVAS (BACKGROUND DIGITAL INFRASTRUCTURE PLANT) ── */}
         <div className="absolute inset-0 z-0">
           <Canvas
             camera={{ position: [14, 11, 14], fov: 42, near: 0.1, far: 250 }}
             shadows
-            style={{ background: '#086288' }}
+            style={{ background: '#1C3C53' }}
             gl={{ antialias: true, alpha: false }}
           >
             <ambientLight intensity={0.4} color={C.tech} />
@@ -810,13 +810,13 @@ export const NetworkScene3D: React.FC = () => {
         {/* ── TOP SCADA STATUS BAR ── */}
         <div className="absolute top-2 left-3 right-3 z-20 flex items-center justify-between pointer-events-auto">
           {/* Brand header */}
-          <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#007979]/85 border border-[#24B1B1]/35 backdrop-blur-md shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-[#24B1B1] animate-pulse" />
-            <span className="font-heading font-bold text-xs text-[#D9D28B] tracking-wide">
+          <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#446882]/85 border border-[#08C4E1]/35 backdrop-blur-md shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#08C4E1] animate-pulse" />
+            <span className="font-heading font-bold text-xs text-[#F5E6BB] tracking-wide">
               JALRAKSHAK AI — SCADA Facility
             </span>
-            <span className="text-xs text-[#78A4CB]">•</span>
-            <span className="text-[11px] font-mono text-[#95BDD7]">
+            <span className="text-xs text-[#0892C1]">•</span>
+            <span className="text-[11px] font-mono text-[#F8F3EF]">
               {network?.nodes.length || 42} Junctions / {simState?.current_step || 0} Steps
             </span>
           </div>
@@ -825,7 +825,7 @@ export const NetworkScene3D: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowHud(p => !p)}
-              className="px-2.5 py-1.5 rounded-lg bg-[#007979]/85 border border-[#78A4CB]/30 text-xs font-mono font-semibold text-[#95BDD7] hover:border-[#24B1B1] transition-all backdrop-blur-md shadow-md"
+              className="px-2.5 py-1.5 rounded-lg bg-[#446882]/85 border border-[#0892C1]/30 text-xs font-mono font-semibold text-[#F8F3EF] hover:border-[#08C4E1] transition-all backdrop-blur-md shadow-md"
             >
               {showHud ? 'Hide HUD' : 'Show HUD'}
             </button>
@@ -833,8 +833,8 @@ export const NetworkScene3D: React.FC = () => {
               onClick={() => setShowLabels(p => !p)}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono font-semibold transition-all backdrop-blur-md shadow-md ${
                 showLabels
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border-[#24B1B1]'
-                  : 'bg-[#007979]/85 text-[#95BDD7] border-[#78A4CB]/30'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border-[#08C4E1]'
+                  : 'bg-[#446882]/85 text-[#F8F3EF] border-[#0892C1]/30'
               }`}
             >
               <Layers size={12} />
@@ -842,7 +842,7 @@ export const NetworkScene3D: React.FC = () => {
             </button>
             <button
               onClick={resetCamera}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#007979]/85 border border-[#78A4CB]/30 text-xs font-mono font-semibold text-[#95BDD7] hover:border-[#24B1B1] transition-all backdrop-blur-md shadow-md"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#446882]/85 border border-[#0892C1]/30 text-xs font-mono font-semibold text-[#F8F3EF] hover:border-[#08C4E1] transition-all backdrop-blur-md shadow-md"
               title="Reset Isometric Camera"
             >
               <RotateCcw size={12} />
@@ -862,24 +862,24 @@ export const NetworkScene3D: React.FC = () => {
               <div className="flex flex-col gap-2.5 w-80 max-w-[48%] pointer-events-auto">
 
                 {/* GROUP 1# CARD */}
-                <div className="p-3 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-2">
-                  <div className="flex items-center justify-between pb-1.5 border-b border-[#78A4CB]/20">
+                <div className="p-3 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-2">
+                  <div className="flex items-center justify-between pb-1.5 border-b border-[#0892C1]/20">
                     <div className="flex items-center gap-2">
-                      <span className="font-heading font-bold text-xs text-[#95BDD7]">Group 1#</span>
-                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#086288] text-[#24B1B1] border border-[#24B1B1]/30">
+                      <span className="font-heading font-bold text-xs text-[#F8F3EF]">Group 1#</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#1C3C53] text-[#08C4E1] border border-[#08C4E1]/30">
                         Pre Mode
                       </span>
                       {isAlertG1 ? (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40 animate-pulse font-bold">
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#F5E6BB]/20 text-[#F5E6BB] border border-[#F5E6BB]/40 animate-pulse font-bold">
                           Issue
                         </span>
                       ) : (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#24B1B1]/20 text-[#24B1B1]">
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#08C4E1]/20 text-[#08C4E1]">
                           Safe
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] font-mono text-[#78A4CB]">Remote Control</span>
+                    <span className="text-[10px] font-mono text-[#0892C1]">Remote Control</span>
                   </div>
 
                   {/* Gauge + Metrics row */}
@@ -887,29 +887,29 @@ export const NetworkScene3D: React.FC = () => {
                     <CircularScadaGauge value={72.6} title="Efficiency (%)" isAlert={isAlertG1} />
                     <div className="flex flex-col gap-1 text-[10px] font-mono">
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Frequency</span>
-                        <strong className="text-xs text-[#95BDD7]">82 HZ</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Frequency</span>
+                        <strong className="text-xs text-[#F8F3EF]">82 HZ</strong>
                       </div>
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Volume</span>
-                        <strong className="text-xs text-[#95BDD7]">567.1 m³/h</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Volume</span>
+                        <strong className="text-xs text-[#F8F3EF]">567.1 m³/h</strong>
                       </div>
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Pressure</span>
-                        <strong className="text-xs text-[#24B1B1]">15 mPa</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Pressure</span>
+                        <strong className="text-xs text-[#08C4E1]">15 mPa</strong>
                       </div>
                     </div>
                   </div>
 
                   {/* Optimization sub-card */}
-                  <div className="p-2 rounded-lg bg-[#086288]/70 border border-[#24B1B1]/20 flex items-center justify-between text-[10px] font-mono">
+                  <div className="p-2 rounded-lg bg-[#1C3C53]/70 border border-[#08C4E1]/20 flex items-center justify-between text-[10px] font-mono">
                     <div>
-                      <span className="text-[#24B1B1] font-semibold flex items-center gap-1">
+                      <span className="text-[#08C4E1] font-semibold flex items-center gap-1">
                         <span>↑ Optimization</span>
                       </span>
-                      <strong className="text-xs text-[#95BDD7]">91.3% <span className="text-[#24B1B1] text-[9px]">↑ 12.7%</span></strong>
+                      <strong className="text-xs text-[#F8F3EF]">91.3% <span className="text-[#08C4E1] text-[9px]">↑ 12.7%</span></strong>
                     </div>
-                    <div className="text-right text-[9px] text-[#78A4CB]">
+                    <div className="text-right text-[9px] text-[#0892C1]">
                       <div>Freq: 128 HZ</div>
                       <div>Vol: 864.2 m³/h</div>
                     </div>
@@ -917,24 +917,24 @@ export const NetworkScene3D: React.FC = () => {
                 </div>
 
                 {/* GROUP 2# CARD */}
-                <div className="p-3 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-2">
-                  <div className="flex items-center justify-between pb-1.5 border-b border-[#78A4CB]/20">
+                <div className="p-3 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-2">
+                  <div className="flex items-center justify-between pb-1.5 border-b border-[#0892C1]/20">
                     <div className="flex items-center gap-2">
-                      <span className="font-heading font-bold text-xs text-[#95BDD7]">Group 2#</span>
-                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#086288] text-[#24B1B1] border border-[#24B1B1]/30">
+                      <span className="font-heading font-bold text-xs text-[#F8F3EF]">Group 2#</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#1C3C53] text-[#08C4E1] border border-[#08C4E1]/30">
                         Pre Mode
                       </span>
                       {isAlertG2 ? (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40 font-bold">
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#F5E6BB]/20 text-[#F5E6BB] border border-[#F5E6BB]/40 font-bold">
                           Warning
                         </span>
                       ) : (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#24B1B1]/20 text-[#24B1B1]">
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#08C4E1]/20 text-[#08C4E1]">
                           Safe
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] font-mono text-[#78A4CB]">Remote Control</span>
+                    <span className="text-[10px] font-mono text-[#0892C1]">Remote Control</span>
                   </div>
 
                   {/* Gauge + Metrics row */}
@@ -942,29 +942,29 @@ export const NetworkScene3D: React.FC = () => {
                     <CircularScadaGauge value={82.6} title="Efficiency (%)" isAlert={isAlertG2} />
                     <div className="flex flex-col gap-1 text-[10px] font-mono">
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Frequency</span>
-                        <strong className="text-xs text-[#95BDD7]">91 HZ</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Frequency</span>
+                        <strong className="text-xs text-[#F8F3EF]">91 HZ</strong>
                       </div>
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Volume</span>
-                        <strong className="text-xs text-[#95BDD7]">634.7 m³/h</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Volume</span>
+                        <strong className="text-xs text-[#F8F3EF]">634.7 m³/h</strong>
                       </div>
                       <div>
-                        <span className="text-[#78A4CB] block text-[9px]">Pressure</span>
-                        <strong className="text-xs text-[#24B1B1]">8.6 mPa</strong>
+                        <span className="text-[#0892C1] block text-[9px]">Pressure</span>
+                        <strong className="text-xs text-[#08C4E1]">8.6 mPa</strong>
                       </div>
                     </div>
                   </div>
 
                   {/* Optimization sub-card */}
-                  <div className="p-2 rounded-lg bg-[#086288]/70 border border-[#24B1B1]/20 flex items-center justify-between text-[10px] font-mono">
+                  <div className="p-2 rounded-lg bg-[#1C3C53]/70 border border-[#08C4E1]/20 flex items-center justify-between text-[10px] font-mono">
                     <div>
-                      <span className="text-[#24B1B1] font-semibold flex items-center gap-1">
+                      <span className="text-[#08C4E1] font-semibold flex items-center gap-1">
                         <span>↑ Optimization</span>
                       </span>
-                      <strong className="text-xs text-[#95BDD7]">88.3% <span className="text-[#24B1B1] text-[9px]">↑ 1.06%</span></strong>
+                      <strong className="text-xs text-[#F8F3EF]">88.3% <span className="text-[#08C4E1] text-[9px]">↑ 1.06%</span></strong>
                     </div>
-                    <div className="text-right text-[9px] text-[#78A4CB]">
+                    <div className="text-right text-[9px] text-[#0892C1]">
                       <div>Freq: 128 HZ</div>
                       <div>Vol: 723.6 m³/h</div>
                     </div>
@@ -989,10 +989,10 @@ export const NetworkScene3D: React.FC = () => {
                 </div>
 
                 {/* Equipment Unit List */}
-                <div className="p-2.5 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-1.5 max-h-[380px] overflow-y-auto">
-                  <div className="flex items-center justify-between pb-1 border-b border-[#78A4CB]/20 text-[10px] font-mono font-bold text-[#95BDD7]">
+                <div className="p-2.5 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-1.5 max-h-[380px] overflow-y-auto">
+                  <div className="flex items-center justify-between pb-1 border-b border-[#0892C1]/20 text-[10px] font-mono font-bold text-[#F8F3EF]">
                     <span>EQUIPMENT UNITS</span>
-                    <span className="text-[#78A4CB]">TELEMETRY</span>
+                    <span className="text-[#0892C1]">TELEMETRY</span>
                   </div>
 
                   {equipmentUnits.map(unit => {
@@ -1004,8 +1004,8 @@ export const NetworkScene3D: React.FC = () => {
                         key={unit.id}
                         className={`rounded-lg border transition-all ${
                           isSelected
-                            ? 'bg-[#086288] border-[#24B1B1] shadow-md shadow-[#24B1B1]/20'
-                            : 'bg-[#086288]/50 border-[#78A4CB]/20 hover:border-[#24B1B1]/40'
+                            ? 'bg-[#1C3C53] border-[#08C4E1] shadow-md shadow-[#08C4E1]/20'
+                            : 'bg-[#1C3C53]/50 border-[#0892C1]/20 hover:border-[#08C4E1]/40'
                         }`}
                       >
                         <button
@@ -1016,20 +1016,20 @@ export const NetworkScene3D: React.FC = () => {
                           className="w-full flex items-center justify-between p-2 text-left"
                         >
                           <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#24B1B1]" />
-                            <span className="text-xs font-mono font-bold text-[#95BDD7]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#08C4E1]" />
+                            <span className="text-xs font-mono font-bold text-[#F8F3EF]">
                               {unit.id} {unit.label}
                             </span>
                           </div>
-                          {isExpanded ? <ChevronUp size={12} className="text-[#24B1B1]" /> : <ChevronDown size={12} className="text-[#78A4CB]" />}
+                          {isExpanded ? <ChevronUp size={12} className="text-[#08C4E1]" /> : <ChevronDown size={12} className="text-[#0892C1]" />}
                         </button>
 
                         {/* Expanded details (Faithful to screenshot) */}
                         {isExpanded && (
-                          <div className="px-3 pb-2.5 pt-1 border-t border-[#78A4CB]/15 text-[10px] font-mono space-y-1 text-[#95BDD7]">
+                          <div className="px-3 pb-2.5 pt-1 border-t border-[#0892C1]/15 text-[10px] font-mono space-y-1 text-[#F8F3EF]">
                             <div className="grid grid-cols-2 gap-x-2 gap-y-0.5">
-                              <div>Frequency: <strong className="text-[#D9D28B]">{unit.hz} Hz</strong></div>
-                              <div>Volume: <strong className="text-[#24B1B1]">{unit.m3} m³/h</strong></div>
+                              <div>Frequency: <strong className="text-[#F5E6BB]">{unit.hz} Hz</strong></div>
+                              <div>Volume: <strong className="text-[#08C4E1]">{unit.m3} m³/h</strong></div>
                               <div>Head: <strong>6.5 m</strong></div>
                               <div>Power: <strong>342 kW</strong></div>
                               <div>Efficiency: <strong>65%</strong></div>
@@ -1045,7 +1045,7 @@ export const NetworkScene3D: React.FC = () => {
                                   setInspectedNodeId(unit.nodeId);
                                   findBestSample();
                                 }}
-                                className="flex-1 py-1 rounded bg-[#24B1B1] text-[#086288] font-bold text-[10px] text-center"
+                                className="flex-1 py-1 rounded bg-[#08C4E1] text-[#1C3C53] font-bold text-[10px] text-center"
                               >
                                 Sample Node
                               </button>
@@ -1065,12 +1065,12 @@ export const NetworkScene3D: React.FC = () => {
             <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3 pointer-events-auto pt-2">
 
               {/* BOTTOM-LEFT: Efficiency Comparison Chart */}
-              <div className="p-2.5 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
-                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#95BDD7]">
+              <div className="p-2.5 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
+                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#F8F3EF]">
                   <span>Efficiency Comparison (%)</span>
                   <div className="flex items-center gap-2 text-[8px]">
-                    <span className="text-[#24B1B1]">■ Group 1#</span>
-                    <span className="text-[#D9D28B]">■ Predict</span>
+                    <span className="text-[#08C4E1]">■ Group 1#</span>
+                    <span className="text-[#F5E6BB]">■ Predict</span>
                   </div>
                 </div>
                 <div className="h-16 w-full">
@@ -1099,19 +1099,19 @@ export const NetworkScene3D: React.FC = () => {
               </div>
 
               {/* BOTTOM-CENTER: Duty Actual And Recommend (Gantt Schedule) */}
-              <div className="p-2.5 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
-                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#95BDD7]">
+              <div className="p-2.5 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
+                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#F8F3EF]">
                   <span>Duty Actual And Recommend</span>
                   <div className="flex items-center gap-2 text-[8px]">
-                    <span className="text-[#24B1B1]">■ Actual</span>
-                    <span className="text-[#D9D28B]">■ Recommend</span>
+                    <span className="text-[#08C4E1]">■ Actual</span>
+                    <span className="text-[#F5E6BB]">■ Recommend</span>
                   </div>
                 </div>
-                <div className="space-y-1 text-[9px] font-mono text-[#78A4CB]">
+                <div className="space-y-1 text-[9px] font-mono text-[#0892C1]">
                   {['1-1#', '1-2#', '1-3#', '2-1#', '2-2#'].map((id, idx) => (
                     <div key={id} className="flex items-center gap-2">
                       <span className="w-6 shrink-0">{id}</span>
-                      <div className="flex-1 h-2 rounded bg-[#086288] relative overflow-hidden">
+                      <div className="flex-1 h-2 rounded bg-[#1C3C53] relative overflow-hidden">
                         <div
                           className="h-full rounded"
                           style={{
@@ -1127,8 +1127,8 @@ export const NetworkScene3D: React.FC = () => {
               </div>
 
               {/* BOTTOM-RIGHT: Power Distribution & Volume Distribution Petal Rose Charts */}
-              <div className="p-2.5 rounded-xl bg-[#007979]/85 border border-[#24B1B1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
-                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#95BDD7]">
+              <div className="p-2.5 rounded-xl bg-[#446882]/85 border border-[#08C4E1]/30 backdrop-blur-md shadow-2xl space-y-1.5">
+                <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#F8F3EF]">
                   <span>Power Distribution</span>
                   <span>Volume Distribution</span>
                 </div>
@@ -1160,8 +1160,8 @@ export const NetworkScene3D: React.FC = () => {
                       onClick={() => setExpandedUnit(u)}
                       className={`px-1 py-0.5 rounded border ${
                         expandedUnit === u
-                          ? 'bg-[#24B1B1] text-[#086288] font-bold border-[#24B1B1]'
-                          : 'bg-[#086288] text-[#95BDD7] border-[#78A4CB]/30'
+                          ? 'bg-[#08C4E1] text-[#1C3C53] font-bold border-[#08C4E1]'
+                          : 'bg-[#1C3C53] text-[#F8F3EF] border-[#0892C1]/30'
                       }`}
                     >
                       {u}

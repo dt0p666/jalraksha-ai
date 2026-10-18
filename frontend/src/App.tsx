@@ -32,7 +32,7 @@ export const App: React.FC = () => {
         {/* Cinematic Opening Splash Animation */}
         {showSplash && <SplashIntro onComplete={() => setShowSplash(false)} />}
 
-        <div className="min-h-screen flex flex-col bg-[#086288] text-[#95BDD7] selection:bg-[#24B1B1]/30 selection:text-white transition-colors">
+        <div className="min-h-screen flex flex-col bg-[#1C3C53] text-[#F8F3EF] selection:bg-[#08C4E1]/30 selection:text-white transition-colors">
           <ScrollProgressBar />
           <Header />
 

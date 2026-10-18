@@ -15,10 +15,10 @@ import { useApp } from '../../state/appStore';
 import type { ObservationModel } from '../../api/types';
 
 const SENSOR_COLORS: Record<string, string> = {
-  'J-02': '#24B1B1', // Primary Cyan
-  'J-05': '#D9D28B', // Warning Amber
-  'J-08': '#D9D28B', // Aquamarine
-  'J-11': '#D9D28B', // Contamination Red
+  'J-02': '#08C4E1', // Primary Cyan
+  'J-05': '#F5E6BB', // Warning Amber
+  'J-08': '#F5E6BB', // Aquamarine
+  'J-11': '#F5E6BB', // Contamination Red
   'J-15': '#0284C7', // Deep Sky
   'J-17': '#A7F3D0', // Mint
   'J-24': '#FDE68A', // Pale Yellow
@@ -60,26 +60,26 @@ export const SensorChart: React.FC = () => {
   const activeSensors = Object.keys(SENSOR_COLORS);
 
   return (
-    <div className="p-4 bg-[#086288] border border-[#24B1B1]/25 rounded-xl text-[#95BDD7] shadow-xl space-y-3">
+    <div className="p-4 bg-[#1C3C53] border border-[#08C4E1]/25 rounded-xl text-[#F8F3EF] shadow-xl space-y-3">
       {/* Chart Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#24B1B1]/15">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#08C4E1]/15">
         <div>
-          <h3 className="font-heading font-bold text-sm text-[#95BDD7]">
+          <h3 className="font-heading font-bold text-sm text-[#F8F3EF]">
             Continuous Telemetry Curves
           </h3>
-          <span className="text-[11px] text-[#95BDD7]">
+          <span className="text-[11px] text-[#F8F3EF]">
             8 fixed IoT conductivity sensors tracking dynamic chemical advection
           </span>
         </div>
 
         {/* Filter Dropdown */}
         <div className="flex items-center gap-2">
-          <label htmlFor="sensor-filter" className="text-xs text-[#95BDD7]">Focus:</label>
+          <label htmlFor="sensor-filter" className="text-xs text-[#F8F3EF]">Focus:</label>
           <select
             id="sensor-filter"
             value={selectedSensor}
             onChange={e => setSelectedSensor(e.target.value)}
-            className="px-2.5 py-1 rounded bg-[#007979] border border-[#24B1B1]/30 text-xs font-mono text-[#24B1B1] focus:outline-none"
+            className="px-2.5 py-1 rounded bg-[#446882] border border-[#08C4E1]/30 text-xs font-mono text-[#08C4E1] focus:outline-none"
           >
             <option value="all">All 8 Sensors</option>
             {activeSensors.map(s => (
@@ -94,21 +94,21 @@ export const SensorChart: React.FC = () => {
       {/* Recharts LineChart */}
       <div className="w-full h-56 font-mono text-[10px]">
         {chartData.length === 0 ? (
-          <div className="h-full flex items-center justify-center text-[#95BDD7] text-xs font-sans">
+          <div className="h-full flex items-center justify-center text-[#F8F3EF] text-xs font-sans">
             Awaiting telemetry sensor observations...
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData} margin={{ top: 10, right: 15, left: -10, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(36, 177, 177, 0.1)" />
-              <XAxis dataKey="step" stroke="#95BDD7" tickLine={false} />
-              <YAxis domain={[140, 'auto']} stroke="#95BDD7" tickLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(8, 196, 225, 0.1)" />
+              <XAxis dataKey="step" stroke="#F8F3EF" tickLine={false} />
+              <YAxis domain={[140, 'auto']} stroke="#F8F3EF" tickLine={false} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#007979',
-                  border: '1px solid rgba(36, 177, 177, 0.4)',
+                  backgroundColor: '#446882',
+                  border: '1px solid rgba(8, 196, 225, 0.4)',
                   borderRadius: '8px',
-                  color: '#95BDD7',
+                  color: '#F8F3EF',
                   fontSize: '11px',
                 }}
               />
@@ -120,11 +120,11 @@ export const SensorChart: React.FC = () => {
               {/* Alert threshold reference line */}
               <ReferenceLine
                 y={230.0}
-                stroke="#D9D28B"
+                stroke="#F5E6BB"
                 strokeDasharray="4 4"
                 label={{
                   value: 'Alert Threshold (230 µS/cm)',
-                  fill: '#D9D28B',
+                  fill: '#F5E6BB',
                   fontSize: 10,
                   position: 'top',
                 }}

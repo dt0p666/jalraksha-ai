@@ -64,36 +64,36 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <main id="main-content" className="max-w-2xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#95BDD7]">
+    <main id="main-content" className="max-w-2xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#F8F3EF]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#24B1B1]/20">
+      <div className="space-y-2 pb-6 border-b border-[#08C4E1]/20">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-[#007979] border border-[#24B1B1]/30 text-[#24B1B1]">
+          <div className="p-2 rounded-xl bg-[#446882] border border-[#08C4E1]/30 text-[#08C4E1]">
             <MessageSquare size={22} />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#95BDD7]">
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#F8F3EF]">
             Contact Engineering Team
           </h1>
         </div>
-        <p className="text-sm text-[#95BDD7]">
+        <p className="text-sm text-[#F8F3EF]">
           Have questions regarding the mathematical engine or feedback on the educational simulator?
         </p>
       </div>
 
       {successResult ? (
         /* Success Card */
-        <div className="p-6 bg-[#007979] rounded-2xl border border-[#D9D28B]/50 text-center space-y-4 shadow-2xl animate-fadeIn">
-          <CheckCircle2 size={42} className="text-[#D9D28B] mx-auto" />
-          <h2 className="text-xl font-heading font-bold text-[#95BDD7]">
+        <div className="p-6 bg-[#446882] rounded-2xl border border-[#F5E6BB]/50 text-center space-y-4 shadow-2xl animate-fadeIn">
+          <CheckCircle2 size={42} className="text-[#F5E6BB] mx-auto" />
+          <h2 className="text-xl font-heading font-bold text-[#F8F3EF]">
             Message Recorded on Demo Server
           </h2>
-          <p className="text-xs sm:text-sm text-[#95BDD7] max-w-md mx-auto leading-relaxed">
-            Your inquiry has been stored locally in <code className="text-[#24B1B1] font-mono">backend/app/history/messages.json</code>.
+          <p className="text-xs sm:text-sm text-[#F8F3EF] max-w-md mx-auto leading-relaxed">
+            Your inquiry has been stored locally in <code className="text-[#08C4E1] font-mono">backend/app/history/messages.json</code>.
             As this is an offline demonstration environment, external emails are not dispatched.
           </p>
 
-          <div className="p-3 bg-[#086288] rounded-xl border border-[#24B1B1]/30 flex items-center justify-between max-w-xs mx-auto">
-            <span className="font-mono text-xs font-bold text-[#24B1B1]">
+          <div className="p-3 bg-[#1C3C53] rounded-xl border border-[#08C4E1]/30 flex items-center justify-between max-w-xs mx-auto">
+            <span className="font-mono text-xs font-bold text-[#08C4E1]">
               {successResult.reference_id}
             </span>
             <CopyButton textToCopy={successResult.reference_id} label="Copy ID" />
@@ -102,7 +102,7 @@ export const Contact: React.FC = () => {
           <div className="pt-2">
             <button
               onClick={handleReset}
-              className="px-5 py-2.5 rounded-xl bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-heading font-bold shadow-lg shadow-[#24B1B1]/25 transition-transform hover:scale-105"
+              className="px-5 py-2.5 rounded-xl bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] text-xs font-heading font-bold shadow-lg shadow-[#08C4E1]/25 transition-transform hover:scale-105"
             >
               Send another message
             </button>
@@ -110,17 +110,17 @@ export const Contact: React.FC = () => {
         </div>
       ) : (
         /* Form Card */
-        <form onSubmit={handleSubmit} className="p-6 bg-[#007979] border border-[#24B1B1]/25 rounded-2xl space-y-4 shadow-2xl text-xs sm:text-sm">
+        <form onSubmit={handleSubmit} className="p-6 bg-[#446882] border border-[#08C4E1]/25 rounded-2xl space-y-4 shadow-2xl text-xs sm:text-sm">
           {serverError && (
-            <div className="p-3 rounded-lg bg-[#D9D28B]/20 border border-[#D9D28B]/40 text-xs text-[#D9D28B] flex items-center gap-2">
+            <div className="p-3 rounded-lg bg-[#F5E6BB]/20 border border-[#F5E6BB]/40 text-xs text-[#F5E6BB] flex items-center gap-2">
               <AlertCircle size={16} className="shrink-0" />
               <span>{serverError}</span>
             </div>
           )}
 
           <div>
-            <label htmlFor="name-page" className="block text-xs font-medium text-[#95BDD7] mb-1">
-              Your Name <span className="text-[#D9D28B]">*</span>
+            <label htmlFor="name-page" className="block text-xs font-medium text-[#F8F3EF] mb-1">
+              Your Name <span className="text-[#F5E6BB]">*</span>
             </label>
             <input
               id="name-page"
@@ -128,18 +128,18 @@ export const Contact: React.FC = () => {
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder="e.g. Dr. Ramesh Kumar"
-              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#086288] border text-xs sm:text-sm text-[#95BDD7] focus:outline-none ${
-                fieldErrors.name ? 'border-[#D9D28B]' : 'border-[#24B1B1]/25 focus:border-[#24B1B1]'
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#1C3C53] border text-xs sm:text-sm text-[#F8F3EF] focus:outline-none ${
+                fieldErrors.name ? 'border-[#F5E6BB]' : 'border-[#08C4E1]/25 focus:border-[#08C4E1]'
               }`}
             />
             {fieldErrors.name && (
-              <span className="text-xs text-[#D9D28B] mt-1 block">{fieldErrors.name}</span>
+              <span className="text-xs text-[#F5E6BB] mt-1 block">{fieldErrors.name}</span>
             )}
           </div>
 
           <div>
-            <label htmlFor="email-page" className="block text-xs font-medium text-[#95BDD7] mb-1">
-              Email Address <span className="text-[#D9D28B]">*</span>
+            <label htmlFor="email-page" className="block text-xs font-medium text-[#F8F3EF] mb-1">
+              Email Address <span className="text-[#F5E6BB]">*</span>
             </label>
             <input
               id="email-page"
@@ -147,24 +147,24 @@ export const Contact: React.FC = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="ramesh@iitd.ac.in"
-              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#086288] border text-xs sm:text-sm text-[#95BDD7] focus:outline-none ${
-                fieldErrors.email ? 'border-[#D9D28B]' : 'border-[#24B1B1]/25 focus:border-[#24B1B1]'
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#1C3C53] border text-xs sm:text-sm text-[#F8F3EF] focus:outline-none ${
+                fieldErrors.email ? 'border-[#F5E6BB]' : 'border-[#08C4E1]/25 focus:border-[#08C4E1]'
               }`}
             />
             {fieldErrors.email && (
-              <span className="text-xs text-[#D9D28B] mt-1 block">{fieldErrors.email}</span>
+              <span className="text-xs text-[#F5E6BB] mt-1 block">{fieldErrors.email}</span>
             )}
           </div>
 
           <div>
-            <label htmlFor="topic-page" className="block text-xs font-medium text-[#95BDD7] mb-1">
+            <label htmlFor="topic-page" className="block text-xs font-medium text-[#F8F3EF] mb-1">
               Topic
             </label>
             <select
               id="topic-page"
               value={topic}
               onChange={e => setTopic(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#086288] border border-[#24B1B1]/25 text-xs sm:text-sm text-[#95BDD7] focus:border-[#24B1B1] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#1C3C53] border border-[#08C4E1]/25 text-xs sm:text-sm text-[#F8F3EF] focus:border-[#08C4E1] focus:outline-none"
             >
               <option value="Question">General Question</option>
               <option value="Feedback">Technical Feedback</option>
@@ -174,8 +174,8 @@ export const Contact: React.FC = () => {
           </div>
 
           <div>
-            <label htmlFor="message-page" className="block text-xs font-medium text-[#95BDD7] mb-1">
-              Message <span className="text-[#D9D28B]">*</span>
+            <label htmlFor="message-page" className="block text-xs font-medium text-[#F8F3EF] mb-1">
+              Message <span className="text-[#F5E6BB]">*</span>
             </label>
             <textarea
               id="message-page"
@@ -183,18 +183,18 @@ export const Contact: React.FC = () => {
               value={message}
               onChange={e => setMessage(e.target.value)}
               placeholder="Provide context regarding your suggestion, bug report, or research inquiry..."
-              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#086288] border text-xs sm:text-sm text-[#95BDD7] focus:outline-none ${
-                fieldErrors.message ? 'border-[#D9D28B]' : 'border-[#24B1B1]/25 focus:border-[#24B1B1]'
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#1C3C53] border text-xs sm:text-sm text-[#F8F3EF] focus:outline-none ${
+                fieldErrors.message ? 'border-[#F5E6BB]' : 'border-[#08C4E1]/25 focus:border-[#08C4E1]'
               }`}
             />
             {fieldErrors.message && (
-              <span className="text-xs text-[#D9D28B] mt-1 block">{fieldErrors.message}</span>
+              <span className="text-xs text-[#F5E6BB] mt-1 block">{fieldErrors.message}</span>
             )}
           </div>
 
           {/* Captured UTM notice */}
           {Object.keys(utmParams).length > 0 && (
-            <div className="p-2.5 rounded-xl bg-[#086288] border border-[#24B1B1]/20 text-[11px] font-mono text-[#95BDD7]">
+            <div className="p-2.5 rounded-xl bg-[#1C3C53] border border-[#08C4E1]/20 text-[11px] font-mono text-[#F8F3EF]">
               Session tracking parameters: {JSON.stringify(utmParams)}
             </div>
           )}
@@ -203,7 +203,7 @@ export const Contact: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-2.5 rounded-xl bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-heading font-bold flex items-center gap-2 transition-transform hover:scale-105 disabled:opacity-50 shadow-lg shadow-[#24B1B1]/25"
+              className="px-6 py-2.5 rounded-xl bg-[#08C4E1] hover:bg-[#08C4E1]/90 text-[#1C3C53] text-xs font-heading font-bold flex items-center gap-2 transition-transform hover:scale-105 disabled:opacity-50 shadow-lg shadow-[#08C4E1]/25"
             >
               <Send size={14} />
               <span>{submitting ? 'Submitting...' : 'Submit Message'}</span>

@@ -47,29 +47,29 @@ export const DatasetExplorer: React.FC = () => {
   const availableColumns = Object.keys(COLUMN_DESCRIPTIONS);
 
   return (
-    <div className="p-6 bg-[#007979] border border-[#24B1B1]/25 rounded-2xl text-[#95BDD7] shadow-xl space-y-4">
+    <div className="p-6 bg-[#446882] border border-[#08C4E1]/25 rounded-2xl text-[#F8F3EF] shadow-xl space-y-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#24B1B1]/15">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#08C4E1]/15">
         <div>
           <div className="flex items-center gap-2">
-            <Database size={18} className="text-[#24B1B1]" />
-            <h3 className="font-heading font-bold text-base text-[#95BDD7]">
+            <Database size={18} className="text-[#08C4E1]" />
+            <h3 className="font-heading font-bold text-base text-[#F8F3EF]">
               Empirical Baseline Distribution
             </h3>
           </div>
-          <span className="text-xs text-[#95BDD7] mt-0.5 block">
+          <span className="text-xs text-[#F8F3EF] mt-0.5 block">
             Observed distribution of {profile?.summary?.total_rows || 1991} water quality monitoring records
           </span>
         </div>
 
         {/* Dropdown column selector */}
         <div className="flex items-center gap-2">
-          <label htmlFor="col-select" className="text-xs text-[#95BDD7]">Parameter:</label>
+          <label htmlFor="col-select" className="text-xs text-[#F8F3EF]">Parameter:</label>
           <select
             id="col-select"
             value={column}
             onChange={e => setColumn(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-[#086288] border border-[#24B1B1]/30 text-xs font-mono text-[#24B1B1] focus:outline-none"
+            className="px-3 py-1.5 rounded-lg bg-[#1C3C53] border border-[#08C4E1]/30 text-xs font-mono text-[#08C4E1] focus:outline-none"
           >
             {availableColumns.map(col => (
               <option key={col} value={col}>
@@ -81,10 +81,10 @@ export const DatasetExplorer: React.FC = () => {
       </div>
 
       {/* Parameter Explanation description */}
-      <div className="p-3 bg-[#086288] rounded-xl border border-[#24B1B1]/20 flex items-start gap-2.5 text-xs text-[#95BDD7]">
-        <Info size={16} className="text-[#24B1B1] shrink-0 mt-0.5" />
+      <div className="p-3 bg-[#1C3C53] rounded-xl border border-[#08C4E1]/20 flex items-start gap-2.5 text-xs text-[#F8F3EF]">
+        <Info size={16} className="text-[#08C4E1] shrink-0 mt-0.5" />
         <div>
-          <strong className="text-[#95BDD7]">{column}: </strong>
+          <strong className="text-[#F8F3EF]">{column}: </strong>
           <span>{COLUMN_DESCRIPTIONS[column] || 'Water quality monitoring station parameter.'}</span>
         </div>
       </div>
@@ -92,11 +92,11 @@ export const DatasetExplorer: React.FC = () => {
       {/* Recharts Bar Histogram */}
       <div className="w-full h-64 font-mono text-[10px]">
         {loading ? (
-          <div className="h-full flex items-center justify-center text-xs text-[#95BDD7]">
+          <div className="h-full flex items-center justify-center text-xs text-[#F8F3EF]">
             Loading empirical distribution...
           </div>
         ) : !data || data.bins.length === 0 ? (
-          <div className="h-full flex items-center justify-center text-xs text-[#95BDD7]">
+          <div className="h-full flex items-center justify-center text-xs text-[#F8F3EF]">
             No histogram data available for this column.
           </div>
         ) : (
@@ -108,26 +108,26 @@ export const DatasetExplorer: React.FC = () => {
               }))}
               margin={{ top: 10, right: 15, left: -10, bottom: 25 }}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(36, 177, 177, 0.1)" />
-              <XAxis dataKey="range" stroke="#95BDD7" angle={-25} textAnchor="end" interval={0} />
-              <YAxis stroke="#95BDD7" tickLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(8, 196, 225, 0.1)" />
+              <XAxis dataKey="range" stroke="#F8F3EF" angle={-25} textAnchor="end" interval={0} />
+              <YAxis stroke="#F8F3EF" tickLine={false} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#086288',
-                  border: '1px solid rgba(36, 177, 177, 0.4)',
+                  backgroundColor: '#1C3C53',
+                  border: '1px solid rgba(8, 196, 225, 0.4)',
                   borderRadius: '8px',
-                  color: '#95BDD7',
+                  color: '#F8F3EF',
                   fontSize: '11px',
                 }}
               />
-              <Bar dataKey="count" fill="#24B1B1" radius={[4, 4, 0, 0]} opacity={0.85} />
+              <Bar dataKey="count" fill="#08C4E1" radius={[4, 4, 0, 0]} opacity={0.85} />
             </BarChart>
           </ResponsiveContainer>
         )}
       </div>
 
       {/* Dataset Provenance Note */}
-      <div className="text-[11px] text-[#95BDD7]/80 pt-2 border-t border-[#24B1B1]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+      <div className="text-[11px] text-[#F8F3EF]/80 pt-2 border-t border-[#08C4E1]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
         <span>Water quality monitoring network calibration dataset.</span>
         <span>Sensor noise σ: 15.0 • Clean baseline: 183.0 µS/cm</span>
       </div>

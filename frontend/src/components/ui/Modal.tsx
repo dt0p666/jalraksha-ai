@@ -53,15 +53,15 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         tabIndex={-1}
-        className={`w-full ${maxWidth} bg-[#007979] text-[#95BDD7] border border-[#24B1B1]/30 rounded-2xl shadow-2xl p-6 outline-none transition-all`}
+        className={`w-full ${maxWidth} bg-[#446882] text-[#F8F3EF] border border-[#08C4E1]/30 rounded-2xl shadow-2xl p-6 outline-none transition-all`}
       >
-        <div className="flex items-center justify-between pb-3 border-b border-[#24B1B1]/20">
-          <h2 id="modal-title" className="text-xl font-heading font-bold text-[#95BDD7]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#08C4E1]/20">
+          <h2 id="modal-title" className="text-xl font-heading font-bold text-[#F8F3EF]">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979] transition-colors"
+            className="p-1.5 rounded-lg text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882] transition-colors"
             aria-label="Close modal dialog"
           >
             <X size={18} />

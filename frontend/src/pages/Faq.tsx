@@ -41,18 +41,18 @@ export const Faq: React.FC = () => {
   });
 
   return (
-    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#95BDD7]">
+    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#F8F3EF]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#24B1B1]/20">
+      <div className="space-y-2 pb-6 border-b border-[#08C4E1]/20">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-[#007979] border border-[#24B1B1]/30 text-[#24B1B1]">
+          <div className="p-2 rounded-xl bg-[#446882] border border-[#08C4E1]/30 text-[#08C4E1]">
             <HelpCircle size={22} />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#95BDD7]">
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#F8F3EF]">
             Frequently Asked Questions
           </h1>
         </div>
-        <p className="text-sm text-[#95BDD7]">
+        <p className="text-sm text-[#F8F3EF]">
           Direct, technical answers about the hydraulic model, Bayesian mathematics, and open-weight AI report verification.
         </p>
       </div>
@@ -60,13 +60,13 @@ export const Faq: React.FC = () => {
       {/* Search and Category Filters */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
         <div className="relative flex-1 max-w-sm">
-          <Search size={14} className="absolute left-3 top-3 text-[#95BDD7]" />
+          <Search size={14} className="absolute left-3 top-3 text-[#F8F3EF]" />
           <input
             type="text"
             placeholder="Search questions or keywords..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#007979] border border-[#24B1B1]/25 text-xs text-[#95BDD7] placeholder-[#95BDD7]/50 focus:outline-none focus:border-[#24B1B1]"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#446882] border border-[#08C4E1]/25 text-xs text-[#F8F3EF] placeholder-[#F8F3EF]/50 focus:outline-none focus:border-[#08C4E1]"
           />
         </div>
 
@@ -77,8 +77,8 @@ export const Faq: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-3 py-1.5 rounded-lg font-mono text-[11px] capitalize transition-colors ${
                 activeCategory === cat
-                  ? 'bg-[#24B1B1] text-[#086288] font-bold shadow-md'
-                  : 'bg-[#007979] text-[#95BDD7] hover:text-[#95BDD7] border border-[#24B1B1]/20'
+                  ? 'bg-[#08C4E1] text-[#1C3C53] font-bold shadow-md'
+                  : 'bg-[#446882] text-[#F8F3EF] hover:text-[#F8F3EF] border border-[#08C4E1]/20'
               }`}
             >
               {cat}
@@ -95,23 +95,23 @@ export const Faq: React.FC = () => {
             <div
               key={item.id}
               id={item.id}
-              className="rounded-2xl border border-[#24B1B1]/20 bg-[#007979] overflow-hidden transition-all shadow-md"
+              className="rounded-2xl border border-[#08C4E1]/20 bg-[#446882] overflow-hidden transition-all shadow-md"
             >
               <button
                 onClick={() => toggleItem(item.id)}
-                className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#007979]/40 transition-colors"
+                className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#446882]/40 transition-colors"
                 aria-expanded={isOpen}
               >
-                <span className="font-heading font-semibold text-sm sm:text-base text-[#95BDD7]">
+                <span className="font-heading font-semibold text-sm sm:text-base text-[#F8F3EF]">
                   {item.question}
                 </span>
-                <span className="shrink-0 text-[#24B1B1]">
+                <span className="shrink-0 text-[#08C4E1]">
                   {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>
               </button>
 
               {isOpen && (
-                <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-[#95BDD7] leading-relaxed border-t border-[#24B1B1]/10 animate-fadeIn">
+                <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-[#F8F3EF] leading-relaxed border-t border-[#08C4E1]/10 animate-fadeIn">
                   <p>{item.answer}</p>
                 </div>
               )}

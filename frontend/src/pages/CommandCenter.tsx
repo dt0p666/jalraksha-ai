@@ -38,11 +38,11 @@ export const CommandCenter: React.FC = () => {
   return (
     <main
       id="main-content"
-      className="w-full min-h-[calc(100vh-62px)] flex bg-[#086288] text-[#95BDD7] select-none"
+      className="w-full min-h-[calc(100vh-62px)] flex bg-[#1C3C53] text-[#F8F3EF] select-none"
     >
       {/* 1. LEFT: Compact Vertical Navigation Bar (NASA Mission Control Style) */}
       <aside 
-        className="hidden md:flex flex-col items-center py-4 px-2 w-16 bg-[#007979] border-r border-[#24B1B1]/20 shrink-0 gap-6 z-20"
+        className="hidden md:flex flex-col items-center py-4 px-2 w-16 bg-[#446882] border-r border-[#08C4E1]/20 shrink-0 gap-6 z-20"
         aria-label="Mission Control Navigation"
       >
         <div className="flex flex-col items-center gap-4">
@@ -52,16 +52,16 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <LayoutDashboard size={20} />
             {isIncident && (
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#D9D28B] animate-ping" />
+              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#F5E6BB] animate-ping" />
             )}
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Command Center
             </span>
           </NavLink>
@@ -72,13 +72,13 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <Network size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Network Explorer
             </span>
           </NavLink>
@@ -89,13 +89,13 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <PlayCircle size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Simulation
             </span>
           </NavLink>
@@ -106,13 +106,13 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <Target size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Source Investigation
             </span>
           </NavLink>
@@ -123,13 +123,13 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <FileText size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               AI Briefing
             </span>
           </NavLink>
@@ -140,13 +140,13 @@ export const CommandCenter: React.FC = () => {
             className={({ isActive }) =>
               `p-2.5 rounded-xl transition-all relative group ${
                 isActive
-                  ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1]'
-                  : 'text-[#95BDD7] hover:text-[#95BDD7] hover:bg-[#007979]'
+                  ? 'bg-[#08C4E1]/20 text-[#08C4E1] border border-[#08C4E1]'
+                  : 'text-[#F8F3EF] hover:text-[#F8F3EF] hover:bg-[#446882]'
               }`
             }
           >
             <BarChart2 size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Evaluation Lab
             </span>
           </NavLink>
@@ -157,10 +157,10 @@ export const CommandCenter: React.FC = () => {
           <button
             onClick={startTour}
             title="Start Guided Tour"
-            className="p-2.5 rounded-xl text-[#95BDD7] hover:text-[#24B1B1] hover:bg-[#007979] transition-colors relative group"
+            className="p-2.5 rounded-xl text-[#F8F3EF] hover:text-[#08C4E1] hover:bg-[#446882] transition-colors relative group"
           >
             <Compass size={20} />
-            <span className="absolute left-full ml-2 px-2 py-1 bg-[#007979] text-[#95BDD7] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#24B1B1]/30">
+            <span className="absolute left-full ml-2 px-2 py-1 bg-[#446882] text-[#F8F3EF] text-[10px] font-mono rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 border border-[#08C4E1]/30">
               Interactive Tour
             </span>
           </button>
@@ -171,14 +171,14 @@ export const CommandCenter: React.FC = () => {
       <div className="flex-1 flex flex-col p-3 sm:p-4 gap-3 max-w-[1920px] mx-auto w-full overflow-hidden">
         {/* Backend connection failure alert */}
         {backendError && (
-          <div className="w-full p-2.5 rounded-xl bg-[#D9D28B]/20 border border-[#D9D28B]/50 text-[#D9D28B] text-xs flex items-center justify-between">
+          <div className="w-full p-2.5 rounded-xl bg-[#F5E6BB]/20 border border-[#F5E6BB]/50 text-[#F5E6BB] text-xs flex items-center justify-between">
             <div className="flex items-center gap-2">
               <AlertCircle size={15} className="shrink-0" />
               <span>Connection notice: {backendError}</span>
             </div>
             <button
               onClick={() => window.location.reload()}
-              className="px-2.5 py-1 rounded bg-[#D9D28B] text-white font-semibold text-[11px]"
+              className="px-2.5 py-1 rounded bg-[#F5E6BB] text-white font-semibold text-[11px]"
             >
               Retry Connection
             </button>
@@ -187,14 +187,14 @@ export const CommandCenter: React.FC = () => {
 
         {/* Guided Walkthrough Quick Start Pill */}
         {!tourActive && (
-          <div className="flex items-center justify-between px-3.5 py-1.5 rounded-lg bg-[#007979] border border-[#24B1B1]/25 text-xs text-[#95BDD7]">
+          <div className="flex items-center justify-between px-3.5 py-1.5 rounded-lg bg-[#446882] border border-[#08C4E1]/25 text-xs text-[#F8F3EF]">
             <div className="flex items-center gap-2">
-              <Compass size={14} className="text-[#24B1B1]" />
+              <Compass size={14} className="text-[#08C4E1]" />
               <span>Investigating water contamination? Follow the interactive 6-step workflow.</span>
             </div>
             <button
               onClick={startTour}
-              className="text-[#24B1B1] font-bold hover:underline flex items-center gap-1 font-mono text-[11px]"
+              className="text-[#08C4E1] font-bold hover:underline flex items-center gap-1 font-mono text-[11px]"
             >
               Start Walkthrough →
             </button>
@@ -207,7 +207,7 @@ export const CommandCenter: React.FC = () => {
         {/* Main Interface: Full-width SCADA facility in 3D mode; 8-col graph + 4-col panel in 2D mode */}
         {viewMode === '3d' ? (
           <div className="w-full flex-1 min-h-[740px] flex flex-col gap-2.5 relative">
-            <div className="w-full h-full min-h-[680px] flex-1 rounded-xl overflow-hidden border border-[#24B1B1]/25 relative bg-[#086288] shadow-2xl">
+            <div className="w-full h-full min-h-[680px] flex-1 rounded-xl overflow-hidden border border-[#08C4E1]/25 relative bg-[#1C3C53] shadow-2xl">
               <NetworkScene3D />
             </div>
             {/* BOTTOM: Simulation Journey Stepper Bar */}
@@ -219,7 +219,7 @@ export const CommandCenter: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 flex-1 min-h-[540px]">
             {/* CENTER: 2D interactive water network */}
             <div className="lg:col-span-8 flex flex-col gap-2.5 relative">
-              <div className="w-full h-full min-h-[500px] flex-1 rounded-xl overflow-hidden border border-[#24B1B1]/25 relative bg-[#086288]">
+              <div className="w-full h-full min-h-[500px] flex-1 rounded-xl overflow-hidden border border-[#08C4E1]/25 relative bg-[#1C3C53]">
                 <NetworkCanvas />
               </div>
               <div className="w-full">
