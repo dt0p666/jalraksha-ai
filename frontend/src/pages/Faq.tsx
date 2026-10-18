@@ -41,51 +41,53 @@ export const Faq: React.FC = () => {
   });
 
   return (
-    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF7F5]">
+    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF4F7]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#6FBEB2]/30">
-        <div className="flex items-center gap-2 text-[#A5E9DD]">
-          <HelpCircle size={24} />
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF7F5]">
+      <div className="space-y-2 pb-6 border-b border-[#38D9E6]/20">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 rounded-xl bg-[#0D1B26] border border-[#38D9E6]/30 text-[#38D9E6]">
+            <HelpCircle size={22} />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#EAF4F7]">
             Frequently Asked Questions
           </h1>
         </div>
-        <p className="text-sm text-[#A5E9DD]">
-          Direct, honest answers about the physics simulation, Bayesian mathematics, and open-weight AI report constraints.
+        <p className="text-sm text-[#8EA5B4]">
+          Direct, technical answers about the hydraulic model, Bayesian mathematics, and open-weight AI report verification.
         </p>
       </div>
 
       {/* Search and Category Filters */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
         <div className="relative flex-1 max-w-sm">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A5E9DD]" />
+          <Search size={14} className="absolute left-3 top-3 text-[#8EA5B4]" />
           <input
             type="text"
+            placeholder="Search questions or keywords..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Search questions or topics..."
-            className="w-full pl-9 pr-3 py-2 bg-[#0F2226] border border-[#6FBEB2]/40 rounded-lg text-xs text-[#EAF7F5] placeholder-[#6FBEB2] focus:outline-none focus:border-[#A5E9DD]"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#0D1B26] border border-[#38D9E6]/25 text-xs text-[#EAF4F7] placeholder-[#8EA5B4]/50 focus:outline-none focus:border-[#38D9E6]"
           />
         </div>
 
-        <div className="flex flex-wrap gap-1 text-xs">
-          {['all', 'physics', 'math', 'ai', 'education'].map(cat => (
+        <div className="flex flex-wrap items-center gap-1.5 text-xs">
+          {['all', 'physics', 'math', 'ai', 'general'].map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg font-mono text-[11px] capitalize transition-colors ${
                 activeCategory === cat
-                  ? 'bg-[#34908B] text-[#FDF4AF] font-bold border border-[#6FBEB2]'
-                  : 'bg-[#0F2226] text-[#A5E9DD] hover:bg-[#163238] border border-[#6FBEB2]/30'
+                  ? 'bg-[#38D9E6] text-[#071018] font-bold shadow-md'
+                  : 'bg-[#0D1B26] text-[#8EA5B4] hover:text-[#EAF4F7] border border-[#38D9E6]/20'
               }`}
             >
-              {cat.toUpperCase()}
+              {cat}
             </button>
           ))}
         </div>
       </div>
 
-      {/* FAQ Accordion List */}
+      {/* Accordion FAQ Items */}
       <div className="space-y-3">
         {filteredFaqs.map(item => {
           const isOpen = openIds.has(item.id);
@@ -93,35 +95,29 @@ export const Faq: React.FC = () => {
             <div
               key={item.id}
               id={item.id}
-              className="rounded-xl bg-[#0F2226] border border-[#6FBEB2]/30 overflow-hidden transition-all shadow-md"
+              className="rounded-2xl border border-[#38D9E6]/20 bg-[#0D1B26] overflow-hidden transition-all shadow-md"
             >
               <button
                 onClick={() => toggleItem(item.id)}
-                className="w-full text-left p-4 flex items-center justify-between gap-4 hover:bg-[#163238]/50 transition-colors"
+                className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 hover:bg-[#132535]/40 transition-colors"
                 aria-expanded={isOpen}
               >
-                <span className="font-serif font-bold text-sm text-[#EAF7F5]">
+                <span className="font-heading font-semibold text-sm sm:text-base text-[#EAF4F7]">
                   {item.question}
                 </span>
-                <span className="text-[#A5E9DD] shrink-0">
-                  {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                <span className="shrink-0 text-[#38D9E6]">
+                  {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>
               </button>
 
               {isOpen && (
-                <div className="p-4 pt-0 text-xs text-[#A5E9DD] leading-relaxed border-t border-[#6FBEB2]/20 mt-1">
+                <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-[#8EA5B4] leading-relaxed border-t border-[#38D9E6]/10 animate-fadeIn">
                   <p>{item.answer}</p>
                 </div>
               )}
             </div>
           );
         })}
-
-        {filteredFaqs.length === 0 && (
-          <div className="text-center py-12 text-[#A5E9DD] text-sm">
-            No matching questions found for "{searchQuery}".
-          </div>
-        )}
       </div>
     </main>
   );

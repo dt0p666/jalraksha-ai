@@ -31,40 +31,40 @@ export const CompactStatStrip: React.FC = () => {
   const alertCount = simState?.alert_count || 0;
 
   return (
-    <div className="w-full flex flex-wrap items-center justify-between gap-2.5 p-2 px-3 rounded-xl bg-[#0F2226]/90 border border-[#6FBEB2]/40 text-xs text-[#EAF7F5] backdrop-blur-md select-none">
+    <div className="w-full flex flex-wrap items-center justify-between gap-2.5 p-2.5 px-3.5 rounded-xl bg-[#0D1B26]/95 border border-[#38D9E6]/25 text-xs text-[#EAF4F7] backdrop-blur-md select-none shadow-xl">
       {/* 4 Compact Stat Chips */}
       <div className="flex flex-wrap items-center gap-2">
         {/* 1. Network Points */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#081416]/80 border border-[#6FBEB2]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071018] border border-[#38D9E6]/20"
           title="Network structure: 2 water tanks, 32 pipe junctions, 8 village supply zones"
         >
-          <MapPin size={13} className="text-[#A5E9DD]" />
+          <MapPin size={13} className="text-[#38D9E6]" />
           <span>
-            <strong className="font-mono text-[#EAF7F5]">{totalNodes}</strong> points (
-            <span className="text-[#6FBEB2]">{reservoirsCount} tanks, {junctionsCount} junctions, {zonesCount} villages</span>)
+            <strong className="font-mono text-[#EAF4F7]">{totalNodes}</strong> Nodes (
+            <span className="text-[#8EA5B4]">{reservoirsCount} Reservoirs, {junctionsCount} Junctions, {zonesCount} Zones</span>)
           </span>
         </div>
 
         {/* 2. Sensors Online */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#081416]/80 border border-[#6FBEB2]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071018] border border-[#38D9E6]/20"
           title="Automated conductivity sensors installed at key network junctions"
         >
-          <Radio size={13} className="text-[#A5E9DD]" />
+          <Radio size={13} className="text-[#64F4C4]" />
           <span>
-            <strong className="font-mono text-[#EAF7F5]">{sensorsCount}</strong> sensors online
+            <strong className="font-mono text-[#EAF4F7]">{sensorsCount}</strong> Sensors Active
           </span>
         </div>
 
         {/* 3. Storage Tanks */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#081416]/80 border border-[#6FBEB2]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071018] border border-[#38D9E6]/20"
           title="Elevated clean water storage tanks feeding the gravity network"
         >
-          <Building2 size={13} className="text-[#34908B]" />
+          <Building2 size={13} className="text-[#38D9E6]" />
           <span>
-            <strong className="font-mono text-[#EAF7F5]">{reservoirsCount}</strong> supply tanks
+            <strong className="font-mono text-[#EAF4F7]">{reservoirsCount}</strong> Reservoirs
           </span>
         </div>
 
@@ -72,18 +72,18 @@ export const CompactStatStrip: React.FC = () => {
         <div
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition-colors ${
             alertCount > 0
-              ? 'bg-[#FF5C5C]/20 border-[#FF5C5C]/50 text-[#FF5C5C] animate-pulse'
-              : 'bg-[#163238]/60 border-[#6FBEB2]/40 text-[#A5E9DD]'
+              ? 'bg-[#FF5E66]/20 border-[#FF5E66]/50 text-[#FF5E66] animate-pulse'
+              : 'bg-[#071018] border-[#64F4C4]/30 text-[#64F4C4]'
           }`}
           title={
             alertCount > 0
-              ? `${alertCount} sensor(s) reading conductivity above the 230 µS/cm threshold`
+              ? `${alertCount} sensor(s) reading conductivity above physical baseline threshold`
               : 'All sensor readings within normal baseline levels'
           }
         >
           {alertCount > 0 ? <AlertTriangle size={13} /> : <CheckCircle2 size={13} />}
           <span>
-            <strong className="font-mono">{alertCount}</strong> {alertCount === 1 ? 'alert' : 'alerts'}
+            <strong className="font-mono">{alertCount}</strong> {alertCount === 1 ? 'Anomaly' : 'Anomalies'}
           </span>
         </div>
       </div>
@@ -95,19 +95,19 @@ export const CompactStatStrip: React.FC = () => {
           onClick={toggleSensorDrawer}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-medium transition-colors ${
             sensorDrawerOpen
-              ? 'bg-[#34908B]/40 text-[#A5E9DD] border-[#A5E9DD]/50'
-              : 'bg-[#081416]/80 text-[#6FBEB2] hover:text-[#EAF7F5] border-[#6FBEB2]/40 hover:bg-[#163238]'
+              ? 'bg-[#38D9E6]/20 text-[#38D9E6] border-[#38D9E6]/50'
+              : 'bg-[#071018] text-[#8EA5B4] hover:text-[#EAF4F7] border-[#38D9E6]/20 hover:bg-[#132535]'
           }`}
-          title="Toggle sensor readings telemetry chart"
+          title="Toggle telemetry charts drawer"
         >
-          <Activity size={13} className={alertCount > 0 ? 'text-[#FDF4AF]' : 'text-[#A5E9DD]'} />
-          <span>Sensor readings</span>
+          <Activity size={13} className={alertCount > 0 ? 'text-[#FFB547]' : 'text-[#38D9E6]'} />
+          <span>Telemetry</span>
           {sensorDrawerOpen ? <ChevronDown size={12} /> : <ChevronUp size={12} />}
         </button>
 
-        {/* 3D | Map View Toggle */}
+        {/* 3D | 2D Graph View Toggle */}
         <div
-          className="flex items-center p-0.5 rounded-lg bg-[#081416] border border-[#6FBEB2]/50 text-xs font-medium"
+          className="flex items-center p-0.5 rounded-lg bg-[#071018] border border-[#38D9E6]/30 text-xs font-medium"
           role="group"
           aria-label="View Mode Toggle"
         >
@@ -115,25 +115,25 @@ export const CompactStatStrip: React.FC = () => {
             onClick={() => setViewMode('3d')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
               viewMode === '3d'
-                ? 'bg-[#34908B] text-[#EAF7F5] shadow-sm font-bold'
-                : 'text-[#6FBEB2] hover:text-[#EAF7F5]'
+                ? 'bg-[#38D9E6] text-[#071018] shadow-sm font-bold'
+                : 'text-[#8EA5B4] hover:text-[#EAF4F7]'
             }`}
             aria-pressed={viewMode === '3d'}
           >
             <Box size={13} />
-            <span>3D</span>
+            <span>3D Twin</span>
           </button>
           <button
             onClick={() => setViewMode('2d')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
               viewMode === '2d'
-                ? 'bg-[#34908B] text-[#EAF7F5] shadow-sm font-bold'
-                : 'text-[#6FBEB2] hover:text-[#EAF7F5]'
+                ? 'bg-[#38D9E6] text-[#071018] shadow-sm font-bold'
+                : 'text-[#8EA5B4] hover:text-[#EAF4F7]'
             }`}
             aria-pressed={viewMode === '2d'}
           >
             <Map size={13} />
-            <span>Map</span>
+            <span>2D Flow</span>
           </button>
         </div>
       </div>

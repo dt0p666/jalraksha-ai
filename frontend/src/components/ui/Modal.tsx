@@ -42,7 +42,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
@@ -53,15 +53,15 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         tabIndex={-1}
-        className={`w-full ${maxWidth} bg-[#0F2226] text-[#EAF7F5] border border-[#6FBEB2]/40 rounded-xl shadow-2xl p-6 outline-none transition-all`}
+        className={`w-full ${maxWidth} bg-[#0D1B26] text-[#EAF4F7] border border-[#38D9E6]/30 rounded-2xl shadow-2xl p-6 outline-none transition-all`}
       >
-        <div className="flex items-center justify-between pb-3 border-b border-[#6FBEB2]/30">
-          <h2 id="modal-title" className="text-xl font-serif font-semibold text-[#EAF7F5]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#38D9E6]/20">
+          <h2 id="modal-title" className="text-xl font-heading font-bold text-[#EAF4F7]">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-[#6FBEB2] hover:text-[#EAF7F5] hover:bg-[#163238] transition-colors"
+            className="p-1.5 rounded-lg text-[#8EA5B4] hover:text-[#EAF4F7] hover:bg-[#132535] transition-colors"
             aria-label="Close modal dialog"
           >
             <X size={18} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Droplet, ShieldCheck, Cpu } from 'lucide-react';
 
 declare const __APP_BUILD_TIME__: string;
 
@@ -18,45 +19,69 @@ export const Footer: React.FC = () => {
   })();
 
   return (
-    <footer className="w-full border-t border-[#6FBEB2]/30 bg-[#081416] text-[#A5E9DD] py-8 px-4 sm:px-8 text-sm transition-colors print:hidden">
+    <footer className="w-full border-t border-[#38D9E6]/20 bg-[#071018] text-[#8EA5B4] py-10 px-4 sm:px-8 text-sm transition-colors print:hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Left: Disclaimer & Project identity */}
-        <div className="space-y-1.5 max-w-xl">
+        <div className="space-y-2 max-w-xl">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-base text-[#EAF7F5]">JALRAKSHAK AI</span>
-            <span className="text-xs px-2 py-0.5 rounded bg-[#34908B]/40 text-[#FDF4AF] border border-[#6FBEB2]/40 font-mono">
-              v1.0.0
+            <div className="w-6 h-6 rounded bg-[#0D1B26] border border-[#38D9E6]/40 flex items-center justify-center text-[#38D9E6]">
+              <Droplet size={14} className="fill-[#38D9E6]" />
+            </div>
+            <span className="font-heading font-bold text-base text-[#EAF4F7]">JALRAKSHAK AI</span>
+            <span className="text-[10px] px-2 py-0.5 rounded bg-[#0D1B26] text-[#38D9E6] border border-[#38D9E6]/30 font-mono">
+              DIGITAL TWIN V1.0
             </span>
           </div>
-          <p className="text-xs leading-relaxed text-[#A5E9DD]/80">
-            Educational drinking-water contamination diagnostic simulation. This is a simplified educational tool,
-            NOT a validated hydraulic or water-safety model. Never use for municipal or public health safety decisions.
+          <p className="text-xs leading-relaxed text-[#8EA5B4]/90">
+            Interactive drinking-water contamination diagnostic and source-localisation simulator.
+            Combines EPANET graph physical delay tracking, Bayesian source ranking, Shannon entropy sampling,
+            and open-weight Gemma 4 incident briefings.
           </p>
-          <div className="text-[11px] text-[#A5E9DD]/60 font-mono pt-1">
-            Last updated {formattedBuildDate}
+          <div className="flex items-center gap-4 text-[11px] text-[#8EA5B4]/70 font-mono pt-1">
+            <span className="flex items-center gap-1">
+              <ShieldCheck size={12} className="text-[#64F4C4]" />
+              Zero Hallucinated Source Labels
+            </span>
+            <span className="flex items-center gap-1">
+              <Cpu size={12} className="text-[#38D9E6]" />
+              Local Open-Weight Inference
+            </span>
+            <span>Build: {formattedBuildDate}</span>
           </div>
         </div>
 
-        {/* Right: Legal & Navigation Links */}
-        <div className="flex flex-wrap items-center gap-4 text-xs">
-          <NavLink to="/about" className="hover:text-[#FDF4AF] underline transition-colors">
-            About
+        {/* Right: Navigation Links */}
+        <div className="flex flex-wrap items-center gap-5 text-xs font-mono">
+          <NavLink to="/" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Overview
           </NavLink>
-          <NavLink to="/faq" className="hover:text-[#FDF4AF] underline transition-colors">
+          <NavLink to="/command-center" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Command Center
+          </NavLink>
+          <NavLink to="/network" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Network Explorer
+          </NavLink>
+          <NavLink to="/simulation" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Simulation
+          </NavLink>
+          <NavLink to="/investigation" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Source Localization
+          </NavLink>
+          <NavLink to="/ai-briefing" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            AI Briefing
+          </NavLink>
+          <NavLink to="/evaluation" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Evaluation Lab
+          </NavLink>
+          <NavLink to="/learn" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
+            Learn
+          </NavLink>
+          <NavLink to="/faq" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
             FAQ
           </NavLink>
-          <NavLink to="/contact" className="hover:text-[#FDF4AF] underline transition-colors">
+          <NavLink to="/contact" className="text-[#8EA5B4] hover:text-[#38D9E6] transition-colors">
             Contact
           </NavLink>
-          <button
-            onClick={() => {
-              localStorage.removeItem('jalrakshak_cookie_consent');
-              window.location.reload();
-            }}
-            className="hover:text-[#FDF4AF] underline transition-colors text-left"
-          >
-            Cookie settings
-          </button>
         </div>
       </div>
     </footer>

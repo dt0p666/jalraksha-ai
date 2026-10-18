@@ -12,25 +12,25 @@ export const SensorDrawer: React.FC = () => {
   const alertCount = simState?.alert_count || 0;
 
   return (
-    <div className="w-full bg-[#0F2226] border border-[#6FBEB2]/40 rounded-xl p-3 sm:p-4 shadow-xl space-y-3 animate-fadeIn">
+    <div className="w-full bg-[#0D1B26] border border-[#38D9E6]/30 rounded-xl p-3 sm:p-4 shadow-2xl space-y-3 animate-fadeIn">
       {/* Drawer Header */}
-      <div className="flex items-center justify-between pb-2 border-b border-[#6FBEB2]/30">
+      <div className="flex items-center justify-between pb-2 border-b border-[#38D9E6]/20">
         <div className="flex items-center gap-2">
-          <Activity size={16} className="text-[#A5E9DD]" />
-          <h3 className="font-serif font-bold text-sm text-[#EAF7F5]">
-            Sensor readings over time
+          <Activity size={16} className="text-[#38D9E6]" />
+          <h3 className="font-heading font-bold text-sm text-[#EAF4F7]">
+            Live Sensor Observations & Telemetry
           </h3>
           {alertCount > 0 && (
-            <span className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-[#FF5C5C]/20 text-[#FF5C5C] border border-[#FF5C5C]/40">
+            <span className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-[#FF5E66]/20 text-[#FF5E66] border border-[#FF5E66]/40 animate-pulse">
               <AlertTriangle size={11} />
-              <span>{alertCount} alert{alertCount > 1 ? 's' : ''} detected</span>
+              <span>{alertCount} anomaly threshold breach{alertCount > 1 ? 'es' : ''}</span>
             </span>
           )}
         </div>
 
         <button
           onClick={() => setSensorDrawerOpen(false)}
-          className="p-1 rounded-lg text-[#6FBEB2] hover:text-[#EAF7F5] hover:bg-[#163238] transition-colors"
+          className="p-1 rounded-lg text-[#8EA5B4] hover:text-[#EAF4F7] hover:bg-[#132535] transition-colors"
           aria-label="Close sensor readings drawer"
           title="Close drawer"
         >

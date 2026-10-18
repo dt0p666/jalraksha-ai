@@ -64,34 +64,36 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <main id="main-content" className="max-w-2xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF7F5]">
+    <main id="main-content" className="max-w-2xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF4F7]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#6FBEB2]/30">
-        <div className="flex items-center gap-2 text-[#A5E9DD]">
-          <MessageSquare size={24} />
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF7F5]">
+      <div className="space-y-2 pb-6 border-b border-[#38D9E6]/20">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 rounded-xl bg-[#0D1B26] border border-[#38D9E6]/30 text-[#38D9E6]">
+            <MessageSquare size={22} />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-[#EAF4F7]">
             Contact Engineering Team
           </h1>
         </div>
-        <p className="text-sm text-[#A5E9DD]">
+        <p className="text-sm text-[#8EA5B4]">
           Have questions regarding the mathematical engine or feedback on the educational simulator?
         </p>
       </div>
 
       {successResult ? (
         /* Success Card */
-        <div className="p-6 bg-[#0F2226] rounded-xl border border-[#6FBEB2]/50 text-center space-y-4 shadow-xl animate-fadeIn">
-          <CheckCircle2 size={42} className="text-[#A5E9DD] mx-auto" />
-          <h2 className="text-xl font-serif font-bold text-[#EAF7F5]">
+        <div className="p-6 bg-[#0D1B26] rounded-2xl border border-[#64F4C4]/50 text-center space-y-4 shadow-2xl animate-fadeIn">
+          <CheckCircle2 size={42} className="text-[#64F4C4] mx-auto" />
+          <h2 className="text-xl font-heading font-bold text-[#EAF4F7]">
             Message Recorded on Demo Server
           </h2>
-          <p className="text-xs sm:text-sm text-[#A5E9DD] max-w-md mx-auto leading-relaxed">
-            Your inquiry has been stored locally in <code className="text-[#FDF4AF]">backend/app/history/messages.json</code>.
+          <p className="text-xs sm:text-sm text-[#8EA5B4] max-w-md mx-auto leading-relaxed">
+            Your inquiry has been stored locally in <code className="text-[#38D9E6] font-mono">backend/app/history/messages.json</code>.
             As this is an offline demonstration environment, external emails are not dispatched.
           </p>
 
-          <div className="p-3 bg-[#081416] rounded-lg border border-[#6FBEB2]/40 flex items-center justify-between max-w-xs mx-auto">
-            <span className="font-mono text-xs font-bold text-[#FDF4AF]">
+          <div className="p-3 bg-[#071018] rounded-xl border border-[#38D9E6]/30 flex items-center justify-between max-w-xs mx-auto">
+            <span className="font-mono text-xs font-bold text-[#38D9E6]">
               {successResult.reference_id}
             </span>
             <CopyButton textToCopy={successResult.reference_id} label="Copy ID" />
@@ -100,7 +102,7 @@ export const Contact: React.FC = () => {
           <div className="pt-2">
             <button
               onClick={handleReset}
-              className="px-5 py-2.5 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-[#FDF4AF] text-xs font-bold shadow-sm transition-colors border border-[#6FBEB2]"
+              className="px-5 py-2.5 rounded-xl bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-heading font-bold shadow-lg shadow-[#38D9E6]/25 transition-transform hover:scale-105"
             >
               Send another message
             </button>
@@ -108,72 +110,72 @@ export const Contact: React.FC = () => {
         </div>
       ) : (
         /* Form Card */
-        <form onSubmit={handleSubmit} className="p-6 bg-[#0F2226] border border-[#6FBEB2]/30 rounded-xl space-y-4 shadow-xl text-xs sm:text-sm">
+        <form onSubmit={handleSubmit} className="p-6 bg-[#0D1B26] border border-[#38D9E6]/25 rounded-2xl space-y-4 shadow-2xl text-xs sm:text-sm">
           {serverError && (
-            <div className="p-3 rounded-lg bg-[#FF5C5C]/20 border border-[#FF5C5C]/40 text-xs text-[#FF5C5C] flex items-center gap-2">
+            <div className="p-3 rounded-lg bg-[#FF5E66]/20 border border-[#FF5E66]/40 text-xs text-[#FF5E66] flex items-center gap-2">
               <AlertCircle size={16} className="shrink-0" />
               <span>{serverError}</span>
             </div>
           )}
 
           <div>
-            <label htmlFor="name-page" className="block text-xs font-medium text-[#A5E9DD] mb-1">
-              Your Name <span className="text-[#FF5C5C]">*</span>
+            <label htmlFor="name-page" className="block text-xs font-medium text-[#8EA5B4] mb-1">
+              Your Name <span className="text-[#FF5E66]">*</span>
             </label>
             <input
               id="name-page"
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
-              placeholder="e.g. Ananya Rao"
-              className={`w-full px-3.5 py-2.5 rounded-lg bg-[#081416] border text-xs sm:text-sm text-[#EAF7F5] focus:outline-none ${
-                fieldErrors.name ? 'border-[#FF5C5C]' : 'border-[#6FBEB2]/40 focus:border-[#A5E9DD]'
+              placeholder="e.g. Dr. Ramesh Kumar"
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#071018] border text-xs sm:text-sm text-[#EAF4F7] focus:outline-none ${
+                fieldErrors.name ? 'border-[#FF5E66]' : 'border-[#38D9E6]/25 focus:border-[#38D9E6]'
               }`}
             />
             {fieldErrors.name && (
-              <span className="text-xs text-[#FF5C5C] mt-1 block">{fieldErrors.name}</span>
+              <span className="text-xs text-[#FF5E66] mt-1 block">{fieldErrors.name}</span>
             )}
           </div>
 
           <div>
-            <label htmlFor="email-page" className="block text-xs font-medium text-[#A5E9DD] mb-1">
-              Email Address <span className="text-[#FF5C5C]">*</span>
+            <label htmlFor="email-page" className="block text-xs font-medium text-[#8EA5B4] mb-1">
+              Email Address <span className="text-[#FF5E66]">*</span>
             </label>
             <input
               id="email-page"
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="ananya@example.org"
-              className={`w-full px-3.5 py-2.5 rounded-lg bg-[#081416] border text-xs sm:text-sm text-[#EAF7F5] focus:outline-none ${
-                fieldErrors.email ? 'border-[#FF5C5C]' : 'border-[#6FBEB2]/40 focus:border-[#A5E9DD]'
+              placeholder="ramesh@iitd.ac.in"
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#071018] border text-xs sm:text-sm text-[#EAF4F7] focus:outline-none ${
+                fieldErrors.email ? 'border-[#FF5E66]' : 'border-[#38D9E6]/25 focus:border-[#38D9E6]'
               }`}
             />
             {fieldErrors.email && (
-              <span className="text-xs text-[#FF5C5C] mt-1 block">{fieldErrors.email}</span>
+              <span className="text-xs text-[#FF5E66] mt-1 block">{fieldErrors.email}</span>
             )}
           </div>
 
           <div>
-            <label htmlFor="topic-page" className="block text-xs font-medium text-[#A5E9DD] mb-1">
+            <label htmlFor="topic-page" className="block text-xs font-medium text-[#8EA5B4] mb-1">
               Topic
             </label>
             <select
               id="topic-page"
               value={topic}
               onChange={e => setTopic(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg bg-[#081416] border border-[#6FBEB2]/40 text-xs sm:text-sm text-[#EAF7F5] focus:border-[#A5E9DD] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#071018] border border-[#38D9E6]/25 text-xs sm:text-sm text-[#EAF4F7] focus:border-[#38D9E6] focus:outline-none"
             >
-              <option value="Question">Question</option>
-              <option value="Feedback">Feedback</option>
-              <option value="Report a bug">Report a bug</option>
-              <option value="Collaboration">Collaboration</option>
+              <option value="Question">General Question</option>
+              <option value="Feedback">Technical Feedback</option>
+              <option value="Report a bug">Report a Bug</option>
+              <option value="Collaboration">Academic / NGO Collaboration</option>
             </select>
           </div>
 
           <div>
-            <label htmlFor="message-page" className="block text-xs font-medium text-[#A5E9DD] mb-1">
-              Message <span className="text-[#FF5C5C]">*</span>
+            <label htmlFor="message-page" className="block text-xs font-medium text-[#8EA5B4] mb-1">
+              Message <span className="text-[#FF5E66]">*</span>
             </label>
             <textarea
               id="message-page"
@@ -181,19 +183,19 @@ export const Contact: React.FC = () => {
               value={message}
               onChange={e => setMessage(e.target.value)}
               placeholder="Provide context regarding your suggestion, bug report, or research inquiry..."
-              className={`w-full px-3.5 py-2.5 rounded-lg bg-[#081416] border text-xs sm:text-sm text-[#EAF7F5] focus:outline-none ${
-                fieldErrors.message ? 'border-[#FF5C5C]' : 'border-[#6FBEB2]/40 focus:border-[#A5E9DD]'
+              className={`w-full px-3.5 py-2.5 rounded-xl bg-[#071018] border text-xs sm:text-sm text-[#EAF4F7] focus:outline-none ${
+                fieldErrors.message ? 'border-[#FF5E66]' : 'border-[#38D9E6]/25 focus:border-[#38D9E6]'
               }`}
             />
             {fieldErrors.message && (
-              <span className="text-xs text-[#FF5C5C] mt-1 block">{fieldErrors.message}</span>
+              <span className="text-xs text-[#FF5E66] mt-1 block">{fieldErrors.message}</span>
             )}
           </div>
 
           {/* Captured UTM notice */}
           {Object.keys(utmParams).length > 0 && (
-            <div className="p-2.5 rounded bg-[#081416] border border-[#6FBEB2]/30 text-[11px] font-mono text-[#A5E9DD]">
-              Session tracking parameters will be attached to message log: {JSON.stringify(utmParams)}
+            <div className="p-2.5 rounded-xl bg-[#071018] border border-[#38D9E6]/20 text-[11px] font-mono text-[#8EA5B4]">
+              Session tracking parameters: {JSON.stringify(utmParams)}
             </div>
           )}
 
@@ -201,7 +203,7 @@ export const Contact: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-2.5 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-[#FDF4AF] text-xs font-bold flex items-center gap-2 transition-colors disabled:opacity-50 shadow-md border border-[#6FBEB2]"
+              className="px-6 py-2.5 rounded-xl bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-heading font-bold flex items-center gap-2 transition-transform hover:scale-105 disabled:opacity-50 shadow-lg shadow-[#38D9E6]/25"
             >
               <Send size={14} />
               <span>{submitting ? 'Submitting...' : 'Submit Message'}</span>

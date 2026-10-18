@@ -48,16 +48,21 @@ export const SiteSearchModal: React.FC = () => {
   const indexItems: SearchItem[] = useMemo(() => {
     const items: SearchItem[] = [
       // Pages
-      { id: 'page-home', type: 'Page', title: 'Home', description: 'Interactive entry, flow mechanics, and network overview', route: '/' },
-      { id: 'page-cc', type: 'Page', title: 'Command Center', description: 'Live network canvas, timeline, Bayesian source ranking, and grab sampling', route: '/command-center' },
-      { id: 'page-learn', type: 'Page', title: 'Learn', description: 'Educational lessons on hydraulic delays, information gain, and dataset explorer', route: '/learn' },
+      { id: 'page-home', type: 'Page', title: 'Overview', description: 'Interactive entry, flow mechanics, and digital twin overview', route: '/' },
+      { id: 'page-cc', type: 'Page', title: 'Command Center', description: 'Full-viewport investigation interface, Bayesian source ranking, and grab sampling', route: '/command-center' },
+      { id: 'page-network', type: 'Page', title: 'Network Explorer', description: 'Interactive graph topology, node types, and Hazen-Williams parameters', route: '/network' },
+      { id: 'page-simulation', type: 'Page', title: 'Simulation Controls', description: 'Live advection steps, sensor curves, and plume progression', route: '/simulation' },
+      { id: 'page-investigation', type: 'Page', title: 'Source Investigation', description: 'Bayesian likelihood inversion, candidate ranking, and optimal grab sampling', route: '/investigation' },
+      { id: 'page-briefing', type: 'Page', title: 'AI Incident Briefing', description: 'Structured technical dossier synthesized via open-weight inference', route: '/ai-briefing' },
+      { id: 'page-eval', type: 'Page', title: 'Evaluation Lab', description: 'Quantitative benchmark metrics, top-1 accuracy, and empirical distributions', route: '/evaluation' },
+      { id: 'page-learn', type: 'Page', title: 'Learning Center', description: 'Educational lessons on hydraulic delays, information gain, and dataset explorer', route: '/learn' },
       { id: 'page-faq', type: 'Page', title: 'FAQ', description: 'Frequently asked questions on model limits, sensors, and mathematics', route: '/faq' },
       { id: 'page-about', type: 'Page', title: 'About & Methodology', description: 'Simulation architecture, dataset provenance, and classroom instructor unlock', route: '/about' },
-      { id: 'page-contact', type: 'Page', title: 'Contact & Feedback', description: 'Submit questions or feedback directly to local server storage', route: '/contact' },
+      { id: 'page-contact', type: 'Page', title: 'Contact & Advisory', description: 'Submit questions or feedback directly to local server storage', route: '/contact' },
 
       // Quick Actions
-      { id: 'act-start', type: 'Action', title: 'Action: Start Contamination', description: 'Inject a new hidden plume into the water network', action: () => { navigate('/command-center'); setStartModalOpen(true); } },
-      { id: 'act-theme', type: 'Action', title: 'Action: Toggle Theme', description: 'Switch between dark control-room and daylight mode', action: () => toggleTheme() },
+      { id: 'act-start', type: 'Action', title: 'Action: Start Contamination', description: 'Inject a new hidden plume scenario into the network', action: () => { navigate('/command-center'); setStartModalOpen(true); } },
+      { id: 'act-theme', type: 'Action', title: 'Action: Toggle Theme', description: 'Switch between dark Mission Control and daylight mode', action: () => toggleTheme() },
     ];
 
     // Map Nodes
@@ -159,19 +164,19 @@ export const SiteSearchModal: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-black/75 backdrop-blur-sm animate-fadeIn"
       onClick={() => setSearchOpen(false)}
       role="dialog"
       aria-modal="true"
       aria-label="Site Search"
     >
       <div
-        className="w-full max-w-xl bg-[#141E3D] border border-[#425B9A]/60 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[75vh]"
+        className="w-full max-w-xl bg-[#0D1B26] border border-[#38D9E6]/35 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[75vh]"
         onClick={e => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3 border-b border-[#425B9A]/30 gap-3 bg-[#0D1630]">
-          <Search size={18} className="text-[#76C0EC]" />
+        <div className="flex items-center px-4 py-3 border-b border-[#38D9E6]/20 gap-3 bg-[#071018]">
+          <Search size={18} className="text-[#38D9E6]" />
           <input
             ref={inputRef}
             type="text"
@@ -181,24 +186,24 @@ export const SiteSearchModal: React.FC = () => {
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Search nodes, lessons, glossary, FAQs, actions..."
-            className="w-full bg-transparent text-sm text-[#EAF1F8] placeholder-[#9FB0C9]/60 focus:outline-none"
+            placeholder="Search nodes, lessons, telemetry, briefings..."
+            className="w-full bg-transparent text-sm text-[#EAF4F7] placeholder-[#8EA5B4]/50 focus:outline-none"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="text-[#9FB0C9] hover:text-[#76C0EC]">
+            <button onClick={() => setQuery('')} className="text-[#8EA5B4] hover:text-[#38D9E6]">
               <X size={16} />
             </button>
           )}
-          <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#1D2A52] text-[#9FB0C9] rounded border border-[#425B9A]/40">
+          <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#132535] text-[#8EA5B4] rounded border border-[#38D9E6]/20">
             Esc
           </kbd>
         </div>
 
         {/* Results List */}
-        <div className="overflow-y-auto p-2 divide-y divide-[#425B9A]/20">
+        <div className="overflow-y-auto p-2 divide-y divide-[#38D9E6]/10">
           {results.length === 0 ? (
-            <div className="py-8 text-center text-sm text-[#9FB0C9]">
-              No results found matching &quot;{query}&quot;. Try searching for a node like &quot;J-08&quot;, &quot;entropy&quot;, or &quot;plume&quot;.
+            <div className="py-8 text-center text-sm text-[#8EA5B4]">
+              No results found matching &quot;{query}&quot;. Try searching for &quot;J-08&quot;, &quot;entropy&quot;, or &quot;simulation&quot;.
             </div>
           ) : (
             results.map((item, idx) => {
@@ -214,21 +219,21 @@ export const SiteSearchModal: React.FC = () => {
                   key={item.id}
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-colors ${
-                    isSelected ? 'bg-[#1D2A52] border border-[#76C0EC]/40' : 'hover:bg-[#1D2A52]/50'
+                  className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer transition-colors ${
+                    isSelected ? 'bg-[#132535] border border-[#38D9E6]/40' : 'hover:bg-[#132535]/50'
                   }`}
                 >
-                  <div className={`p-1.5 rounded shrink-0 mt-0.5 ${isSelected ? 'text-[#76C0EC]' : 'text-[#9FB0C9]'}`}>
+                  <div className={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isSelected ? 'text-[#38D9E6]' : 'text-[#8EA5B4]'}`}>
                     <Icon size={16} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-[#EAF1F8] truncate">{item.title}</span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#425B9A]/30 text-[#76C0EC] border border-[#425B9A]/40 uppercase">
+                      <span className="text-sm font-semibold text-[#EAF4F7] truncate">{item.title}</span>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#071018] text-[#38D9E6] border border-[#38D9E6]/25 uppercase">
                         {item.type}
                       </span>
                     </div>
-                    <p className="text-xs text-[#9FB0C9] truncate mt-0.5">{item.description}</p>
+                    <p className="text-xs text-[#8EA5B4] truncate mt-0.5">{item.description}</p>
                   </div>
                 </div>
               );
@@ -237,13 +242,13 @@ export const SiteSearchModal: React.FC = () => {
         </div>
 
         {/* Search Footer hints */}
-        <div className="px-4 py-2 border-t border-[#425B9A]/30 bg-[#0D1630] flex items-center justify-between text-[11px] text-[#9FB0C9]">
-          <div className="flex items-center gap-3">
+        <div className="px-4 py-2 border-t border-[#38D9E6]/20 bg-[#071018] flex items-center justify-between text-[11px] text-[#8EA5B4]">
+          <div className="flex items-center gap-3 font-mono text-[10px]">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>Esc Close</span>
           </div>
-          <span>Instant client-side index</span>
+          <span className="font-mono text-[10px] text-[#38D9E6]">NASA Mission Control Engine</span>
         </div>
       </div>
     </div>

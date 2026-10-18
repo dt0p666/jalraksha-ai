@@ -38,18 +38,18 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       <div className="space-y-4">
         <div className="flex items-start gap-3">
           {isDestructive && (
-            <div className="p-2 bg-[#D9534F]/20 text-[#D9534F] rounded-lg shrink-0 mt-0.5">
-              <AlertTriangle size={22} />
+            <div className="p-2 bg-[#FF5E66]/20 text-[#FF5E66] rounded-lg shrink-0 mt-0.5">
+              <AlertTriangle size={20} />
             </div>
           )}
-          <p className="text-[#9FB0C9] text-sm leading-relaxed">{message}</p>
+          <p className="text-[#8EA5B4] text-xs sm:text-sm leading-relaxed">{message}</p>
         </div>
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#425B9A]/30">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#38D9E6]/20">
           <button
             ref={cancelBtnRef}
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-lg text-[#EAF1F8] bg-[#1D2A52] hover:bg-[#425B9A]/40 border border-[#425B9A]/40 transition-colors"
+            className="px-4 py-2 text-xs font-medium rounded-lg text-[#8EA5B4] hover:text-[#EAF4F7] bg-[#071018] hover:bg-[#132535] border border-[#38D9E6]/20 transition-colors"
           >
             {cancelLabel}
           </button>
@@ -58,10 +58,10 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
               onConfirm();
               onClose();
             }}
-            className={`px-4 py-2 text-sm font-semibold rounded-lg text-white transition-colors ${
+            className={`px-4 py-2 text-xs font-heading font-bold rounded-lg transition-all ${
               isDestructive
-                ? 'bg-[#D9534F] hover:bg-[#c4413d]'
-                : 'bg-[#425B9A] hover:bg-[#4f6cb6]'
+                ? 'bg-[#FF5E66] hover:bg-[#FF5E66]/90 text-white shadow-lg shadow-[#FF5E66]/25'
+                : 'bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] shadow-lg shadow-[#38D9E6]/25'
             }`}
           >
             {confirmLabel}

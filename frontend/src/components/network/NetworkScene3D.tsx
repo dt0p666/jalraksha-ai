@@ -18,13 +18,13 @@ import type { NodeModel, EdgeModel } from '../../api/types';
 import { RotateCcw, Layers } from 'lucide-react';
 
 // Exact 4-color palette tokens from user reference
-const COLOR_DEEP_TEAL = '#34908B';   // Reservoirs & primary trunks (Band 4)
-const COLOR_MID_TEAL = '#6FBEB2';    // Sub-sector junctions & branch pipes (Band 3)
-const COLOR_LIGHT_CYAN = '#A5E9DD';  // Active clean water, telemetry glow (Band 2)
-const COLOR_YELLOW = '#FDF4AF';      // Solar highlight & sensor alert (Band 1)
-const COLOR_CRIMSON = '#FF5C5C';     // Contamination confirmed
-const COLOR_MUTED = '#1E474F';       // Unmeasured nodes
-const COLOR_BG = '#081416';          // Clean oceanic basemap background
+const COLOR_DEEP_TEAL = '#38D9E6';   // Primary Cyan (Reservoirs & primary trunks)
+const COLOR_MID_TEAL = '#64F4C4';    // Aquamarine (Sub-sector junctions & branch pipes)
+const COLOR_LIGHT_CYAN = '#38D9E6';  // Active clean water, telemetry glow
+const COLOR_YELLOW = '#FFB547';      // Warning Amber & Candidate highlight
+const COLOR_CRIMSON = '#FF5E66';     // Contamination confirmed (Red)
+const COLOR_MUTED = '#132535';       // Unmeasured nodes
+const COLOR_BG = '#071018';          // Mission Control Dark Background
 
 // Coordinate transformation: Maps 2D layout (x:100-900, y:80-840) to 3D world
 const to3D = (x: number, y: number, elev: number = 220): [number, number, number] => {

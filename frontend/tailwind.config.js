@@ -9,35 +9,41 @@ export default {
     extend: {
       colors: {
         brand: {
-          yellow: '#FDF4AF',    // Band 1: Light Yellow
-          lightCyan: '#A5E9DD', // Band 2: Light Cyan / Aqua
-          midTeal: '#6FBEB2',   // Band 3: Mid Teal
-          deepTeal: '#34908B',  // Band 4: Deep Teal
+          bg: '#071018',
+          secondary: '#0D1B26',
+          raised: '#132535',
+          cyan: '#38D9E6',
+          aquamarine: '#64F4C4',
+          warning: '#FFB547',
+          critical: '#FF5E66',
+          text: '#EAF4F7',
+          muted: '#8EA5B4',
         },
         status: {
-          warning: '#FDF4AF',
-          critical: '#FF5C5C',
-          safe: '#6FBEB2',
+          warning: '#FFB547',
+          critical: '#FF5E66',
+          safe: '#64F4C4',
+          cyan: '#38D9E6',
         },
         dark: {
-          bg: '#081416',
-          panel: '#0F2226',
-          raised: '#163238',
-          border: 'rgba(111, 190, 178, 0.3)',
-          text: '#EAF7F5',
-          muted: '#A5E9DD',
+          bg: '#071018',
+          panel: '#0D1B26',
+          raised: '#132535',
+          border: 'rgba(56, 217, 230, 0.2)',
+          text: '#EAF4F7',
+          muted: '#8EA5B4',
         },
         light: {
-          bg: '#F6FBF9',
+          bg: '#F3F7FA',
           panel: '#FFFFFF',
-          raised: '#E2F3F0',
-          border: 'rgba(52, 144, 139, 0.25)',
-          text: '#081416',
-          muted: '#34908B',
+          raised: '#E3EDF4',
+          border: 'rgba(13, 27, 38, 0.15)',
+          text: '#071018',
+          muted: '#4B6375',
         }
       },
       fontFamily: {
-        serif: ['Fraunces', 'Georgia', 'serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['JetBrains Mono', 'Consolas', 'Courier New', 'monospace'],
       },
@@ -49,7 +55,7 @@ export default {
         flow: { '0%': { strokeDashoffset: '24' }, '100%': { strokeDashoffset: '0' } },
         marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-        pulseRing: { '0%, 100%': { opacity: '0.4', transform: 'scale(1)' }, '50%': { opacity: '1', transform: 'scale(1.08)' } },
+        pulseRing: { '0%, 100%': { opacity: '0.3', transform: 'scale(1)' }, '50%': { opacity: '0.8', transform: 'scale(1.08)' } },
       },
       animation: {
         flow: 'flow 2s linear infinite',

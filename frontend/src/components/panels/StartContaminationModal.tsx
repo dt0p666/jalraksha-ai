@@ -25,13 +25,13 @@ export const StartContaminationModal: React.FC = () => {
     },
     {
       id: 'reservoir',
-      title: 'Reservoir Outlet',
-      desc: 'Simulates a major breach originating at either North High (R1) or East Hill (R2) storage reservoirs.',
+      title: 'Reservoir Outlet Breach',
+      desc: 'Simulates a major contamination breach originating at storage reservoirs R1 (North High) or R2 (East Hill).',
       icon: Droplet,
     },
     {
       id: 'junction',
-      title: 'Pipeline Main Junction',
+      title: 'Pipeline Main Junction Infiltration',
       desc: 'Simulates back-siphonage or pipe breach at an intermediate trunk transmission junction.',
       icon: GitBranch,
     },
@@ -47,13 +47,13 @@ export const StartContaminationModal: React.FC = () => {
     <Modal
       isOpen={startModalOpen}
       onClose={() => setStartModalOpen(false)}
-      title="Start a contamination"
+      title="Inject Contamination Scenario"
       maxWidth="max-w-lg"
     >
-      <form onSubmit={handleSubmit} className="space-y-4 text-xs text-[#EAF1F8]">
-        <p className="text-[#9FB0C9] text-xs leading-relaxed">
+      <form onSubmit={handleSubmit} className="space-y-4 text-xs text-[#EAF4F7]">
+        <p className="text-[#8EA5B4] text-xs leading-relaxed">
           Select an origin scenario. The exact source node will remain strictly hidden inside the server session
-          until you reveal it during the investigation.
+          until you choose to reveal it during the investigation.
         </p>
 
         {/* Source Category Radio List */}
@@ -66,8 +66,8 @@ export const StartContaminationModal: React.FC = () => {
                 key={opt.id}
                 className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
                   isSelected
-                    ? 'bg-[#1D2A52] border-[#76C0EC] text-white shadow-sm'
-                    : 'bg-[#0D1630] border-[#425B9A]/30 text-[#9FB0C9] hover:border-[#425B9A]/60'
+                    ? 'bg-[#132535] border-[#38D9E6] text-[#EAF4F7] shadow-lg shadow-[#38D9E6]/10'
+                    : 'bg-[#071018] border-[#38D9E6]/20 text-[#8EA5B4] hover:border-[#38D9E6]/40'
                 }`}
               >
                 <input
@@ -76,53 +76,53 @@ export const StartContaminationModal: React.FC = () => {
                   value={opt.id}
                   checked={isSelected}
                   onChange={() => setSourceType(opt.id)}
-                  className="mt-0.5 text-[#76C0EC] focus:ring-[#76C0EC]"
+                  className="mt-0.5 text-[#38D9E6] focus:ring-[#38D9E6]"
                 />
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1.5 font-semibold text-xs text-[#EAF1F8]">
-                    <Icon size={14} className={isSelected ? 'text-[#76C0EC]' : 'text-[#9FB0C9]'} />
+                  <div className="flex items-center gap-1.5 font-semibold text-xs text-[#EAF4F7]">
+                    <Icon size={14} className={isSelected ? 'text-[#38D9E6]' : 'text-[#8EA5B4]'} />
                     <span>{opt.title}</span>
                   </div>
-                  <p className="text-[11px] text-[#9FB0C9] mt-0.5 leading-snug">{opt.desc}</p>
+                  <p className="text-[11px] text-[#8EA5B4] mt-0.5 leading-snug">{opt.desc}</p>
                 </div>
               </label>
             );
           })}
         </div>
 
-        {/* Seed input for reproducible stage demonstrations */}
-        <div className="p-3 bg-[#0D1630] rounded-lg border border-[#425B9A]/30 space-y-1">
-          <label htmlFor="seed-input" className="font-semibold text-xs text-[#EAF1F8] flex items-center justify-between">
-            <span>RNG Random Seed (Demo Reproducibility):</span>
-            <span className="text-[10px] text-[#76C0EC] font-mono">Fixed physics</span>
+        {/* Seed input for reproducible demonstrations */}
+        <div className="p-3 bg-[#071018] rounded-lg border border-[#38D9E6]/20 space-y-1">
+          <label htmlFor="seed-input" className="font-semibold text-xs text-[#EAF4F7] flex items-center justify-between">
+            <span>RNG Random Seed (Reproducibility):</span>
+            <span className="text-[10px] text-[#38D9E6] font-mono">Calibrated physics</span>
           </label>
           <input
             id="seed-input"
             type="number"
             value={seed}
             onChange={e => setSeed(parseInt(e.target.value, 10) || 42)}
-            className="w-full px-3 py-1.5 rounded bg-[#141E3D] border border-[#425B9A]/40 text-sm font-mono text-[#EAF1F8] focus:border-[#76C0EC] focus:outline-none"
+            className="w-full px-3 py-1.5 rounded bg-[#0D1B26] border border-[#38D9E6]/30 text-sm font-mono text-[#EAF4F7] focus:border-[#38D9E6] focus:outline-none"
           />
-          <span className="text-[10px] text-[#9FB0C9]">
+          <span className="text-[10px] text-[#8EA5B4]">
             Identical seed values yield identical sensor noise and plume arrival trajectories.
           </span>
         </div>
 
         {/* Modal Submit */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#425B9A]/30">
+        <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#38D9E6]/20">
           <button
             type="button"
             onClick={() => setStartModalOpen(false)}
-            className="px-4 py-2 rounded-lg text-xs font-medium text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1D2A52] transition-colors"
+            className="px-4 py-2 rounded-lg text-xs font-medium text-[#8EA5B4] hover:text-[#EAF4F7] hover:bg-[#132535] transition-colors"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 rounded-lg text-xs font-semibold bg-[#425B9A] hover:bg-[#4f6cb6] text-white border border-[#76C0EC]/50 flex items-center gap-1.5 transition-colors shadow-sm"
+            className="px-5 py-2.5 rounded-lg text-xs font-heading font-bold bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] shadow-lg shadow-[#38D9E6]/25 flex items-center gap-1.5 transition-all hover:scale-105"
           >
             <Play size={13} fill="currentColor" />
-            <span>Start contamination</span>
+            <span>START CONTAMINATION</span>
           </button>
         </div>
       </form>

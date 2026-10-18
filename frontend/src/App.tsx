@@ -13,6 +13,11 @@ import { SplashIntro } from './components/intro/SplashIntro';
 
 import { Home } from './pages/Home';
 import { CommandCenter } from './pages/CommandCenter';
+import { NetworkExplorer } from './pages/NetworkExplorer';
+import { SimulationPage } from './pages/SimulationPage';
+import { InvestigationPage } from './pages/InvestigationPage';
+import { AiBriefingPage } from './pages/AiBriefingPage';
+import { EvaluationLabPage } from './pages/EvaluationLabPage';
 import { Learn } from './pages/Learn';
 import { Faq } from './pages/Faq';
 import { About } from './pages/About';
@@ -24,10 +29,10 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <BrowserRouter>
-        {/* Sick Opening Splash Animation inspired by SweetTape */}
+        {/* Cinematic Opening Splash Animation */}
         {showSplash && <SplashIntro onComplete={() => setShowSplash(false)} />}
 
-        <div className="min-h-screen flex flex-col bg-[#081416] text-[#EAF7F5] selection:bg-[#A5E9DD]/30 selection:text-white transition-colors">
+        <div className="min-h-screen flex flex-col bg-[#071018] text-[#EAF4F7] selection:bg-[#38D9E6]/30 selection:text-white transition-colors">
           <ScrollProgressBar />
           <Header />
 
@@ -35,7 +40,12 @@ export const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/command-center" element={<CommandCenter />} />
-              <Route path="/investigate" element={<Navigate to="/command-center" replace />} />
+              <Route path="/network" element={<NetworkExplorer />} />
+              <Route path="/simulation" element={<SimulationPage />} />
+              <Route path="/investigation" element={<InvestigationPage />} />
+              <Route path="/investigate" element={<Navigate to="/investigation" replace />} />
+              <Route path="/ai-briefing" element={<AiBriefingPage />} />
+              <Route path="/evaluation" element={<EvaluationLabPage />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/about" element={<About />} />
