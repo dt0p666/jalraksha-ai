@@ -10,40 +10,40 @@
  */
 
 export const BRAND_COLORS = {
-  yellow: '#FDF4AF', // Warm Solar Light / Highlights / Sensor beacons / Peak Alert
-  sky: '#A5E9DD',    // Aquamarine / Flowing Water / Active telemetry / Healthy state
-  teal: '#6FBEB2',   // Medium Teal / Pipeline junctions / Sub-sectors
-  deepTeal: '#34908B', // Deep Marine Cyan / Primary tanks / Main brand
-  warning: '#FDF4AF', // High-contrast solar yellow alert
-  critical: '#FF5C5C', // Clear crimson alarm
+  deepBlue: '#3368A0',   // Primary brand blue (Band 1) - buttons, reservoirs, headers
+  oceanBlue: '#66A3BF',  // Mid cyan blue (Band 2) - active flow, sensors, links
+  paleTeal: '#C8DFDB',   // Soft pale mint/teal (Band 3) - cards, tags, safe states
+  warmSand: '#F2EFE7',   // Cream / warm sand (Band 4) - light surface, text, clean cards
+  warning: '#FDF4AF',    // High-visibility alert
+  critical: '#FF5C5C',   // Contamination confirmed
 } as const;
 
 export const THEME_TOKENS = {
   dark: {
-    bg: '#080E18',         // Deep obsidian navy from reference slide
-    panel: '#0D1626',      // Midnight tech panel
-    panelRaised: '#14223B', // Raised dark console
-    border: 'rgba(111, 190, 178, 0.25)', // Subtle cyan wireframe border
-    borderFocus: '#A5E9DD',
-    text: '#E8F8F5',       // Crisp bright white-mint
-    textMuted: '#7E9EB0',  // Muted tech cyan-gray
-    flowHealthy: '#A5E9DD', // Flowing glowing water
-    reservoirFill: '#34908B',
-    zoneFill: '#1B383D',
-    zoneBorder: '#6FBEB2',
+    bg: '#0F1E2E',         // Clean oceanic navy derived from #3368A0 (warm, inviting, not muddy)
+    panel: '#162C42',      // Crisp deep blue panel
+    panelRaised: '#1E3B57', // Raised interactive blue surface
+    border: 'rgba(102, 163, 191, 0.3)', // Cyan-blue outline from #66A3BF
+    borderFocus: '#66A3BF',
+    text: '#F2EFE7',       // Warm sand text (crisp, readable, WCAG AAA)
+    textMuted: '#C8DFDB',  // Pale mint secondary text
+    flowHealthy: '#66A3BF', // Vibrant water glow
+    reservoirFill: '#3368A0',
+    zoneFill: '#1E3B57',
+    zoneBorder: '#66A3BF',
   },
   light: {
-    bg: '#F2FAF8',
+    bg: '#F2EFE7',         // Warm sand surface from Band 4
     panel: '#FFFFFF',
-    panelRaised: '#E3F4F1',
-    border: 'rgba(52, 144, 139, 0.22)',
-    borderFocus: '#34908B',
-    text: '#0C2022',
-    textMuted: '#426868',
-    flowHealthy: '#34908B',
-    reservoirFill: '#34908B',
-    zoneFill: '#A5E9DD',
-    zoneBorder: '#6FBEB2',
+    panelRaised: '#C8DFDB', // Soft pale mint from Band 3
+    border: 'rgba(51, 104, 160, 0.25)',
+    borderFocus: '#3368A0',
+    text: '#0F1E2E',
+    textMuted: '#3368A0',
+    flowHealthy: '#3368A0',
+    reservoirFill: '#3368A0',
+    zoneFill: '#C8DFDB',
+    zoneBorder: '#66A3BF',
   },
 } as const;
 

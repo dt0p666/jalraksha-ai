@@ -238,16 +238,16 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 4. Ground Truth Revealed Outcome */}
       {revealResult && (
-        <div className="p-3 rounded-lg bg-[#0E1733] border border-[#76C0EC]/50 space-y-2">
+        <div className="p-3 rounded-lg bg-[#0F1E2E] border border-[#66A3BF]/50 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="font-serif font-bold text-xs text-[#76C0EC]">
+            <span className="font-serif font-bold text-xs text-[#66A3BF]">
               Diagnostic Accuracy
             </span>
             <span
               className={`px-2 py-0.5 rounded text-[11px] font-bold ${
                 revealResult.is_top1_correct
-                  ? 'bg-[#597928]/30 text-[#91AC67] border border-[#91AC67]/40'
-                  : 'bg-[#D9534F]/30 text-[#D9534F] border border-[#D9534F]/40'
+                  ? 'bg-[#3368A0]/30 text-[#C8DFDB] border border-[#66A3BF]/40'
+                  : 'bg-[#FF5C5C]/30 text-[#FF5C5C] border border-[#FF5C5C]/40'
               }`}
             >
               {revealResult.is_top1_correct ? 'Source Identified' : 'Near Source'}
@@ -255,27 +255,27 @@ export const InvestigationStepCard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-[11px] pt-1">
-            <div className="p-2 rounded bg-[#152248]">
-              <span className="text-[#9FB0C9] block">Real source:</span>
-              <span className="font-mono font-bold text-base text-[#D9534F]">
+            <div className="p-2 rounded bg-[#162C42]">
+              <span className="text-[#C8DFDB] block">Real source:</span>
+              <span className="font-mono font-bold text-base text-[#FF5C5C]">
                 {revealResult.true_source}
               </span>
             </div>
-            <div className="p-2 rounded bg-[#152248]">
-              <span className="text-[#9FB0C9] block">Engine pick:</span>
-              <span className="font-mono font-bold text-base text-[#76C0EC]">
+            <div className="p-2 rounded bg-[#162C42]">
+              <span className="text-[#C8DFDB] block">Engine pick:</span>
+              <span className="font-mono font-bold text-base text-[#66A3BF]">
                 {revealResult.top1_candidate}
               </span>
             </div>
           </div>
 
-          <div className="text-[11px] text-[#9FB0C9]">
-            Error distance: <strong className="text-[#EAF1F8]">{revealResult.hop_error} pipe hops</strong> • Samples used: <strong className="text-[#EAF1F8]">{revealResult.samples_used}</strong>
+          <div className="text-[11px] text-[#C8DFDB]">
+            Error distance: <strong className="text-[#F2EFE7]">{revealResult.hop_error} pipe hops</strong> • Samples used: <strong className="text-[#F2EFE7]">{revealResult.samples_used}</strong>
           </div>
 
           <button
             onClick={() => setTeacherView(!teacherView)}
-            className="w-full py-1.5 rounded bg-[#1E2F62] hover:bg-[#425B9A]/40 text-[#76C0EC] text-xs font-semibold border border-[#76C0EC]/30 transition-colors"
+            className="w-full py-1.5 rounded bg-[#1E3B57] hover:bg-[#3368A0] text-[#F2EFE7] text-xs font-semibold border border-[#66A3BF]/40 transition-colors"
           >
             {teacherView ? 'Hide teacher view' : 'Toggle teacher view (show full spread)'}
           </button>
@@ -284,18 +284,18 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 5. Incident Report Button with honest Gemma 4 model badge */}
       {hasInvestigated && (
-        <div className="pt-2 border-t border-[#425B9A]/30 space-y-2">
+        <div className="pt-2 border-t border-[#66A3BF]/30 space-y-2">
           <button
             data-tour="report-btn"
             onClick={generateReport}
             disabled={aiReportLoading}
-            className="w-full py-2 px-3 rounded-lg bg-[#1E2F62] hover:bg-[#425B9A]/40 text-[#76C0EC] font-semibold text-xs border border-[#76C0EC]/40 flex items-center justify-between gap-1.5 transition-colors shadow-sm disabled:opacity-50"
+            className="w-full py-2 px-3 rounded-lg bg-[#1E3B57] hover:bg-[#3368A0] text-[#F2EFE7] font-semibold text-xs border border-[#66A3BF]/40 flex items-center justify-between gap-1.5 transition-colors shadow-sm disabled:opacity-50"
           >
             <div className="flex items-center gap-1.5">
-              <FileText size={14} />
+              <FileText size={14} className="text-[#66A3BF]" />
               <span>Write incident report</span>
             </div>
-            <span className="text-[10px] font-mono text-[#9FB0C9] px-1.5 py-0.5 rounded bg-[#0E1733] border border-[#425B9A]/40">
+            <span className="text-[10px] font-mono text-[#C8DFDB] px-1.5 py-0.5 rounded bg-[#0F1E2E] border border-[#66A3BF]/40">
               {modelBadge}
             </span>
           </button>
@@ -312,7 +312,7 @@ export const InvestigationStepCard: React.FC = () => {
                   onConfirm: revealSource,
                 });
               }}
-              className="w-full py-2 px-3 rounded-lg bg-[#0E1733] hover:bg-[#D9534F]/20 text-[#EAF1F8] hover:text-[#D9534F] font-semibold text-xs border border-[#425B9A]/40 hover:border-[#D9534F]/50 flex items-center justify-center gap-1.5 transition-colors"
+              className="w-full py-2 px-3 rounded-lg bg-[#0F1E2E] hover:bg-[#FF5C5C]/20 text-[#F2EFE7] hover:text-[#FF5C5C] font-semibold text-xs border border-[#66A3BF]/40 hover:border-[#FF5C5C]/50 flex items-center justify-center gap-1.5 transition-colors"
             >
               <Eye size={14} />
               <span>Reveal the real source</span>

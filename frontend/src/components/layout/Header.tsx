@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
       {/* Skip to Content accessible link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#425B9A] focus:text-white focus:rounded-lg focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#3368A0] focus:text-[#F2EFE7] focus:rounded-lg focus:shadow-lg font-bold"
       >
         Skip to main content
       </a>
@@ -41,22 +41,22 @@ export const Header: React.FC = () => {
       <header
         className={`sticky top-0 z-40 w-full border-b backdrop-blur-md transition-colors ${
           theme === 'dark'
-            ? 'bg-[#080E18]/92 border-[#1E474F]/35 text-[#E8F8F5]'
-            : 'bg-[#F2FAF8]/95 border-[#34908B]/20 text-[#0C2022]'
+            ? 'bg-[#0F1E2E]/95 border-[#3368A0]/30 text-[#F2EFE7]'
+            : 'bg-[#F2EFE7]/95 border-[#3368A0]/20 text-[#0F1E2E]'
         } py-2 px-4 sm:px-6`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           {/* Logo & Brand */}
           <NavLink
             to="/"
-            className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-[#A5E9DD] rounded-lg p-1"
+            className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-[#66A3BF] rounded-lg p-1"
           >
-            <div className="w-7 h-7 rounded-lg bg-[#34908B] flex items-center justify-center text-[#A5E9DD] group-hover:bg-[#2c7d78] transition-colors border border-[#A5E9DD]/50 shadow-sm">
-              <Droplet size={15} fill="#A5E9DD" />
+            <div className="w-7 h-7 rounded-lg bg-[#3368A0] flex items-center justify-center text-[#F2EFE7] group-hover:bg-[#285380] transition-colors border border-[#66A3BF]/50 shadow-sm">
+              <Droplet size={15} fill="#C8DFDB" />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-base leading-tight tracking-tight text-[#E8F8F5] dark:text-[#E8F8F5] light:text-[#0C2022]">
-                JALRAKSHAK <span className="text-[#A5E9DD] text-xs font-sans font-semibold tracking-normal">AI</span>
+              <span className="font-serif font-bold text-base leading-tight tracking-tight text-current">
+                JALRAKSHAK <span className="text-[#66A3BF] text-xs font-sans font-semibold tracking-normal">AI</span>
               </span>
             </div>
           </NavLink>
@@ -68,8 +68,8 @@ export const Header: React.FC = () => {
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-lg font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#425B9A]/30 text-[#76C0EC] font-semibold border border-[#76C0EC]/30'
-                    : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]/50'
+                    ? 'bg-[#3368A0] text-[#F2EFE7] font-semibold shadow-sm'
+                    : 'text-[#66A3BF] hover:text-current hover:bg-[#3368A0]/15'
                 }`
               }
             >
@@ -80,8 +80,8 @@ export const Header: React.FC = () => {
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-lg font-medium transition-colors ${
                   isActive || isCommandCenter
-                    ? 'bg-[#425B9A]/30 text-[#76C0EC] font-semibold border border-[#76C0EC]/30'
-                    : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]/50'
+                    ? 'bg-[#3368A0] text-[#F2EFE7] font-semibold shadow-sm'
+                    : 'text-[#66A3BF] hover:text-current hover:bg-[#3368A0]/15'
                 }`
               }
             >
@@ -92,8 +92,8 @@ export const Header: React.FC = () => {
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-lg font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#425B9A]/30 text-[#76C0EC] font-semibold border border-[#76C0EC]/30'
-                    : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]/50'
+                    ? 'bg-[#3368A0] text-[#F2EFE7] font-semibold shadow-sm'
+                    : 'text-[#66A3BF] hover:text-current hover:bg-[#3368A0]/15'
                 }`
               }
             >
@@ -104,8 +104,8 @@ export const Header: React.FC = () => {
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-lg font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#425B9A]/30 text-[#76C0EC] font-semibold border border-[#76C0EC]/30'
-                    : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]/50'
+                    ? 'bg-[#3368A0] text-[#F2EFE7] font-semibold shadow-sm'
+                    : 'text-[#66A3BF] hover:text-current hover:bg-[#3368A0]/15'
                 }`
               }
             >
@@ -118,8 +118,8 @@ export const Header: React.FC = () => {
                 onClick={() => setMoreDropdownOpen(prev => !prev)}
                 className={`flex items-center gap-1 px-3 py-1.5 rounded-lg font-medium transition-colors ${
                   isMoreActive
-                    ? 'bg-[#425B9A]/30 text-[#76C0EC] font-semibold border border-[#76C0EC]/30'
-                    : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]/50'
+                    ? 'bg-[#3368A0] text-[#F2EFE7] font-semibold shadow-sm'
+                    : 'text-[#66A3BF] hover:text-current hover:bg-[#3368A0]/15'
                 }`}
                 aria-expanded={moreDropdownOpen}
                 aria-haspopup="true"
@@ -129,13 +129,13 @@ export const Header: React.FC = () => {
               </button>
 
               {moreDropdownOpen && (
-                <div className="absolute right-0 mt-1.5 w-36 bg-[#152248] border border-[#425B9A]/40 rounded-lg shadow-xl py-1 z-50 text-xs">
+                <div className="absolute right-0 mt-1.5 w-36 bg-[#162C42] border border-[#3368A0]/40 rounded-lg shadow-xl py-1 z-50 text-xs">
                   <NavLink
                     to="/about"
                     onClick={() => setMoreDropdownOpen(false)}
                     className={({ isActive }) =>
                       `block px-3 py-2 transition-colors ${
-                        isActive ? 'text-[#76C0EC] font-semibold bg-[#425B9A]/30' : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]'
+                        isActive ? 'text-[#F2EFE7] font-semibold bg-[#3368A0]' : 'text-[#C8DFDB] hover:text-[#F2EFE7] hover:bg-[#1E3B57]'
                       }`
                     }
                   >
@@ -146,7 +146,7 @@ export const Header: React.FC = () => {
                     onClick={() => setMoreDropdownOpen(false)}
                     className={({ isActive }) =>
                       `block px-3 py-2 transition-colors ${
-                        isActive ? 'text-[#76C0EC] font-semibold bg-[#425B9A]/30' : 'text-[#9FB0C9] hover:text-[#EAF1F8] hover:bg-[#1E2F62]'
+                        isActive ? 'text-[#F2EFE7] font-semibold bg-[#3368A0]' : 'text-[#C8DFDB] hover:text-[#F2EFE7] hover:bg-[#1E3B57]'
                       }`
                     }
                   >
@@ -161,15 +161,15 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-2">
             {/* Real Open-weight AI Status Chip */}
             <div
-              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#152248] border border-[#425B9A]/35 text-[11px] font-mono"
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#162C42] border border-[#3368A0]/40 text-[11px] font-mono text-[#F2EFE7]"
               title={aiStatus?.message || `Configured model: ${modelName} (runs locally)`}
             >
-              <Cpu size={12} className="text-[#76C0EC]" />
-              <span className="text-[#9FB0C9]">AI:</span>
-              <span className="text-[#EAF1F8] font-semibold">{modelName}</span>
+              <Cpu size={12} className="text-[#66A3BF]" />
+              <span className="text-[#C8DFDB]">AI:</span>
+              <span className="text-[#F2EFE7] font-semibold">{modelName}</span>
               <span
                 className={`w-2 h-2 rounded-full ${
-                  isAiOnline ? 'bg-[#91AC67] shadow-[0_0_6px_#91AC67]' : 'bg-[#E8A33D]'
+                  isAiOnline ? 'bg-[#C8DFDB] shadow-[0_0_6px_#C8DFDB]' : 'bg-[#FDF4AF]'
                 }`}
                 aria-label={isAiOnline ? 'Model online' : 'Rule-based fallback active'}
               />
@@ -178,13 +178,13 @@ export const Header: React.FC = () => {
             {/* Search shortcut */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-lg border border-[#425B9A]/30 bg-[#152248] text-[#9FB0C9] hover:text-[#76C0EC] hover:border-[#76C0EC]/40 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-lg border border-[#3368A0]/40 bg-[#162C42] text-[#C8DFDB] hover:text-[#F2EFE7] hover:border-[#66A3BF] transition-colors"
               aria-label="Search site"
               title="Search (Ctrl+K)"
             >
               <Search size={13} />
               <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden xl:inline px-1 py-0.2 text-[9px] bg-[#1E2F62] rounded border border-[#425B9A]/40 text-[#9FB0C9]">
+              <kbd className="hidden xl:inline px-1 py-0.2 text-[9px] bg-[#1E3B57] rounded border border-[#3368A0]/40 text-[#C8DFDB]">
                 Ctrl+K
               </kbd>
             </button>
@@ -192,7 +192,7 @@ export const Header: React.FC = () => {
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-lg border border-[#425B9A]/30 bg-[#152248] text-[#9FB0C9] hover:text-[#76C0EC] transition-colors"
+              className="p-1.5 rounded-lg border border-[#3368A0]/40 bg-[#162C42] text-[#C8DFDB] hover:text-[#F2EFE7] transition-colors"
               aria-label={`Switch to ${theme === 'dark' ? 'daylight' : 'dark'} mode`}
               title={`Switch to ${theme === 'dark' ? 'daylight' : 'dark'} mode`}
             >
@@ -202,7 +202,7 @@ export const Header: React.FC = () => {
             {/* Mobile Hamburger toggle */}
             <button
               onClick={() => setMobileMenuOpen(prev => !prev)}
-              className="md:hidden p-1.5 rounded-lg border border-[#425B9A]/40 bg-[#152248] text-[#EAF1F8]"
+              className="md:hidden p-1.5 rounded-lg border border-[#3368A0]/40 bg-[#162C42] text-[#F2EFE7]"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-panel"
               aria-label="Toggle mobile menu"
@@ -221,15 +221,15 @@ export const Header: React.FC = () => {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="fixed top-0 right-0 h-full w-72 bg-[#152248] border-l border-[#425B9A]/40 p-5 flex flex-col justify-between"
+            className="fixed top-0 right-0 h-full w-72 bg-[#162C42] border-l border-[#3368A0]/40 p-5 flex flex-col justify-between"
             onClick={e => e.stopPropagation()}
           >
             <div>
-              <div className="flex items-center justify-between pb-3 border-b border-[#425B9A]/30 mb-4">
-                <span className="font-serif font-bold text-base text-[#EAF1F8]">JALRAKSHAK AI</span>
+              <div className="flex items-center justify-between pb-3 border-b border-[#3368A0]/40 mb-4">
+                <span className="font-serif font-bold text-base text-[#F2EFE7]">JALRAKSHAK AI</span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1 rounded-lg text-[#9FB0C9] hover:text-[#76C0EC]"
+                  className="p-1 rounded-lg text-[#C8DFDB] hover:text-[#F2EFE7]"
                   aria-label="Close menu"
                 >
                   <X size={18} />
@@ -237,15 +237,15 @@ export const Header: React.FC = () => {
               </div>
 
               {/* Mobile AI status badge */}
-              <div className="mb-4 p-2.5 rounded-lg bg-[#0E1733] border border-[#425B9A]/30 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5 text-[#9FB0C9]">
-                  <Cpu size={13} className="text-[#76C0EC]" />
+              <div className="mb-4 p-2.5 rounded-lg bg-[#0F1E2E] border border-[#3368A0]/40 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5 text-[#C8DFDB]">
+                  <Cpu size={13} className="text-[#66A3BF]" />
                   <span>Open-weight AI:</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="font-mono text-[11px] text-[#EAF1F8]">{modelName}</span>
+                  <span className="font-mono text-[11px] text-[#F2EFE7]">{modelName}</span>
                   <span
-                    className={`w-2 h-2 rounded-full ${isAiOnline ? 'bg-[#91AC67]' : 'bg-[#E8A33D]'}`}
+                    className={`w-2 h-2 rounded-full ${isAiOnline ? 'bg-[#C8DFDB]' : 'bg-[#FDF4AF]'}`}
                   />
                 </div>
               </div>
@@ -256,7 +256,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -267,7 +267,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive || isCommandCenter ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive || isCommandCenter ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -278,7 +278,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -289,7 +289,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -300,7 +300,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -311,7 +311,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-lg font-medium transition-colors ${
-                      isActive ? 'bg-[#425B9A]/30 text-[#76C0EC]' : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                      isActive ? 'bg-[#3368A0] text-[#F2EFE7]' : 'text-[#C8DFDB] hover:text-[#F2EFE7]'
                     }`
                   }
                 >
@@ -320,7 +320,7 @@ export const Header: React.FC = () => {
               </nav>
             </div>
 
-            <div className="pt-3 border-t border-[#425B9A]/30 text-center text-xs text-[#9FB0C9]">
+            <div className="pt-3 border-t border-[#3368A0]/30 text-center text-xs text-[#C8DFDB]">
               Simplified educational simulation.
             </div>
           </div>

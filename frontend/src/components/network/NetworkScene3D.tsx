@@ -22,14 +22,14 @@ import { useApp } from '../../state/appStore';
 import type { NodeModel, EdgeModel } from '../../api/types';
 import { RotateCcw, Layers } from 'lucide-react';
 
-// Custom 4-color palette tokens
-const COLOR_YELLOW = '#FDF4AF';    // Solar highlight & telemetry alert
-const COLOR_AQUAMARINE = '#A5E9DD';// Clean flowing water glow
-const COLOR_TEAL = '#6FBEB2';      // Junctions & secondary branch pipes
-const COLOR_DEEP_TEAL = '#34908B'; // Elevated reservoirs & primary trunk
-const COLOR_CRIMSON = '#FF5C5C';   // Contamination confirmed
-const COLOR_MUTED = '#4A6B70';     // Inactive / unmeasured network nodes
-const COLOR_BG = '#060B12';        // Obsidian deep navy basemap
+// Exact 4-color palette tokens from user reference
+const COLOR_DEEP_BLUE = '#3368A0';   // Reservoirs & primary trunks (Band 1)
+const COLOR_OCEAN_BLUE = '#66A3BF';  // Active clean water & flow pipes (Band 2)
+const COLOR_PALE_TEAL = '#C8DFDB';   // Junctions & secondary branch pipes (Band 3)
+const COLOR_YELLOW = '#FDF4AF';      // Solar highlight & sensor alert
+const COLOR_CRIMSON = '#FF5C5C';     // Contamination confirmed
+const COLOR_MUTED = '#2E4C69';       // Unmeasured nodes
+const COLOR_BG = '#0F1E2E';          // Clean oceanic basemap background
 
 // Coordinate transformation: Maps 2D layout (x:100-900, y:80-840) to 3D world
 const to3D = (x: number, y: number, elev: number = 220): [number, number, number] => {
@@ -114,9 +114,9 @@ const Node3D: React.FC<Node3DProps> = ({
   const nodeColor = useMemo(() => {
     if (isTrueSourceRevealed) return COLOR_CRIMSON;
     if (isAlert) return COLOR_YELLOW;
-    if (node.type === 'reservoir') return COLOR_DEEP_TEAL;
-    if (reading || isSampled) return COLOR_AQUAMARINE;
-    if (node.type === 'zone') return COLOR_TEAL;
+    if (node.type === 'reservoir') return COLOR_DEEP_BLUE;
+    if (reading || isSampled) return COLOR_OCEAN_BLUE;
+    if (node.type === 'zone') return COLOR_PALE_TEAL;
     return COLOR_MUTED;
   }, [node.type, reading, isSampled, isAlert, isTrueSourceRevealed]);
 
@@ -157,7 +157,7 @@ const Node3D: React.FC<Node3DProps> = ({
           <mesh castShadow>
             <cylinderGeometry args={[1.1, 1.2, 1.0, 24]} />
             <meshStandardMaterial
-              color={COLOR_DEEP_TEAL}
+              color={COLOR_DEEP_BLUE}
               roughness={0.25}
               metalness={0.3}
             />
@@ -165,8 +165,8 @@ const Node3D: React.FC<Node3DProps> = ({
           <mesh position={[0, 0.52, 0]} rotation={[-Math.PI / 2, 0, 0]}>
             <circleGeometry args={[1.05, 24]} />
             <meshStandardMaterial
-              color={COLOR_AQUAMARINE}
-              emissive={COLOR_AQUAMARINE}
+              color={COLOR_OCEAN_BLUE}
+              emissive={COLOR_OCEAN_BLUE}
               emissiveIntensity={0.8}
             />
           </mesh>
@@ -177,13 +177,13 @@ const Node3D: React.FC<Node3DProps> = ({
           <mesh castShadow>
             <boxGeometry args={[1.0, 0.8, 1.0]} />
             <meshStandardMaterial
-              color={isAlert ? COLOR_YELLOW : COLOR_TEAL}
+              color={isAlert ? COLOR_YELLOW : COLOR_PALE_TEAL}
               roughness={0.4}
             />
           </mesh>
           <mesh position={[0, 0.65, 0]} rotation={[0, Math.PI / 4, 0]}>
             <coneGeometry args={[0.9, 0.55, 4]} />
-            <meshStandardMaterial color="#16383B" />
+            <meshStandardMaterial color="#1E3B57" />
           </mesh>
         </group>
       ) : (
@@ -204,7 +204,7 @@ const Node3D: React.FC<Node3DProps> = ({
             <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
               <torusGeometry args={[0.62, 0.05, 12, 32]} />
               <meshBasicMaterial
-                color={isAlert ? COLOR_YELLOW : COLOR_AQUAMARINE}
+                color={isAlert ? COLOR_YELLOW : COLOR_OCEAN_BLUE}
                 transparent
                 opacity={0.85}
               />
@@ -222,26 +222,26 @@ const Node3D: React.FC<Node3DProps> = ({
           zIndexRange={[100, 0]}
         >
           <div
-            className={`px-2 py-0.5 rounded flex items-center gap-1.5 font-mono text-[11px] font-bold shadow-lg transition-all border whitespace-nowrap pointer-events-none ${
+            className={`px-2 py-0.5 rounded flex items-center gap-1.5 font-mono text-[11px] font-bold shadow-xl transition-all border whitespace-nowrap pointer-events-none ${
               isAlert
                 ? 'bg-[#1D1705] text-[#FDF4AF] border-[#FDF4AF] ring-2 ring-[#FDF4AF]/30 animate-pulse'
                 : node.type === 'reservoir'
-                ? 'bg-[#061A19] text-[#A5E9DD] border-[#34908B]'
+                ? 'bg-[#162C42] text-[#F2EFE7] border-[#66A3BF]'
                 : node.type === 'zone'
-                ? 'bg-[#061719] text-[#6FBEB2] border-[#6FBEB2]/60'
+                ? 'bg-[#162C42] text-[#C8DFDB] border-[#66A3BF]/60'
                 : node.has_sensor
-                ? 'bg-[#09151C] text-[#A5E9DD] border-[#A5E9DD]/60'
-                : 'bg-[#080E18]/90 text-[#7E9EB0] border-[#1C363D]'
+                ? 'bg-[#0F1E2E] text-[#66A3BF] border-[#66A3BF]'
+                : 'bg-[#0F1E2E]/95 text-[#C8DFDB] border-[#1E3B57]'
             }`}
           >
             <span>{node.id}</span>
             {reading && (
-              <span className="text-[10px] opacity-90">
+              <span className="text-[10px] text-[#F2EFE7]">
                 {Math.round(reading.value)} µS
               </span>
             )}
             {node.type === 'zone' && (
-              <span className="text-[10px] text-[#A5E9DD]">
+              <span className="text-[10px] text-[#C8DFDB]">
                 {node.households} hh
               </span>
             )}
@@ -252,8 +252,8 @@ const Node3D: React.FC<Node3DProps> = ({
       {/* 3. Candidate Probability Floating Beacon */}
       {candidate && (
         <Html position={[0, 2.2, 0]} center distanceFactor={16}>
-          <div className="px-2 py-1 rounded bg-[#07191C] border-2 border-[#A5E9DD] text-[#A5E9DD] font-mono text-[11px] font-black shadow-2xl flex items-center gap-1 whitespace-nowrap pointer-events-none">
-            <span className="w-2 h-2 rounded-full bg-[#A5E9DD] animate-ping" />
+          <div className="px-2.5 py-1 rounded-lg bg-[#162C42] border-2 border-[#66A3BF] text-[#F2EFE7] font-mono text-[11px] font-black shadow-2xl flex items-center gap-1.5 whitespace-nowrap pointer-events-none">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#66A3BF] animate-ping" />
             <span>{(candidate.probability * 100).toFixed(1)}% probable</span>
           </div>
         </Html>
@@ -367,7 +367,7 @@ const Edge3D: React.FC<Edge3DProps> = ({ startPos, endPos, isAlarmed, isInSpread
     ? COLOR_YELLOW
     : isInSpread
     ? COLOR_CRIMSON
-    : COLOR_AQUAMARINE;
+    : COLOR_OCEAN_BLUE;
 
   return (
     <group>
@@ -490,10 +490,10 @@ export const NetworkScene3D: React.FC = () => {
       <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
         <button
           onClick={() => setShowLabels(prev => !prev)}
-          className={`flex items-center gap-1.5 px-3 py-1 rounded bg-[#09141D]/90 text-xs font-medium border transition-colors shadow-lg backdrop-blur-md ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all shadow-xl backdrop-blur-md ${
             showLabels
-              ? 'text-[#A5E9DD] border-[#34908B]/70 hover:bg-[#122A30]'
-              : 'text-[#7E9EB0] border-[#1E474F] hover:bg-[#122A30]'
+              ? 'bg-[#162C42] text-[#F2EFE7] border-[#66A3BF]'
+              : 'bg-[#0F1E2E]/90 text-[#C8DFDB] border-[#162C42] hover:bg-[#1E3B57]'
           }`}
           title="Toggle Billboard Labels"
         >
@@ -503,7 +503,7 @@ export const NetworkScene3D: React.FC = () => {
 
         <button
           onClick={resetView}
-          className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#09141D]/90 hover:bg-[#122A30] text-[#A5E9DD] border border-[#34908B]/70 text-xs font-medium transition-colors shadow-lg backdrop-blur-md"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#162C42] hover:bg-[#1E3B57] text-[#F2EFE7] border border-[#66A3BF]/50 text-xs font-semibold transition-all shadow-xl backdrop-blur-md"
           title="Reset Camera View"
         >
           <RotateCcw size={13} />
@@ -537,7 +537,7 @@ export const NetworkScene3D: React.FC = () => {
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
         />
-        <pointLight position={[-15, 20, -15]} intensity={0.8} color={COLOR_AQUAMARINE} />
+        <pointLight position={[-15, 20, -15]} intensity={0.8} color={COLOR_OCEAN_BLUE} />
         <fog attach="fog" args={[COLOR_BG, 45, 95]} />
 
         {/* Orbit Controls */}

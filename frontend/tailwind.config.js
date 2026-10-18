@@ -9,32 +9,32 @@ export default {
     extend: {
       colors: {
         brand: {
-          blue: '#34908B',   // Deep marine cyan
-          sky: '#A5E9DD',    // Aquamarine / Flowing water
-          olive: '#6FBEB2',  // Medium teal
-          sage: '#FDF4AF',   // Solar yellow
+          blue: '#3368A0',   // Deep Blue (Band 1)
+          sky: '#66A3BF',    // Ocean Blue (Band 2)
+          olive: '#C8DFDB',  // Pale Mint (Band 3)
+          sage: '#F2EFE7',   // Warm Sand (Band 4)
           yellow: '#FDF4AF',
         },
         status: {
           warning: '#FDF4AF',
           critical: '#FF5C5C',
-          safe: '#A5E9DD',
+          safe: '#66A3BF',
         },
         dark: {
-          bg: '#080E18',
-          panel: '#0D1626',
-          raised: '#14223B',
-          border: 'rgba(111, 190, 178, 0.25)',
-          text: '#E8F8F5',
-          muted: '#7E9EB0',
+          bg: '#0F1E2E',
+          panel: '#162C42',
+          raised: '#1E3B57',
+          border: 'rgba(102, 163, 191, 0.3)',
+          text: '#F2EFE7',
+          muted: '#C8DFDB',
         },
         light: {
-          bg: '#F2FAF8',
+          bg: '#F2EFE7',
           panel: '#FFFFFF',
-          raised: '#E3F4F1',
-          border: 'rgba(52, 144, 139, 0.22)',
-          text: '#0C2022',
-          muted: '#426868',
+          raised: '#C8DFDB',
+          border: 'rgba(51, 104, 160, 0.25)',
+          text: '#0F1E2E',
+          muted: '#3368A0',
         }
       },
       fontFamily: {
