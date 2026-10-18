@@ -121,7 +121,7 @@ def get_meta() -> MetaResponse:
 
 @app.get("/api/ai/status", response_model=AiStatusResponse)
 async def get_ai_status() -> AiStatusResponse:
-    """Check Ollama reachability and Gemma 3 1B availability."""
+    """Check Ollama reachability and open-weight model availability."""
     res = await check_ollama_status()
     return AiStatusResponse(**res)
 
@@ -375,7 +375,7 @@ def reveal_investigation() -> RevealResponse:
 
 @app.post("/api/ai/report", response_model=AiReportResponse)
 async def create_ai_report(payload: Optional[AiReportRequest] = None) -> AiReportResponse:
-    """Generate structured incident report using local Gemma 3 1B or deterministic fallback."""
+    """Generate structured incident report using local open-weight model (Gemma) or deterministic fallback."""
     sess = get_or_create_session("default")
     obs = sess.get_public_observations()
 

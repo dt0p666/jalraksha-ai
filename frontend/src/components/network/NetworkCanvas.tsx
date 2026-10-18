@@ -125,8 +125,8 @@ export const NetworkCanvas: React.FC = () => {
         onNodeClick={onNodeClick}
         onPaneClick={onPaneClick}
         fitView
-        fitViewOptions={{ padding: 0.15 }}
-        minZoom={0.4}
+        fitViewOptions={{ padding: 0.28 }}
+        minZoom={0.35}
         maxZoom={1.8}
         proOptions={{ hideAttribution: true }}
       >

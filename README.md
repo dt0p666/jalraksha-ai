@@ -15,13 +15,13 @@ A hidden contamination event begins. Downstream sensors start reading abnormal. 
 
 | Feature | Detail |
 |---|---|
-| **Live pipe-network map** | 42-node directed graph (2 reservoirs, 32 junctions, 8 supply zones). Pipes animate while water flows. Node colours and ring styles reflect contamination state. |
+| **Live pipe-network map & 3D view** | 42-node directed graph (2 reservoirs, 32 junctions, 8 supply zones) in both 2D schematic and interactive 3D WebGL (Three.js/@react-three/fiber). Pipes animate with live flow. |
 | **Hidden contamination source** | A randomly chosen source node is kept strictly server-side. No client code can ever read it. |
 | **Sensor model** | Gaussian-noise concentration readings calibrated from a real 1 991-row CPCB water-quality dataset (`water_dataX.csv`). |
 | **Bayesian inference engine** | Log-likelihood marginalized over an onset-time grid; log-sum-exp normalized posterior; Shannon entropy tracks confidence. |
 | **Random Forest cross-check** | 60 synthetic training scenarios, 20 trees. Provides a second opinion on the top candidate nodes. |
 | **Optimal sampling (OED)** | Expected Information Gain ranks candidate sample locations so each measurement does the most work. |
-| **Gemma 3 1B incident report** | Runs locally via Ollama. Strict prompt prevents the model from inventing measurements or safety verdicts. Honest fallback when Ollama is unavailable — clearly labelled, never called AI. |
+| **Gemma 4 incident report** | Synthesizes engineering reports locally via Ollama (`gemma4:e2b`). Strict prompts prevent inventing data or safety verdicts. Honest, clearly labeled fallback when offline. |
 | **Education layer** | Guided tour, glossary tooltips, interactive quiz, full dataset explorer with histograms. |
 
 ---
@@ -119,10 +119,10 @@ npm install
 npm run dev
 ```
 
-### 4 — Gemma 3 1B (optional, for AI incident reports)
+### 4 — Gemma 4 (optional, for AI incident reports)
 
 ```powershell
-ollama pull gemma3:1b
+ollama pull gemma4:e2b
 ollama serve          # runs on http://localhost:11434 by default
 ```
 

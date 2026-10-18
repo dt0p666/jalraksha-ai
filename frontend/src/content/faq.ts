@@ -45,7 +45,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'faq-what-ai-does-and-does-not-do',
     question: 'What does the local AI model do and not do?',
     answer:
-      'An open-weight model (Gemma 3 1B running locally via Ollama) writes the structured incident report. It translates mathematical probabilities and sensor readings into clear engineering summaries. It never invents numbers, never changes rankings, and never declares water safe or unsafe for human consumption. If Ollama is unavailable, an honest deterministic summary is produced instead.',
+      'An open-weight model (Gemma 4 running locally via Ollama) writes the structured incident report. It translates mathematical probabilities and sensor readings into clear engineering summaries. It never invents numbers, never changes rankings, and never declares water safe or unsafe for human consumption. If Ollama is unavailable, an honest deterministic summary is produced instead.',
     category: 'system',
   },
   {

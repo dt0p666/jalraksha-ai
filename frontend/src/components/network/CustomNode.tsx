@@ -54,21 +54,21 @@ export const CustomNode = memo(({ data }: { data: CustomNodeData }) => {
   } else if (hasReading) {
     if (isAlert) {
       borderColor = '#E8A33D';
-      bgColor = '#2A1E14';
+      bgColor = '#2C1F10'; // amber-dark, blue-shifted from brand dark
     } else {
       borderColor = '#76C0EC';
-      bgColor = '#14253D';
+      bgColor = '#152248'; // brand panel dark (matches --panel token)
     }
   } else {
     // Unmeasured junction
     borderColor = '#425B9A';
-    bgColor = '#141E3D';
+    bgColor = '#0E1733'; // brand bg dark
   }
 
   // Teacher View ground truth override
   if (isRevealed && isContaminatedInTeacherView) {
     borderColor = '#D9534F';
-    if (!isReservoir && !isZone) bgColor = '#3D1414';
+    if (!isReservoir && !isZone) bgColor = '#2E1012'; // red-dark, brand-dark shifted
   }
 
   return (

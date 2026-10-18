@@ -20,9 +20,9 @@ const SENSOR_COLORS: Record<string, string> = {
   'J-08': '#E8A33D',
   'J-11': '#D9534F',
   'J-15': '#425B9A',
-  'J-17': '#A370F7',
-  'J-24': '#38BDF8',
-  'J-26': '#34D399',
+  'J-17': '#597928',
+  'J-24': '#8FD3FA',
+  'J-26': '#5D7CC2',
 };
 
 export const SensorChart: React.FC = () => {
@@ -60,15 +60,15 @@ export const SensorChart: React.FC = () => {
   const activeSensors = Object.keys(SENSOR_COLORS);
 
   return (
-    <div className="p-4 bg-[#141E3D] border border-[#425B9A]/30 rounded-xl text-[#EAF1F8] shadow-sm space-y-3">
+    <div className="p-4 bg-[#152248] border border-[#425B9A]/30 rounded-xl text-[#EAF1F8] shadow-sm space-y-3">
       {/* Chart Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#425B9A]/30">
         <div>
           <h3 className="font-serif font-bold text-sm text-[#EAF1F8]">
-            Sensor Telemetry History
+            Sensor readings over time
           </h3>
           <span className="text-[11px] text-[#9FB0C9]">
-            Continuous electrical conductivity (umhos/cm) across 8 pipeline monitoring nodes
+            Sensors measure conductivity (µS/cm) across 8 pipeline monitoring points
           </span>
         </div>
 

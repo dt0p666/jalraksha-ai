@@ -8,6 +8,7 @@ import type {
   SamplingExecuteResponse,
   SimulationStateResponse,
   AiReportResponse,
+  AiStatusResponse,
 } from '../api/types';
 import type { ThemeMode } from '../styles/tokens';
 
@@ -24,6 +25,16 @@ interface AppContextType {
   // Theme
   theme: ThemeMode;
   toggleTheme: () => void;
+
+  // View Mode & Drawers
+  viewMode: '3d' | '2d';
+  setViewMode: (mode: '3d' | '2d') => void;
+  sensorDrawerOpen: boolean;
+  setSensorDrawerOpen: (open: boolean) => void;
+  toggleSensorDrawer: () => void;
+
+  // AI Status
+  aiStatus: AiStatusResponse | null;
 
   // Topology & Simulation
   network: NetworkTopologyResponse | null;
@@ -225,15 +236,37 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const endTour = () => setTourActive(false);
   const nextTourStep = () => setTourStep(s => s + 1);
 
+  // 3D View & Drawers
+  const [viewMode, setViewMode] = useState<'3d' | '2d'>(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      return (gl && !isMobile) ? '3d' : '2d';
+    } catch {
+      return '2d';
+    }
+  });
+  const [sensorDrawerOpen, setSensorDrawerOpen] = useState(false);
+  const toggleSensorDrawer = () => setSensorDrawerOpen(prev => !prev);
+  const [aiStatus, setAiStatus] = useState<AiStatusResponse | null>(null);
+
   // Load initial network and simulation state
   const fetchInitialData = useCallback(async () => {
     setIsLoadingNetwork(true);
     setBackendError(null);
     try {
-      const net = await api.getNetwork();
-      setNetwork(net);
-      const state = await api.getSimulationState();
-      setSimState(state);
+      const [net, state, ai] = await Promise.allSettled([
+        api.getNetwork(),
+        api.getSimulationState(),
+        api.getAiStatus(),
+      ]);
+      if (net.status === 'fulfilled') setNetwork(net.value);
+      if (state.status === 'fulfilled') {
+        setSimState(state.value);
+        if (state.value.alert_count > 0) setSensorDrawerOpen(true);
+      }
+      if (ai.status === 'fulfilled') setAiStatus(ai.value);
     } catch (err: any) {
       setBackendError(err.message || 'Cannot connect to backend server on http://127.0.0.1:8000');
     } finally {
@@ -270,6 +303,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       const updated = await api.advanceSimulation(steps);
       setSimState(updated);
+      if (updated.alert_count > 0) {
+        setSensorDrawerOpen(true);
+      }
     } catch (err: any) {
       setBackendError(err.message);
     }
@@ -290,6 +326,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         try {
           const updated = await api.advanceSimulation(1);
           setSimState(updated);
+          if (updated.alert_count > 0) {
+            setSensorDrawerOpen(true);
+          }
           if (updated.current_step >= updated.total_steps) {
             setIsPlaying(false);
           }
@@ -317,6 +356,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setRevealResult(null);
       setTeacherView(false);
       setAiReport(null);
+      setSensorDrawerOpen(false);
       const state = await api.getSimulationState();
       setSimState(state);
     } catch (err: any) {
@@ -402,6 +442,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       value={{
         theme,
         toggleTheme,
+        viewMode,
+        setViewMode,
+        sensorDrawerOpen,
+        setSensorDrawerOpen,
+        toggleSensorDrawer,
+        aiStatus,
         network,
         simState,
         isLoadingNetwork,

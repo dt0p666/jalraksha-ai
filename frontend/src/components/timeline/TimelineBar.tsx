@@ -81,9 +81,9 @@ export const TimelineBar: React.FC = () => {
         {/* Step Counter Display */}
         <div className="flex items-center gap-3">
           <div className="flex items-baseline gap-1 text-xs font-mono">
-            <span className="text-[#9FB0C9]">Timeline Step:</span>
+            <span className="text-[#9FB0C9]">Step</span>
             <span className="text-base font-bold text-[#76C0EC]">{currentStep}</span>
-            <span className="text-[#9FB0C9]">/ {totalSteps}</span>
+            <span className="text-[#9FB0C9]">of {totalSteps}</span>
           </div>
 
           <span

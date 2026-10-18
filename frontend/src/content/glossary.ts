@@ -14,9 +14,9 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   reservoir: {
     id: 'reservoir',
-    term: 'Reservoir',
-    shortDef: 'An elevated storage tank feeding clean water under gravity pressure.',
-    detailedDef: 'Primary bulk water sources elevated on natural hills or towers to maintain adequate distribution pressure throughout the village network.',
+    term: 'Water Tank (Reservoir)',
+    shortDef: 'Where the water starts: an elevated storage tank feeding clean water by gravity.',
+    detailedDef: 'Primary clean water source built high on natural hills to push water through the village network using natural gravity.',
   },
   sensor: {
     id: 'sensor',

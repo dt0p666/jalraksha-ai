@@ -32,7 +32,7 @@ CALIBRATED_CONTAMINATION_GAIN: float = 400.0
 
 # Ollama and AI Analyst settings
 OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "gemma3:1b")
+OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "gemma4:e2b")
 OLLAMA_TIMEOUT_SECONDS: float = 25.0
 
 # Instructor passcode for classroom settings (safe demo unlock)

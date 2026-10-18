@@ -12,10 +12,10 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #0D1630;
-  --color-panel: #141E3D;
-  --color-panel-raised: #1D2A52;
-  --color-border: rgba(66, 91, 154, 0.35);
+  --color-bg: #0E1733;
+  --color-panel: #152248;
+  --color-panel-raised: #1E2F62;
+  --color-border: rgba(66, 91, 154, 0.38);
   --color-text: #EAF1F8;
   --color-text-muted: #9FB0C9;
   --color-brand-blue: #425B9A;
@@ -27,12 +27,12 @@
 }
 
 html.light {
-  --color-bg: #F3F7FB;
+  --color-bg: #F3F6FA;
   --color-panel: #FFFFFF;
-  --color-panel-raised: #EBF2F9;
-  --color-border: rgba(66, 91, 154, 0.20);
-  --color-text: #14203F;
-  --color-text-muted: #5A6B85;
+  --color-panel-raised: #E8F0FA;
+  --color-border: rgba(66, 91, 154, 0.22);
+  --color-text: #121D38;
+  --color-text-muted: #485B7D;
 }
 
 body {

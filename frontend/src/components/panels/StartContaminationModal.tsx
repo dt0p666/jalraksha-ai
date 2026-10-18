@@ -47,7 +47,7 @@ export const StartContaminationModal: React.FC = () => {
     <Modal
       isOpen={startModalOpen}
       onClose={() => setStartModalOpen(false)}
-      title="Start Simulated Contamination Event"
+      title="Start a contamination"
       maxWidth="max-w-lg"
     >
       <form onSubmit={handleSubmit} className="space-y-4 text-xs text-[#EAF1F8]">

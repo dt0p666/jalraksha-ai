@@ -111,13 +111,13 @@ export const About: React.FC = () => {
         <div className="flex items-center gap-2">
           <Cpu size={20} className="text-[#76C0EC]" />
           <h2 className="text-xl font-serif font-bold text-[#EAF1F8]">
-            Open-Weight AI Incident Analyst (Gemma 3 1B)
+            Open-Weight AI Analyst (Gemma 4)
           </h2>
         </div>
 
         <div className="p-5 bg-[#141E3D] border border-[#425B9A]/30 rounded-xl space-y-2 text-xs sm:text-sm text-[#9FB0C9] leading-relaxed">
           <p>
-            Incident reports are synthesized locally by Google DeepMind&apos;s <strong>Gemma 3 1B</strong> running via Ollama.
+             Incident reports are synthesized locally by Google DeepMind&apos;s <strong>Gemma 4</strong> running via Ollama.
             The model receives structured JSON evidence (sensor readings, candidate rankings, path delay equations) and writes a human engineering synthesis.
           </p>
           <ul className="list-disc pl-5 space-y-1 text-xs">

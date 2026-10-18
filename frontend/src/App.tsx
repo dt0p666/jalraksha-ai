@@ -29,6 +29,7 @@ export const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/command-center" element={<CommandCenter />} />
+              <Route path="/investigate" element={<Navigate to="/command-center" replace />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/about" element={<About />} />

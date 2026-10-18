@@ -148,7 +148,7 @@ export const NodeInspector: React.FC = () => {
           className="w-full py-2 px-3 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white font-semibold text-xs border border-[#76C0EC]/50 flex items-center justify-center gap-1.5 transition-colors shadow-sm"
         >
           <Target size={14} />
-          <span>Collect field grab sample at {node.id}</span>
+          <span>Take a water sample at {node.id}</span>
         </button>
       )}
     </div>

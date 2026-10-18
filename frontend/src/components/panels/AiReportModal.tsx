@@ -38,7 +38,7 @@ export const AiReportModal: React.FC = () => {
                 Synthesizing Incident Evidence...
               </span>
               <span className="text-xs text-[#9FB0C9] mt-1 block">
-                Executing Gemma 3 1B locally via Ollama or generating verified rule-based summary
+                Executing open-weight Gemma model locally via Ollama or generating verified rule-based summary
               </span>
             </div>
           </div>

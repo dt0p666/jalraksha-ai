@@ -1,6 +1,6 @@
 """AI incident report generator and deterministic fallback for JALRAKSHAK AI.
 
-Interacts with local Ollama running Gemma 3 1B (gemma3:1b).
+Interacts with local Ollama running open-weight Gemma model (e.g. gemma4:e2b).
 Performs strict evidence synthesis, output verification, and honest rule-based fallback.
 """
 
@@ -15,14 +15,14 @@ from app.config import OLLAMA_BASE_URL, OLLAMA_MODEL, OLLAMA_TIMEOUT_SECONDS
 
 
 async def check_ollama_status() -> Dict[str, Any]:
-    """Check whether local Ollama is reachable and whether gemma3:1b is installed."""
+    """Check whether local Ollama is reachable and whether the configured model is installed."""
     try:
         async with httpx.AsyncClient(timeout=3.0) as client:
             resp = await client.get(f"{OLLAMA_BASE_URL}/api/tags")
             if resp.status_code == 200:
                 data = resp.json()
                 models = [m.get("name", "") for m in data.get("models", [])]
-                has_gemma = any("gemma3:1b" in m.lower() or "gemma" in m.lower() for m in models)
+                has_gemma = any(OLLAMA_MODEL.lower() in m.lower() or "gemma" in m.lower() for m in models)
                 return {
                     "ollama_reachable": True,
                     "model_available": has_gemma,
@@ -168,7 +168,7 @@ def verify_report_output(report_text: str, evidence: Dict[str, Any]) -> Tuple[bo
 async def generate_incident_report(
     evidence: Dict[str, Any],
 ) -> Dict[str, Any]:
-    """Generate incident report via Gemma 3 1B on Ollama, with fallback if unavailable."""
+    """Generate incident report via open-weight model on Ollama, with fallback if unavailable."""
     start_time = time.perf_counter()
 
     status = await check_ollama_status()
@@ -231,7 +231,7 @@ async def generate_incident_report(
                 return {
                     "report_markdown": content,
                     "generation_time_sec": elapsed,
-                    "model_used": f"gemma3:1b via Ollama (locally executed)",
+                    "model_used": f"{OLLAMA_MODEL} via Ollama (locally executed)",
                     "is_ai_generated": True,
                     "verified": verified,
                     "warnings": warnings,

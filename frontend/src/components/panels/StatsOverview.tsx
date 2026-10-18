@@ -63,7 +63,7 @@ export const StatsOverview: React.FC = () => {
           <span className="font-mono text-base font-bold text-[#EAF1F8] mt-1">
             {network?.total_nodes || 42}
           </span>
-          <span className="text-[10px] text-[#9FB0C9]">2 Res • 32 Junc • 8 Zones</span>
+          <span className="text-[10px] text-[#9FB0C9]">42 points: 2 tanks, 32 junctions, 8 villages</span>
         </div>
 
         <div className="p-2.5 bg-[#0D1630] rounded-lg border border-[#425B9A]/20 flex flex-col justify-between">
@@ -74,7 +74,7 @@ export const StatsOverview: React.FC = () => {
           <span className="font-mono text-base font-bold text-[#76C0EC] mt-1">
             {network?.sensors.length || 8} / 8
           </span>
-          <span className="text-[10px] text-[#9FB0C9]">Conductivity Telemetry</span>
+          <span className="text-[10px] text-[#9FB0C9]">Sensors measure conductivity</span>
         </div>
 
         <div className="p-2.5 bg-[#0D1630] rounded-lg border border-[#425B9A]/20 flex flex-col justify-between">
@@ -85,7 +85,7 @@ export const StatsOverview: React.FC = () => {
           <span className="font-mono text-base font-bold text-[#EAF1F8] mt-1">
             R1 & R2
           </span>
-          <span className="text-[10px] text-[#9FB0C9]">Gravity pressure head</span>
+          <span className="text-[10px] text-[#9FB0C9]">Where the water starts</span>
         </div>
 
         <div className="p-2.5 bg-[#0D1630] rounded-lg border border-[#425B9A]/20 flex flex-col justify-between">
@@ -96,7 +96,7 @@ export const StatsOverview: React.FC = () => {
           <span className={`font-mono text-base font-bold mt-1 ${alertCount > 0 ? 'text-[#D9534F]' : 'text-[#91AC67]'}`}>
             {alertCount}
           </span>
-          <span className="text-[10px] text-[#9FB0C9]">&gt; 230 umhos/cm threshold</span>
+          <span className="text-[10px] text-[#9FB0C9]">Alert above 230 µS/cm</span>
         </div>
       </div>
 
@@ -104,10 +104,10 @@ export const StatsOverview: React.FC = () => {
       <div className="mt-1 pt-2 border-t border-[#425B9A]/20 flex items-center justify-between text-xs">
         <div className="flex items-center gap-1.5 text-[#9FB0C9]">
           <Shuffle size={13} />
-          <span>Demo Seed:</span>
+          <span>Replay code:</span>
           <span className="font-mono text-[#76C0EC] font-semibold">{activeSeed}</span>
         </div>
-        <CopyButton textToCopy={demoSeedUrl} label="Share Seed" />
+        <CopyButton textToCopy={demoSeedUrl} label="Copy replay link" />
       </div>
     </div>
   );

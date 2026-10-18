@@ -7,22 +7,21 @@ export const FloatingContactButton: React.FC = () => {
   const { setContactModalOpen } = useApp();
   const location = useLocation();
 
-  // On command-center page, place slightly higher or compact so it doesn't overlap timeline
-  const isCommandCenter = location.pathname === '/command-center';
+  const isCommandCenter = location.pathname === '/command-center' || location.pathname === '/investigate';
 
   return (
     <button
       onClick={() => setContactModalOpen(true)}
-      className={`fixed z-30 flex items-center gap-2 rounded-full bg-[#425B9A] text-white border border-[#76C0EC]/50 shadow-xl hover:bg-[#4f6cb6] transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#76C0EC] no-print ${
+      className={`fixed z-30 flex items-center justify-center rounded-full bg-[#425B9A] text-white border border-[#76C0EC]/50 shadow-xl hover:bg-[#4f6cb6] transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#76C0EC] no-print ${
         isCommandCenter
-          ? 'bottom-20 right-4 sm:bottom-20 sm:right-6 px-3 py-2 text-xs'
-          : 'bottom-6 right-6 px-4 py-2.5 text-sm'
+          ? 'bottom-4 right-4 p-2 sm:p-2.5'
+          : 'bottom-6 right-6 px-3.5 py-2 text-xs gap-1.5'
       }`}
       aria-label="Open contact and feedback form"
-      title="Contact engineering team"
+      title="Contact / Feedback"
     >
       <MessageSquare size={16} />
-      <span className="hidden sm:inline font-medium">Contact / Feedback</span>
+      {!isCommandCenter && <span className="hidden sm:inline font-medium">Contact</span>}
     </button>
   );
 };

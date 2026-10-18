@@ -256,11 +256,11 @@ export const InvestigationPanel: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <span className="font-semibold text-xs text-[#76C0EC] uppercase tracking-wider">
-              Field Grab Sampling
+              Take a water sample
             </span>
             <ExplainButton
-              title="Optimal Grab Sampling"
-              explanation="Calculates Expected Information Gain for every unmonitored node to bisect top competing hypotheses with the fewest physical field samples."
+              title="Field sampling"
+              explanation="Calculates Expected Information Gain for every unmonitored node to resolve the top competing source hypotheses with the fewest physical samples."
               contextData={{
                 'Remaining Budget': `${budgetRemaining} samples`,
                 'Recommended Target': samplingRec?.recommended_node?.node_id || 'None calculated yet',
@@ -268,7 +268,7 @@ export const InvestigationPanel: React.FC = () => {
             />
           </div>
           <span className="font-mono text-xs text-[#9FB0C9]">
-            Budget: <strong className="text-[#EAF1F8]">{budgetRemaining}</strong> left
+            <strong className="text-[#EAF1F8]">{budgetRemaining}</strong> samples left
           </span>
         </div>
 
@@ -326,7 +326,7 @@ export const InvestigationPanel: React.FC = () => {
           className="w-full py-2 px-3 rounded-lg bg-[#1D2A52] hover:bg-[#425B9A]/40 text-[#76C0EC] font-semibold text-xs border border-[#76C0EC]/40 flex items-center justify-center gap-1.5 transition-colors shadow-sm"
         >
           <FileText size={14} />
-          <span>Incident report (Gemma 3 1B)</span>
+          <span>Write incident report</span>
         </button>
 
         {!isRevealed ? (
@@ -336,7 +336,7 @@ export const InvestigationPanel: React.FC = () => {
             className="w-full py-2 px-3 rounded-lg bg-[#0D1630] hover:bg-[#D9534F]/20 text-[#EAF1F8] hover:text-[#D9534F] font-semibold text-xs border border-[#425B9A]/40 hover:border-[#D9534F]/50 flex items-center justify-center gap-1.5 transition-colors"
           >
             <Eye size={14} />
-            <span>Reveal true source & evaluate</span>
+            <span>Reveal the real source</span>
           </button>
         ) : revealResult ? (
           /* Reveal Evaluation Result Card */
