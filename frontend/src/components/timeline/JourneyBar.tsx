@@ -112,7 +112,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={() => setStartModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#38D9E6]/30 transition-all hover:scale-[1.02] active:scale-100"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#24B1B1]/30 transition-all hover:scale-[1.02] active:scale-100"
         >
           <Play size={14} fill="currentColor" />
           <span>Step 1: Start Simulation</span>
@@ -124,7 +124,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={() => advanceSimulation(5)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#38D9E6]/30 transition-all hover:scale-[1.02] active:scale-100"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#24B1B1]/30 transition-all hover:scale-[1.02] active:scale-100"
         >
           <SkipForward size={14} />
           <span>Step 2: Advance +5 Steps</span>
@@ -137,7 +137,7 @@ export const JourneyBar: React.FC = () => {
         <button
           onClick={runInvestigation}
           disabled={isInvestigating}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#38D9E6]/30 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#24B1B1]/30 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-50"
         >
           <Sparkles size={14} />
           <span>{isInvestigating ? 'Localizing...' : 'Step 3: Run Inversion'}</span>
@@ -149,7 +149,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={findBestSample}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#64F4C4] hover:bg-[#64F4C4]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#64F4C4]/30 transition-all hover:scale-[1.02] active:scale-100"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#D9D28B] hover:bg-[#D9D28B]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#D9D28B]/30 transition-all hover:scale-[1.02] active:scale-100"
         >
           <Search size={14} />
           <span>Step 4: Find Optimal Sample</span>
@@ -162,7 +162,7 @@ export const JourneyBar: React.FC = () => {
         <button
           onClick={generateReport}
           disabled={aiReportLoading}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#38D9E6]/30 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#24B1B1]/30 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-50"
         >
           <FileText size={14} />
           <span>{aiReportLoading ? 'Synthesizing...' : 'Step 5: Generate Briefing'}</span>
@@ -182,7 +182,7 @@ export const JourneyBar: React.FC = () => {
               onConfirm: revealSource,
             });
           }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#FFB547] hover:bg-[#FFB547]/90 text-[#071018] text-xs font-bold shadow-lg shadow-[#FFB547]/30 transition-all hover:scale-[1.02] active:scale-100"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#D9D28B] hover:bg-[#D9D28B]/90 text-[#086288] text-xs font-bold shadow-lg shadow-[#D9D28B]/30 transition-all hover:scale-[1.02] active:scale-100"
         >
           <Eye size={14} />
           <span>Step 6: Reveal Truth</span>
@@ -201,16 +201,16 @@ export const JourneyBar: React.FC = () => {
             onConfirm: resetSimulation,
           });
         }}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#132535] hover:bg-[#38D9E6]/20 text-[#EAF4F7] text-xs font-bold border border-[#38D9E6]/30 shadow-lg transition-all"
+        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#007979] hover:bg-[#24B1B1]/20 text-[#95BDD7] text-xs font-bold border border-[#24B1B1]/30 shadow-lg transition-all"
       >
-        <RotateCcw size={14} className="text-[#38D9E6]" />
+        <RotateCcw size={14} className="text-[#24B1B1]" />
         <span>New Investigation</span>
       </button>
     );
   };
 
   return (
-    <div className="w-full bg-[#0D1B26]/95 backdrop-blur-md border border-[#38D9E6]/25 rounded-xl p-3 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-3 select-none">
+    <div className="w-full bg-[#007979]/95 backdrop-blur-md border border-[#24B1B1]/25 rounded-xl p-3 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-3 select-none">
       {/* 6-Step Journey Interactive Stepper */}
       <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full pb-1 lg:pb-0">
         {steps.map((step, idx) => {
@@ -224,19 +224,19 @@ export const JourneyBar: React.FC = () => {
                 title={step.hint}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   isCurrent
-                    ? 'bg-[#38D9E6]/20 text-[#38D9E6] border border-[#38D9E6] shadow-[0_0_12px_rgba(56,217,230,0.3)] scale-105'
+                    ? 'bg-[#24B1B1]/20 text-[#24B1B1] border border-[#24B1B1] shadow-[0_0_12px_rgba(36,177,177,0.3)] scale-105'
                     : isDone
-                    ? 'bg-[#132535] text-[#64F4C4] hover:bg-[#132535]/80 border border-[#64F4C4]/30'
-                    : 'bg-[#071018] text-[#8EA5B4] hover:bg-[#132535] hover:text-[#EAF4F7] border border-[#38D9E6]/15'
+                    ? 'bg-[#007979] text-[#D9D28B] hover:bg-[#007979]/80 border border-[#D9D28B]/30'
+                    : 'bg-[#086288] text-[#95BDD7] hover:bg-[#007979] hover:text-[#95BDD7] border border-[#24B1B1]/15'
                 }`}
               >
                 <div
                   className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold ${
                     isCurrent
-                      ? 'bg-[#38D9E6] text-[#071018]'
+                      ? 'bg-[#24B1B1] text-[#086288]'
                       : isDone
-                      ? 'bg-[#64F4C4] text-[#071018]'
-                      : 'bg-[#132535] text-[#8EA5B4]'
+                      ? 'bg-[#D9D28B] text-[#086288]'
+                      : 'bg-[#007979] text-[#95BDD7]'
                   }`}
                 >
                   {isDone ? <Check size={11} strokeWidth={3} /> : step.num}
@@ -248,7 +248,7 @@ export const JourneyBar: React.FC = () => {
                 <ChevronRight
                   size={12}
                   className={`shrink-0 ${
-                    step.num < activeStep ? 'text-[#64F4C4]' : 'text-[#8EA5B4]/30'
+                    step.num < activeStep ? 'text-[#D9D28B]' : 'text-[#95BDD7]/30'
                   }`}
                 />
               )}
@@ -268,8 +268,8 @@ export const JourneyBar: React.FC = () => {
             onClick={togglePlay}
             className={`p-2.5 rounded-lg border transition-all ${
               isPlaying
-                ? 'bg-[#FFB547] text-[#071018] border-[#FFB547] shadow-lg'
-                : 'bg-[#071018] text-[#EAF4F7] border-[#38D9E6]/30 hover:bg-[#132535]'
+                ? 'bg-[#D9D28B] text-[#086288] border-[#D9D28B] shadow-lg'
+                : 'bg-[#086288] text-[#95BDD7] border-[#24B1B1]/30 hover:bg-[#007979]'
             }`}
             title={isPlaying ? 'Pause simulation (Space)' : 'Play continuous simulation flow (Space)'}
             aria-label={isPlaying ? 'Pause' : 'Play'}
@@ -282,7 +282,7 @@ export const JourneyBar: React.FC = () => {
         {isStarted && !isRevealed && (
           <button
             onClick={stepForward}
-            className="p-2.5 rounded-lg bg-[#071018] text-[#EAF4F7] border border-[#38D9E6]/30 hover:bg-[#132535] transition-all"
+            className="p-2.5 rounded-lg bg-[#086288] text-[#95BDD7] border border-[#24B1B1]/30 hover:bg-[#007979] transition-all"
             title="Advance 1 step"
             aria-label="Advance 1 step"
           >
@@ -296,8 +296,8 @@ export const JourneyBar: React.FC = () => {
             onClick={() => setMoreOpen(prev => !prev)}
             className={`flex items-center gap-1 px-3 py-2.5 rounded-lg border text-xs font-semibold transition-all ${
               moreOpen
-                ? 'bg-[#38D9E6]/20 text-[#38D9E6] border-[#38D9E6]'
-                : 'bg-[#071018] text-[#8EA5B4] border-[#38D9E6]/30 hover:bg-[#132535]'
+                ? 'bg-[#24B1B1]/20 text-[#24B1B1] border-[#24B1B1]'
+                : 'bg-[#086288] text-[#95BDD7] border-[#24B1B1]/30 hover:bg-[#007979]'
             }`}
             title="More controls"
             aria-expanded={moreOpen}
@@ -308,8 +308,8 @@ export const JourneyBar: React.FC = () => {
 
           {/* More Controls Popover */}
           {moreOpen && (
-            <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-[#071018] border border-[#38D9E6]/40 rounded-xl shadow-2xl z-50 text-xs space-y-2 animate-fadeIn">
-              <div className="text-[11px] font-mono uppercase text-[#38D9E6] pb-1 border-b border-[#38D9E6]/20">
+            <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-[#086288] border border-[#24B1B1]/40 rounded-xl shadow-2xl z-50 text-xs space-y-2 animate-fadeIn">
+              <div className="text-[11px] font-mono uppercase text-[#24B1B1] pb-1 border-b border-[#24B1B1]/20">
                 Advanced Controls
               </div>
 
@@ -319,13 +319,13 @@ export const JourneyBar: React.FC = () => {
                   toggleSensorDrawer();
                   setMoreOpen(false);
                 }}
-                className="w-full flex items-center justify-between p-2 rounded-lg bg-[#132535] hover:bg-[#38D9E6]/20 text-[#EAF4F7] transition-colors"
+                className="w-full flex items-center justify-between p-2 rounded-lg bg-[#007979] hover:bg-[#24B1B1]/20 text-[#95BDD7] transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <Activity size={13} className="text-[#38D9E6]" />
+                  <Activity size={13} className="text-[#24B1B1]" />
                   <span>Telemetry Drawer</span>
                 </div>
-                <span className="font-mono text-[10px] text-[#38D9E6]">
+                <span className="font-mono text-[10px] text-[#24B1B1]">
                   {sensorDrawerOpen ? 'OPEN' : 'CLOSED'}
                 </span>
               </button>
@@ -335,13 +335,13 @@ export const JourneyBar: React.FC = () => {
                 onClick={() => {
                   setTeacherView(!teacherView);
                 }}
-                className="w-full flex items-center justify-between p-2 rounded-lg bg-[#132535] hover:bg-[#38D9E6]/20 text-[#EAF4F7] transition-colors"
+                className="w-full flex items-center justify-between p-2 rounded-lg bg-[#007979] hover:bg-[#24B1B1]/20 text-[#95BDD7] transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <Eye size={13} className="text-[#64F4C4]" />
+                  <Eye size={13} className="text-[#D9D28B]" />
                   <span>Teacher View (Plume)</span>
                 </div>
-                <span className="font-mono text-[10px] text-[#64F4C4]">
+                <span className="font-mono text-[10px] text-[#D9D28B]">
                   {teacherView ? 'ON' : 'OFF'}
                 </span>
               </button>
@@ -359,7 +359,7 @@ export const JourneyBar: React.FC = () => {
                     onConfirm: resetSimulation,
                   });
                 }}
-                className="w-full flex items-center gap-2 p-2 rounded-lg bg-[#FF5E66]/20 hover:bg-[#FF5E66]/30 text-[#FF5E66] font-semibold transition-colors"
+                className="w-full flex items-center gap-2 p-2 rounded-lg bg-[#D9D28B]/20 hover:bg-[#D9D28B]/30 text-[#D9D28B] font-semibold transition-colors"
               >
                 <RotateCcw size={13} />
                 <span>Reset simulation</span>

@@ -48,7 +48,7 @@ export const SiteSearchModal: React.FC = () => {
   const indexItems: SearchItem[] = useMemo(() => {
     const items: SearchItem[] = [
       // Pages
-      { id: 'page-home', type: 'Page', title: 'Overview', description: 'Interactive entry, flow mechanics, and digital twin overview', route: '/' },
+      { id: 'page-home', type: 'Page', title: 'Overview', description: 'Interactive entry, flow mechanics, and infrastructure overview', route: '/' },
       { id: 'page-cc', type: 'Page', title: 'Command Center', description: 'Full-viewport investigation interface, Bayesian source ranking, and grab sampling', route: '/command-center' },
       { id: 'page-network', type: 'Page', title: 'Network Explorer', description: 'Interactive graph topology, node types, and Hazen-Williams parameters', route: '/network' },
       { id: 'page-simulation', type: 'Page', title: 'Simulation Controls', description: 'Live advection steps, sensor curves, and plume progression', route: '/simulation' },
@@ -171,12 +171,12 @@ export const SiteSearchModal: React.FC = () => {
       aria-label="Site Search"
     >
       <div
-        className="w-full max-w-xl bg-[#0D1B26] border border-[#38D9E6]/35 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[75vh]"
+        className="w-full max-w-xl bg-[#007979] border border-[#24B1B1]/35 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[75vh]"
         onClick={e => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3 border-b border-[#38D9E6]/20 gap-3 bg-[#071018]">
-          <Search size={18} className="text-[#38D9E6]" />
+        <div className="flex items-center px-4 py-3 border-b border-[#24B1B1]/20 gap-3 bg-[#086288]">
+          <Search size={18} className="text-[#24B1B1]" />
           <input
             ref={inputRef}
             type="text"
@@ -187,22 +187,22 @@ export const SiteSearchModal: React.FC = () => {
             }}
             onKeyDown={handleKeyDown}
             placeholder="Search nodes, lessons, telemetry, briefings..."
-            className="w-full bg-transparent text-sm text-[#EAF4F7] placeholder-[#8EA5B4]/50 focus:outline-none"
+            className="w-full bg-transparent text-sm text-[#95BDD7] placeholder-[#95BDD7]/50 focus:outline-none"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="text-[#8EA5B4] hover:text-[#38D9E6]">
+            <button onClick={() => setQuery('')} className="text-[#95BDD7] hover:text-[#24B1B1]">
               <X size={16} />
             </button>
           )}
-          <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#132535] text-[#8EA5B4] rounded border border-[#38D9E6]/20">
+          <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-[#007979] text-[#95BDD7] rounded border border-[#24B1B1]/20">
             Esc
           </kbd>
         </div>
 
         {/* Results List */}
-        <div className="overflow-y-auto p-2 divide-y divide-[#38D9E6]/10">
+        <div className="overflow-y-auto p-2 divide-y divide-[#24B1B1]/10">
           {results.length === 0 ? (
-            <div className="py-8 text-center text-sm text-[#8EA5B4]">
+            <div className="py-8 text-center text-sm text-[#95BDD7]">
               No results found matching &quot;{query}&quot;. Try searching for &quot;J-08&quot;, &quot;entropy&quot;, or &quot;simulation&quot;.
             </div>
           ) : (
@@ -220,20 +220,20 @@ export const SiteSearchModal: React.FC = () => {
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`flex items-start gap-3 p-3 rounded-xl cursor-pointer transition-colors ${
-                    isSelected ? 'bg-[#132535] border border-[#38D9E6]/40' : 'hover:bg-[#132535]/50'
+                    isSelected ? 'bg-[#007979] border border-[#24B1B1]/40' : 'hover:bg-[#007979]/50'
                   }`}
                 >
-                  <div className={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isSelected ? 'text-[#38D9E6]' : 'text-[#8EA5B4]'}`}>
+                  <div className={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isSelected ? 'text-[#24B1B1]' : 'text-[#95BDD7]'}`}>
                     <Icon size={16} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-[#EAF4F7] truncate">{item.title}</span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#071018] text-[#38D9E6] border border-[#38D9E6]/25 uppercase">
+                      <span className="text-sm font-semibold text-[#95BDD7] truncate">{item.title}</span>
+                      <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#086288] text-[#24B1B1] border border-[#24B1B1]/25 uppercase">
                         {item.type}
                       </span>
                     </div>
-                    <p className="text-xs text-[#8EA5B4] truncate mt-0.5">{item.description}</p>
+                    <p className="text-xs text-[#95BDD7] truncate mt-0.5">{item.description}</p>
                   </div>
                 </div>
               );
@@ -242,13 +242,13 @@ export const SiteSearchModal: React.FC = () => {
         </div>
 
         {/* Search Footer hints */}
-        <div className="px-4 py-2 border-t border-[#38D9E6]/20 bg-[#071018] flex items-center justify-between text-[11px] text-[#8EA5B4]">
+        <div className="px-4 py-2 border-t border-[#24B1B1]/20 bg-[#086288] flex items-center justify-between text-[11px] text-[#95BDD7]">
           <div className="flex items-center gap-3 font-mono text-[10px]">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>Esc Close</span>
           </div>
-          <span className="font-mono text-[10px] text-[#38D9E6]">NASA Mission Control Engine</span>
+          <span className="font-mono text-[10px] text-[#24B1B1]">NASA Mission Control Engine</span>
         </div>
       </div>
     </div>

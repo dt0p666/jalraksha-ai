@@ -33,7 +33,7 @@ export const CustomEdge = memo(({
         id={id}
         path={edgePath}
         style={{
-          stroke: hovered ? '#38D9E6' : 'rgba(56, 217, 230, 0.3)',
+          stroke: hovered ? '#24B1B1' : 'rgba(36, 177, 177, 0.3)',
           strokeWidth: hovered ? 3.5 : 2,
           strokeOpacity: 0.8,
           transition: 'all 0.2s',
@@ -44,7 +44,7 @@ export const CustomEdge = memo(({
       <path
         d={edgePath}
         fill="none"
-        stroke="#38D9E6"
+        stroke="#24B1B1"
         strokeWidth={hovered ? 2.5 : 1.2}
         strokeDasharray="4 8"
         className="animate-[flow_2s_linear_infinite]"
@@ -76,10 +76,10 @@ export const CustomEdge = memo(({
               transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
               pointerEvents: 'none',
             }}
-            className="z-30 px-2 py-1 bg-[#0D1B26] text-[#EAF4F7] border border-[#38D9E6]/60 rounded-md shadow-xl text-[10px] font-mono whitespace-nowrap animate-fadeIn"
+            className="z-30 px-2 py-1 bg-[#007979] text-[#95BDD7] border border-[#24B1B1]/60 rounded-md shadow-xl text-[10px] font-mono whitespace-nowrap animate-fadeIn"
           >
-            <div className="font-bold text-[#38D9E6]">{edgeModel.id} ({edgeModel.from} → {edgeModel.to})</div>
-            <div className="text-[#8EA5B4]">Delay: {edgeModel.delay_steps} steps • Dilution: {edgeModel.dilution}x</div>
+            <div className="font-bold text-[#24B1B1]">{edgeModel.id} ({edgeModel.from} → {edgeModel.to})</div>
+            <div className="text-[#95BDD7]">Delay: {edgeModel.delay_steps} steps • Dilution: {edgeModel.dilution}x</div>
           </div>
         </EdgeLabelRenderer>
       )}

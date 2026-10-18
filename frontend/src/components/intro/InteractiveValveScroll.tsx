@@ -89,14 +89,14 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
   return (
     <div
       onWheel={handleWheel}
-      className="w-full max-w-md mx-auto p-6 rounded-2xl bg-[#34908B] border-2 border-[#6FBEB2] shadow-2xl flex flex-col items-center gap-4 text-[#FDF4AF] select-none hover:shadow-[0_0_40px_rgba(165,233,221,0.3)] transition-all"
+      className="w-full max-w-md mx-auto p-6 rounded-2xl bg-[#007979] border-2 border-[#78A4CB] shadow-2xl flex flex-col items-center gap-4 text-[#D9D28B] select-none hover:shadow-[0_0_40px_rgba(165,233,221,0.3)] transition-all"
     >
-      <div className="flex items-center justify-between w-full text-xs font-mono font-bold tracking-wider text-[#FDF4AF]">
+      <div className="flex items-center justify-between w-full text-xs font-mono font-bold tracking-wider text-[#D9D28B]">
         <span className="flex items-center gap-1.5">
-          <Sparkles size={13} className="text-[#A5E9DD]" />
+          <Sparkles size={13} className="text-[#24B1B1]" />
           <span>DRIVE HOMEPAGE WITH VALVE</span>
         </span>
-        <span className="px-2.5 py-0.5 rounded bg-[#6FBEB2] text-[#081416] font-bold">
+        <span className="px-2.5 py-0.5 rounded bg-[#78A4CB] text-[#086288] font-bold">
           {isOpen ? `PRESSURE: ${progressPercent}%` : 'VALVE CLOSED'}
         </span>
       </div>
@@ -104,7 +104,7 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
       {/* Interactive Draggable & Rotatable Wheel */}
       <div
         ref={wheelRef}
-        className="relative w-48 h-48 rounded-full border-4 border-[#FDF4AF] bg-[#6FBEB2] shadow-2xl flex items-center justify-center cursor-grab active:cursor-grabbing touch-none transition-transform hover:scale-105"
+        className="relative w-48 h-48 rounded-full border-4 border-[#D9D28B] bg-[#78A4CB] shadow-2xl flex items-center justify-center cursor-grab active:cursor-grabbing touch-none transition-transform hover:scale-105"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -126,31 +126,31 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
       >
         {/* Rotating Wheel Spoke Graphic */}
         <div
-          className="w-40 h-40 rounded-full border-4 border-[#34908B] bg-[#34908B] flex items-center justify-center transition-transform duration-75 relative shadow-inner"
+          className="w-40 h-40 rounded-full border-4 border-[#007979] bg-[#007979] flex items-center justify-center transition-transform duration-75 relative shadow-inner"
           style={{ transform: `rotate(${rotation}deg)` }}
         >
           {/* Wheel Spokes */}
-          <div className="absolute w-full h-2 bg-[#A5E9DD] shadow-sm" />
-          <div className="absolute h-full w-2 bg-[#A5E9DD] shadow-sm" />
-          <div className="absolute w-full h-1.5 bg-[#FDF4AF] rotate-45" />
-          <div className="absolute w-full h-1.5 bg-[#FDF4AF] -rotate-45" />
+          <div className="absolute w-full h-2 bg-[#24B1B1] shadow-sm" />
+          <div className="absolute h-full w-2 bg-[#24B1B1] shadow-sm" />
+          <div className="absolute w-full h-1.5 bg-[#D9D28B] rotate-45" />
+          <div className="absolute w-full h-1.5 bg-[#D9D28B] -rotate-45" />
 
           {/* Grip studs on outer rim */}
-          <div className="absolute top-1 w-3 h-3 rounded-full bg-[#FDF4AF]" />
-          <div className="absolute bottom-1 w-3 h-3 rounded-full bg-[#FDF4AF]" />
-          <div className="absolute left-1 w-3 h-3 rounded-full bg-[#FDF4AF]" />
-          <div className="absolute right-1 w-3 h-3 rounded-full bg-[#FDF4AF]" />
+          <div className="absolute top-1 w-3 h-3 rounded-full bg-[#D9D28B]" />
+          <div className="absolute bottom-1 w-3 h-3 rounded-full bg-[#D9D28B]" />
+          <div className="absolute left-1 w-3 h-3 rounded-full bg-[#D9D28B]" />
+          <div className="absolute right-1 w-3 h-3 rounded-full bg-[#D9D28B]" />
 
           {/* Center Hub */}
-          <div className="w-14 h-14 rounded-full bg-[#6FBEB2] border-2 border-[#FDF4AF] flex items-center justify-center text-[#081416] z-10 shadow-lg">
-            {isOpen ? <Check size={24} className="text-[#081416] stroke-[3]" /> : <RotateCw size={22} className="text-[#081416] stroke-[2.5]" />}
+          <div className="w-14 h-14 rounded-full bg-[#78A4CB] border-2 border-[#D9D28B] flex items-center justify-center text-[#086288] z-10 shadow-lg">
+            {isOpen ? <Check size={24} className="text-[#086288] stroke-[3]" /> : <RotateCw size={22} className="text-[#086288] stroke-[2.5]" />}
           </div>
         </div>
       </div>
 
       {/* Helper text explaining that the wheel drives the homepage */}
       <div className="text-center space-y-1.5 w-full">
-        <span className="font-serif font-bold text-sm text-[#FDF4AF] block">
+        <span className="font-serif font-bold text-sm text-[#D9D28B] block">
           {isOpen ? `Valve Open • Flowing at ${progressPercent}% Head` : 'Turn the Wheel to Open Water Flow & Drive Homepage'}
         </span>
         <p className="text-xs text-[#EAF7F5]/90 leading-tight">
@@ -158,9 +158,9 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
         </p>
 
         {/* Flow Progress Bar */}
-        <div className="w-full h-2 bg-[#081416] rounded-full mx-auto mt-2 overflow-hidden border border-[#A5E9DD]">
+        <div className="w-full h-2 bg-[#086288] rounded-full mx-auto mt-2 overflow-hidden border border-[#24B1B1]">
           <div
-            className="h-full bg-gradient-to-r from-[#6FBEB2] to-[#FDF4AF] transition-all duration-100"
+            className="h-full bg-gradient-to-r from-[#78A4CB] to-[#D9D28B] transition-all duration-100"
             style={{ width: `${Math.max(5, progressPercent)}%` }}
           />
         </div>
@@ -169,13 +169,13 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
         <div className="flex items-center justify-center gap-2 pt-2">
           <button
             onClick={() => handleTurnStep(false)}
-            className="px-3 py-1 rounded-md bg-[#081416] hover:bg-[#163238] text-[#A5E9DD] text-xs font-mono border border-[#6FBEB2]/40"
+            className="px-3 py-1 rounded-md bg-[#086288] hover:bg-[#163238] text-[#24B1B1] text-xs font-mono border border-[#78A4CB]/40"
           >
             ↺ Back
           </button>
           <button
             onClick={() => handleTurnStep(true)}
-            className="px-3 py-1 rounded-md bg-[#081416] hover:bg-[#163238] text-[#FDF4AF] text-xs font-mono border border-[#6FBEB2]/40 font-bold"
+            className="px-3 py-1 rounded-md bg-[#086288] hover:bg-[#163238] text-[#D9D28B] text-xs font-mono border border-[#78A4CB]/40 font-bold"
           >
             ↻ Spin Forward
           </button>
@@ -183,7 +183,7 @@ export const InteractiveValveScroll: React.FC<InteractiveValveScrollProps> = ({ 
             onClick={() => {
               applyRotation(720);
             }}
-            className="px-3 py-1 rounded-md bg-[#6FBEB2] hover:bg-[#A5E9DD] text-[#081416] text-xs font-mono font-bold"
+            className="px-3 py-1 rounded-md bg-[#78A4CB] hover:bg-[#24B1B1] text-[#086288] text-xs font-mono font-bold"
           >
             Full Flow ⚡
           </button>

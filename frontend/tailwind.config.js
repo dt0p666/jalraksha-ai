@@ -9,38 +9,31 @@ export default {
     extend: {
       colors: {
         brand: {
-          bg: '#071018',
-          secondary: '#0D1B26',
-          raised: '#132535',
-          cyan: '#38D9E6',
-          aquamarine: '#64F4C4',
-          warning: '#FFB547',
-          critical: '#FF5E66',
-          text: '#EAF4F7',
-          muted: '#8EA5B4',
+          dark: '#086288',
+          teal: '#007979',
+          active: '#24B1B1',
+          tech: '#78A4CB',
+          text: '#95BDD7',
+          alert: '#D9D28B',
+        },
+        // Semantic mappings strictly from the 6 approved colors
+        primary: {
+          DEFAULT: '#24B1B1',
+          dark: '#086288',
+          light: '#95BDD7',
+        },
+        surface: {
+          bg: '#086288',
+          panel: '#007979',
+          raised: '#086288',
+          border: 'rgba(120, 164, 203, 0.25)',
         },
         status: {
-          warning: '#FFB547',
-          critical: '#FF5E66',
-          safe: '#64F4C4',
-          cyan: '#38D9E6',
+          normal: '#24B1B1',
+          warning: '#D9D28B',
+          alert: '#D9D28B',
+          tech: '#78A4CB',
         },
-        dark: {
-          bg: '#071018',
-          panel: '#0D1B26',
-          raised: '#132535',
-          border: 'rgba(56, 217, 230, 0.2)',
-          text: '#EAF4F7',
-          muted: '#8EA5B4',
-        },
-        light: {
-          bg: '#F3F7FA',
-          panel: '#FFFFFF',
-          raised: '#E3EDF4',
-          border: 'rgba(13, 27, 38, 0.15)',
-          text: '#071018',
-          muted: '#4B6375',
-        }
       },
       fontFamily: {
         heading: ['Space Grotesk', 'sans-serif'],
@@ -53,13 +46,11 @@ export default {
       },
       keyframes: {
         flow: { '0%': { strokeDashoffset: '24' }, '100%': { strokeDashoffset: '0' } },
-        marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
         pulseRing: { '0%, 100%': { opacity: '0.3', transform: 'scale(1)' }, '50%': { opacity: '0.8', transform: 'scale(1.08)' } },
       },
       animation: {
         flow: 'flow 2s linear infinite',
-        marquee: 'marquee 25s linear infinite',
         fadeIn: 'fadeIn 0.2s ease-out',
         'pulse-ring': 'pulseRing 2s ease-in-out infinite',
       },

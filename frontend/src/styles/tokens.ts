@@ -1,60 +1,47 @@
 /**
- * JALRAKSHAK AI — New Mission Control & Digital Twin Visual Identity Tokens
+ * JALRAKSHAK AI — Strict Six-Colour Industrial Design System
  * 
- * Palette:
- * - Background: #071018
- * - Secondary background: #0D1B26
- * - Surface Raised: #132535
- * - Primary cyan: #38D9E6
- * - Aquamarine: #64F4C4
- * - Warning amber: #FFB547
- * - Contamination red: #FF5E66
- * - Primary text: #EAF4F7
- * - Secondary text: #8EA5B4
+ * The entire platform strictly uses ONLY these six approved colours:
+ * - #086288: Primary dark structural colour (major backgrounds, navigation, infrastructure depth)
+ * - #007979: Secondary dark teal (panels, structural surfaces, inactive infrastructure)
+ * - #24B1B1: Primary interactive accent (flowing water, selected pipelines, buttons, active controls, sensor highlights)
+ * - #78A4CB: Secondary technical accent (data visualization, charts, technical indicators)
+ * - #95BDD7: Primary readable foreground colour (headings, labels, icons, important interface text)
+ * - #D9D28B: Attention and investigation accent (contamination alerts, suspicious nodes, active investigations, sampling recommendations)
  */
 
+export const PALETTE = {
+  primaryDark: '#086288',
+  secondaryTeal: '#007979',
+  activeAccent: '#24B1B1',
+  techAccent: '#78A4CB',
+  foreground: '#95BDD7',
+  alertAccent: '#D9D28B',
+} as const;
+
 export const BRAND_COLORS = {
-  bg: '#071018',
-  secondaryBg: '#0D1B26',
-  raisedBg: '#132535',
-  cyan: '#38D9E6',
-  aquamarine: '#64F4C4',
-  warning: '#FFB547',
-  critical: '#FF5E66',
-  text: '#EAF4F7',
-  textSecondary: '#8EA5B4',
+  bg: '#086288',
+  panel: '#007979',
+  active: '#24B1B1',
+  tech: '#78A4CB',
+  text: '#95BDD7',
+  alert: '#D9D28B',
 } as const;
 
 export const THEME_TOKENS = {
   dark: {
-    bg: '#071018',
-    panel: '#0D1B26',
-    panelRaised: '#132535',
-    border: 'rgba(56, 217, 230, 0.2)',
-    borderFocus: '#38D9E6',
-    text: '#EAF4F7',
-    textMuted: '#8EA5B4',
-    flowHealthy: '#38D9E6',
-    reservoirFill: '#38D9E6',
-    zoneFill: '#0D1B26',
-    zoneBorder: '#132535',
-    warning: '#FFB547',
-    critical: '#FF5E66',
-  },
-  light: {
-    bg: '#F3F7FA',
-    panel: '#FFFFFF',
-    panelRaised: '#E3EDF4',
-    border: 'rgba(13, 27, 38, 0.15)',
-    borderFocus: '#0284C7',
-    text: '#071018',
-    textMuted: '#4B6375',
-    flowHealthy: '#0284C7',
-    reservoirFill: '#0284C7',
-    zoneFill: '#E3EDF4',
-    zoneBorder: '#B0C9D9',
-    warning: '#D97706',
-    critical: '#DC2626',
+    bg: '#086288',
+    panel: '#007979',
+    panelRaised: '#086288',
+    border: 'rgba(120, 164, 203, 0.25)',
+    borderFocus: '#24B1B1',
+    text: '#95BDD7',
+    textMuted: '#78A4CB',
+    flowHealthy: '#24B1B1',
+    flowWarning: '#D9D28B',
+    structural: '#007979',
+    equipmentTrim: '#78A4CB',
+    alert: '#D9D28B',
   },
 } as const;
 

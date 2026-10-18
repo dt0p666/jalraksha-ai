@@ -59,12 +59,12 @@ export const InvestigationStepCard: React.FC = () => {
   const modelBadge = aiStatus?.model_name || 'gemma4:e2b';
 
   return (
-    <div className="flex flex-col gap-3 p-4 bg-[#0D1B26] border border-[#38D9E6]/25 rounded-xl text-[#EAF4F7] shadow-2xl text-xs select-none">
+    <div className="flex flex-col gap-3 p-4 bg-[#007979] border border-[#24B1B1]/25 rounded-xl text-[#95BDD7] shadow-2xl text-xs select-none">
       {/* 1. Card Header: Step Status & Guidance */}
-      <div className="pb-3 border-b border-[#38D9E6]/15">
+      <div className="pb-3 border-b border-[#24B1B1]/15">
         <div className="flex items-center justify-between">
-          <span className="font-heading font-bold text-sm tracking-wide text-[#EAF4F7] flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#38D9E6]" />
+          <span className="font-heading font-bold text-sm tracking-wide text-[#95BDD7] flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#24B1B1]" />
             {isRevealed
               ? '6. Investigation Outcome'
               : hasInvestigated && sampleCount > 0
@@ -77,13 +77,13 @@ export const InvestigationStepCard: React.FC = () => {
               ? '2. Watching Network Flow'
               : '1. Ready to Start'}
           </span>
-          <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-[#071018] text-[#38D9E6] border border-[#38D9E6]/30 font-bold">
+          <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-[#086288] text-[#24B1B1] border border-[#24B1B1]/30 font-bold">
             Step {currentStepNum} / {simState?.total_steps || 60}
           </span>
         </div>
 
         {/* Plain-English step instructions */}
-        <p className="mt-1.5 text-[#8EA5B4] text-xs leading-relaxed">
+        <p className="mt-1.5 text-[#95BDD7] text-xs leading-relaxed">
           {isRevealed
             ? 'Ground truth revealed. Compare the Bayesian inferred source with the real network injection point.'
             : hasInvestigated && sampleCount > 0
@@ -100,44 +100,44 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 2. Inspected Node Quick Card (if user clicked any node on canvas/3D) */}
       {inspectedNode && (
-        <div className="p-3 bg-[#071018] border border-[#38D9E6]/40 rounded-lg space-y-2 animate-fadeIn">
+        <div className="p-3 bg-[#086288] border border-[#24B1B1]/40 rounded-lg space-y-2 animate-fadeIn">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-[#38D9E6]" />
-              <span className="font-mono font-bold text-sm text-[#38D9E6]">
+              <MapPin size={13} className="text-[#24B1B1]" />
+              <span className="font-mono font-bold text-sm text-[#24B1B1]">
                 {inspectedNode.id}
               </span>
-              <span className="text-[10px] text-[#8EA5B4] uppercase font-bold">
+              <span className="text-[10px] text-[#95BDD7] uppercase font-bold">
                 ({inspectedNode.type})
               </span>
             </div>
             <button
               onClick={() => setInspectedNodeId(null)}
-              className="text-[#8EA5B4] hover:text-[#EAF4F7] text-[11px]"
+              className="text-[#95BDD7] hover:text-[#95BDD7] text-[11px]"
             >
               Close
             </button>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-[11px] text-[#8EA5B4]">
+          <div className="grid grid-cols-2 gap-2 text-[11px] text-[#95BDD7]">
             <div>
-              Elevation: <strong className="text-[#EAF4F7]">{inspectedNode.elevation_m}m</strong>
+              Elevation: <strong className="text-[#95BDD7]">{inspectedNode.elevation_m}m</strong>
             </div>
             {inspectedNode.households !== undefined && inspectedNode.households > 0 && (
               <div>
-                Households: <strong className="text-[#64F4C4] font-bold">{inspectedNode.households}</strong>
+                Households: <strong className="text-[#D9D28B] font-bold">{inspectedNode.households}</strong>
               </div>
             )}
           </div>
 
           {inspectedReading && (
-            <div className="p-2 rounded bg-[#132535] text-[11px] font-mono flex items-center justify-between">
+            <div className="p-2 rounded bg-[#007979] text-[11px] font-mono flex items-center justify-between">
               <span>Sensor reading:</span>
               <span
                 className={
                   inspectedReading.is_alert
-                    ? 'text-[#FF5E66] font-bold'
-                    : 'text-[#38D9E6] font-semibold'
+                    ? 'text-[#D9D28B] font-bold'
+                    : 'text-[#24B1B1] font-semibold'
                 }
               >
                 {inspectedReading.value.toFixed(1)} µS/cm
@@ -146,13 +146,13 @@ export const InvestigationStepCard: React.FC = () => {
           )}
 
           {inspectedSample && (
-            <div className="p-2 rounded bg-[#132535] text-[11px] font-mono flex items-center justify-between">
+            <div className="p-2 rounded bg-[#007979] text-[11px] font-mono flex items-center justify-between">
               <span>Collected sample:</span>
               <span
                 className={
                   inspectedSample.is_alert
-                    ? 'text-[#FF5E66] font-bold'
-                    : 'text-[#64F4C4] font-semibold'
+                    ? 'text-[#D9D28B] font-bold'
+                    : 'text-[#D9D28B] font-semibold'
                 }
               >
                 {inspectedSample.reading.toFixed(1)} µS/cm
@@ -163,7 +163,7 @@ export const InvestigationStepCard: React.FC = () => {
           {canSampleInspected && (
             <button
               onClick={() => collectSample(inspectedNode.id)}
-              className="w-full py-1.5 rounded bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-md shadow-[#38D9E6]/20"
+              className="w-full py-1.5 rounded bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-md shadow-[#24B1B1]/20"
             >
               <Search size={13} />
               <span>Collect sample at {inspectedNode.id}</span>
@@ -177,37 +177,37 @@ export const InvestigationStepCard: React.FC = () => {
         <div className="space-y-2.5">
           {/* Top Plausible Candidate */}
           {top1 && (
-            <div className="p-3 rounded-lg bg-[#071018] border border-[#38D9E6]/30 space-y-2">
+            <div className="p-3 rounded-lg bg-[#086288] border border-[#24B1B1]/30 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] text-[#8EA5B4]">Most plausible source:</span>
-                <span className="font-mono text-[11px] text-[#FFB547] font-bold">
+                <span className="text-[11px] text-[#95BDD7]">Most plausible source:</span>
+                <span className="font-mono text-[11px] text-[#D9D28B] font-bold">
                   Confidence: {investigation.uncertainty_level}
                 </span>
               </div>
 
               <div className="flex items-baseline justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl font-mono font-bold text-[#EAF4F7]">
+                  <span className="text-xl font-mono font-bold text-[#95BDD7]">
                     {top1.node_id}
                   </span>
-                  <span className="text-[11px] text-[#8EA5B4]">
+                  <span className="text-[11px] text-[#95BDD7]">
                     ({network?.nodes.find(n => n.id === top1.node_id)?.label || 'Junction'})
                   </span>
                 </div>
-                <span className="text-lg font-mono font-bold text-[#38D9E6]">
+                <span className="text-lg font-mono font-bold text-[#24B1B1]">
                   {(top1.probability * 100).toFixed(1)}%
                 </span>
               </div>
 
               {/* Progress probability bar */}
-              <div className="w-full h-2 bg-[#132535] rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-[#007979] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-[#38D9E6] to-[#64F4C4] rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-[#24B1B1] to-[#D9D28B] rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, Math.max(5, top1.probability * 100))}%` }}
                 />
               </div>
 
-              <div className="text-[11px] text-[#8EA5B4] leading-relaxed pt-1">
+              <div className="text-[11px] text-[#95BDD7] leading-relaxed pt-1">
                 {top1.path_summary}
               </div>
             </div>
@@ -215,21 +215,21 @@ export const InvestigationStepCard: React.FC = () => {
 
           {/* Next Recommended Sample */}
           {samplingRec?.recommended_node && budgetRemaining > 0 && (
-            <div className="p-2.5 rounded-lg bg-[#132535] border border-[#64F4C4]/40 flex items-center justify-between gap-2 shadow-lg">
+            <div className="p-2.5 rounded-lg bg-[#007979] border border-[#D9D28B]/40 flex items-center justify-between gap-2 shadow-lg">
               <div>
-                <span className="text-[10px] text-[#64F4C4] font-bold uppercase block">
+                <span className="text-[10px] text-[#D9D28B] font-bold uppercase block">
                   Next Recommended Sample:
                 </span>
-                <span className="font-mono text-sm font-bold text-[#EAF4F7]">
+                <span className="font-mono text-sm font-bold text-[#95BDD7]">
                   {samplingRec.recommended_node.node_id}
                 </span>
-                <span className="text-[10px] text-[#8EA5B4] block">
+                <span className="text-[10px] text-[#95BDD7] block">
                   {samplingRec.recommended_node.zone_or_branch}
                 </span>
               </div>
               <button
                 onClick={() => samplingRec.recommended_node && collectSample(samplingRec.recommended_node.node_id)}
-                className="px-3 py-1.5 rounded-md bg-[#64F4C4] hover:bg-[#64F4C4]/90 text-[#071018] text-xs font-bold shadow-md transition-colors"
+                className="px-3 py-1.5 rounded-md bg-[#D9D28B] hover:bg-[#D9D28B]/90 text-[#086288] text-xs font-bold shadow-md transition-colors"
               >
                 Collect Sample
               </button>
@@ -240,16 +240,16 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 4. Ground Truth Revealed Outcome */}
       {revealResult && (
-        <div className="p-3 rounded-lg bg-[#071018] border border-[#38D9E6]/30 space-y-2">
+        <div className="p-3 rounded-lg bg-[#086288] border border-[#24B1B1]/30 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="font-heading font-bold text-xs text-[#38D9E6]">
+            <span className="font-heading font-bold text-xs text-[#24B1B1]">
               Diagnostic Accuracy
             </span>
             <span
               className={`px-2 py-0.5 rounded text-[11px] font-bold ${
                 revealResult.is_top1_correct
-                  ? 'bg-[#64F4C4]/20 text-[#64F4C4] border border-[#64F4C4]/40'
-                  : 'bg-[#FF5E66]/20 text-[#FF5E66] border border-[#FF5E66]/40'
+                  ? 'bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40'
+                  : 'bg-[#D9D28B]/20 text-[#D9D28B] border border-[#D9D28B]/40'
               }`}
             >
               {revealResult.is_top1_correct ? 'Source Identified (Top 1)' : 'Near Source'}
@@ -257,27 +257,27 @@ export const InvestigationStepCard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-[11px] pt-1">
-            <div className="p-2 rounded bg-[#132535]">
-              <span className="text-[#8EA5B4] block">Real source:</span>
-              <span className="font-mono font-bold text-base text-[#FF5E66]">
+            <div className="p-2 rounded bg-[#007979]">
+              <span className="text-[#95BDD7] block">Real source:</span>
+              <span className="font-mono font-bold text-base text-[#D9D28B]">
                 {revealResult.true_source}
               </span>
             </div>
-            <div className="p-2 rounded bg-[#132535]">
-              <span className="text-[#8EA5B4] block">Bayesian top pick:</span>
-              <span className="font-mono font-bold text-base text-[#38D9E6]">
+            <div className="p-2 rounded bg-[#007979]">
+              <span className="text-[#95BDD7] block">Bayesian top pick:</span>
+              <span className="font-mono font-bold text-base text-[#24B1B1]">
                 {revealResult.top1_candidate}
               </span>
             </div>
           </div>
 
-          <div className="text-[11px] text-[#8EA5B4]">
-            Error distance: <strong className="text-[#EAF4F7]">{revealResult.hop_error} pipe hops</strong> • Samples used: <strong className="text-[#EAF4F7]">{revealResult.samples_used}</strong>
+          <div className="text-[11px] text-[#95BDD7]">
+            Error distance: <strong className="text-[#95BDD7]">{revealResult.hop_error} pipe hops</strong> • Samples used: <strong className="text-[#95BDD7]">{revealResult.samples_used}</strong>
           </div>
 
           <button
             onClick={() => setTeacherView(!teacherView)}
-            className="w-full py-1.5 rounded bg-[#132535] hover:bg-[#38D9E6]/20 text-[#EAF4F7] text-xs font-semibold border border-[#38D9E6]/30 transition-colors"
+            className="w-full py-1.5 rounded bg-[#007979] hover:bg-[#24B1B1]/20 text-[#95BDD7] text-xs font-semibold border border-[#24B1B1]/30 transition-colors"
           >
             {teacherView ? 'Hide true spread plume' : 'Toggle teacher view (show true plume)'}
           </button>
@@ -286,18 +286,18 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 5. Incident Report Button with honest Gemma 4 model badge */}
       {hasInvestigated && (
-        <div className="pt-2 border-t border-[#38D9E6]/15 space-y-2">
+        <div className="pt-2 border-t border-[#24B1B1]/15 space-y-2">
           <button
             data-tour="report-btn"
             onClick={generateReport}
             disabled={aiReportLoading}
-            className="w-full py-2 px-3 rounded-lg bg-[#38D9E6] hover:bg-[#38D9E6]/90 text-[#071018] font-bold text-xs flex items-center justify-between gap-1.5 transition-colors shadow-md shadow-[#38D9E6]/25 disabled:opacity-50"
+            className="w-full py-2 px-3 rounded-lg bg-[#24B1B1] hover:bg-[#24B1B1]/90 text-[#086288] font-bold text-xs flex items-center justify-between gap-1.5 transition-colors shadow-md shadow-[#24B1B1]/25 disabled:opacity-50"
           >
             <div className="flex items-center gap-1.5">
               <FileText size={14} />
               <span>Generate AI Incident Briefing</span>
             </div>
-            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#071018] text-[#38D9E6] font-bold">
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#086288] text-[#24B1B1] font-bold">
               {modelBadge}
             </span>
           </button>
@@ -314,7 +314,7 @@ export const InvestigationStepCard: React.FC = () => {
                   onConfirm: revealSource,
                 });
               }}
-              className="w-full py-2 px-3 rounded-lg bg-[#071018] hover:bg-[#FF5E66]/20 text-[#EAF4F7] hover:text-[#FF5E66] font-semibold text-xs border border-[#38D9E6]/20 hover:border-[#FF5E66]/50 flex items-center justify-center gap-1.5 transition-colors"
+              className="w-full py-2 px-3 rounded-lg bg-[#086288] hover:bg-[#D9D28B]/20 text-[#95BDD7] hover:text-[#D9D28B] font-semibold text-xs border border-[#24B1B1]/20 hover:border-[#D9D28B]/50 flex items-center justify-center gap-1.5 transition-colors"
             >
               <Eye size={14} />
               <span>Reveal Ground Truth</span>
@@ -325,10 +325,10 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 6. "See how this was worked out" Collapsible Section */}
       {investigation && (
-        <div className="pt-2 border-t border-[#38D9E6]/15">
+        <div className="pt-2 border-t border-[#24B1B1]/15">
           <button
             onClick={() => setExpandedMath(prev => !prev)}
-            className="w-full flex items-center justify-between py-1.5 text-xs text-[#38D9E6] hover:underline font-medium"
+            className="w-full flex items-center justify-between py-1.5 text-xs text-[#24B1B1] hover:underline font-medium"
           >
             <span className="flex items-center gap-1">
               <Sparkles size={12} />
@@ -338,16 +338,16 @@ export const InvestigationStepCard: React.FC = () => {
           </button>
 
           {expandedMath && (
-            <div className="mt-2 p-3 rounded-lg bg-[#071018] border border-[#38D9E6]/20 space-y-3 text-[11px] leading-relaxed text-[#8EA5B4] animate-fadeIn">
+            <div className="mt-2 p-3 rounded-lg bg-[#086288] border border-[#24B1B1]/20 space-y-3 text-[11px] leading-relaxed text-[#95BDD7] animate-fadeIn">
               {/* Math explanation */}
               <div>
-                <span className="font-semibold text-[#EAF4F7] block mb-1">
+                <span className="font-semibold text-[#95BDD7] block mb-1">
                   Physical Delay & Bayesian Likelihood
                 </span>
                 <p>
                   Every pipe edge has travel delay and dilution factor. When contamination starts at node <em>u</em>, concentration arrives downstream at sensor <em>s</em> after cumulative travel delay:
                 </p>
-                <code className="block p-1.5 my-1 rounded bg-[#132535] text-[#38D9E6] font-mono text-[10px]">
+                <code className="block p-1.5 my-1 rounded bg-[#007979] text-[#24B1B1] font-mono text-[10px]">
                   C(s, t) = C_peak × D(u, s) × G(t − t₀ − delay(u, s)) + ε
                 </code>
                 <p>
@@ -356,28 +356,28 @@ export const InvestigationStepCard: React.FC = () => {
               </div>
 
               {/* Entropy / Uncertainty */}
-              <div className="p-2 rounded bg-[#132535] border border-[#38D9E6]/20">
-                <div className="flex justify-between text-[#EAF4F7]">
+              <div className="p-2 rounded bg-[#007979] border border-[#24B1B1]/20">
+                <div className="flex justify-between text-[#95BDD7]">
                   <span>Uncertainty entropy:</span>
-                  <strong className="font-mono text-[#64F4C4]">{investigation.entropy} bits</strong>
+                  <strong className="font-mono text-[#D9D28B]">{investigation.entropy} bits</strong>
                 </div>
-                <div className="text-[10px] text-[#8EA5B4] mt-0.5">
+                <div className="text-[10px] text-[#95BDD7] mt-0.5">
                   Lower entropy indicates higher certainty. Targeted grab sampling systematically reduces this uncertainty.
                 </div>
               </div>
 
               {/* Random Forest Cross-check */}
               {investigation.ml_second_opinion && (
-                <div className="p-2 rounded bg-[#132535] border border-[#38D9E6]/20 space-y-1">
-                  <div className="flex items-center justify-between text-[#EAF4F7]">
+                <div className="p-2 rounded bg-[#007979] border border-[#24B1B1]/20 space-y-1">
+                  <div className="flex items-center justify-between text-[#95BDD7]">
                     <span>Random Forest Ensemble:</span>
-                    <strong className="font-mono text-[#38D9E6]">
+                    <strong className="font-mono text-[#24B1B1]">
                       {investigation.ml_second_opinion.top_pick}
                     </strong>
                   </div>
-                  <div className="text-[10px] text-[#8EA5B4]">
+                  <div className="text-[10px] text-[#95BDD7]">
                     Supervised classifier agrees with primary candidate with{' '}
-                    <strong className="text-[#EAF4F7]">
+                    <strong className="text-[#95BDD7]">
                       {(investigation.ml_second_opinion.confidence * 100).toFixed(0)}%
                     </strong>{' '}
                     tree consensus.
@@ -388,7 +388,7 @@ export const InvestigationStepCard: React.FC = () => {
               {/* Toggle Full Ranking */}
               <button
                 onClick={() => setExpandedFullRanking(prev => !prev)}
-                className="text-[11px] text-[#38D9E6] hover:underline block pt-1"
+                className="text-[11px] text-[#24B1B1] hover:underline block pt-1"
               >
                 {expandedFullRanking ? 'Hide candidate list' : 'View full 42-node candidate ranking'}
               </button>
@@ -398,12 +398,12 @@ export const InvestigationStepCard: React.FC = () => {
                   {investigation.full_ranking.map((c, i) => (
                     <div
                       key={c.node_id}
-                      className="flex items-center justify-between p-1 rounded bg-[#132535]/80"
+                      className="flex items-center justify-between p-1 rounded bg-[#007979]/80"
                     >
-                      <span className="text-[#EAF4F7]">
+                      <span className="text-[#95BDD7]">
                         #{i + 1} {c.node_id}
                       </span>
-                      <span className="text-[#38D9E6]">
+                      <span className="text-[#24B1B1]">
                         {(c.probability * 100).toFixed(2)}%
                       </span>
                     </div>

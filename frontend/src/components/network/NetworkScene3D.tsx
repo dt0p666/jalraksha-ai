@@ -1,12 +1,12 @@
 /**
- * NetworkScene3D.tsx - High-readability 3D drinking-water network digital twin.
+ * NetworkScene3D.tsx - High-readability 3D drinking-water network infrastructure visualization.
  *
  * Uses the exact 4-color brand palette:
- *   #FDF4AF (Solar Light) - Sensor alerts, optimal sampling beacon, active step highlights
- *   #A5E9DD (Aquamarine)  - Healthy flowing drinking water, telemetry glow, readable badges
- *   #6FBEB2 (Medium Teal) - Sub-sector junctions, branch pipelines, safe states, borders
- *   #34908B (Deep Teal)   - Storage tanks (R1, R2), core distribution trunks, primary controls
- *   #FF5C5C (Crimson)     - Verified contamination alarms
+ *   #D9D28B (Solar Light) - Sensor alerts, optimal sampling beacon, active step highlights
+ *   #24B1B1 (Aquamarine)  - Healthy flowing drinking water, telemetry glow, readable badges
+ *   #78A4CB (Medium Teal) - Sub-sector junctions, branch pipelines, safe states, borders
+ *   #007979 (Deep Teal)   - Storage tanks (R1, R2), core distribution trunks, primary controls
+ *   #D9D28B (Crimson)     - Verified contamination alarms
  */
 
 import React, { useRef, useState, useMemo, useCallback } from 'react';
@@ -18,13 +18,13 @@ import type { NodeModel, EdgeModel } from '../../api/types';
 import { RotateCcw, Layers } from 'lucide-react';
 
 // Exact 4-color palette tokens from user reference
-const COLOR_DEEP_TEAL = '#38D9E6';   // Primary Cyan (Reservoirs & primary trunks)
-const COLOR_MID_TEAL = '#64F4C4';    // Aquamarine (Sub-sector junctions & branch pipes)
-const COLOR_LIGHT_CYAN = '#38D9E6';  // Active clean water, telemetry glow
-const COLOR_YELLOW = '#FFB547';      // Warning Amber & Candidate highlight
-const COLOR_CRIMSON = '#FF5E66';     // Contamination confirmed (Red)
-const COLOR_MUTED = '#132535';       // Unmeasured nodes
-const COLOR_BG = '#071018';          // Mission Control Dark Background
+const COLOR_DEEP_TEAL = '#24B1B1';   // Primary Cyan (Reservoirs & primary trunks)
+const COLOR_MID_TEAL = '#78A4CB';    // Aquamarine (Sub-sector junctions & branch pipes)
+const COLOR_LIGHT_CYAN = '#24B1B1';  // Active clean water, telemetry glow
+const COLOR_YELLOW = '#D9D28B';      // Warning Amber & Candidate highlight
+const COLOR_CRIMSON = '#D9D28B';     // Contamination confirmed (Red)
+const COLOR_MUTED = '#007979';       // Unmeasured nodes
+const COLOR_BG = '#086288';          // Mission Control Dark Background
 
 // Coordinate transformation: Maps 2D layout (x:100-900, y:80-840) to 3D world
 const to3D = (x: number, y: number, elev: number = 220): [number, number, number] => {
@@ -45,7 +45,7 @@ const TechBasemap: React.FC = () => {
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[90, 90]} />
         <meshStandardMaterial
-          color="#040A0C"
+          color="#086288"
           roughness={0.95}
           metalness={0.2}
         />
@@ -53,7 +53,7 @@ const TechBasemap: React.FC = () => {
 
       {/* Grid coordinate helper */}
       <gridHelper
-        args={[80, 40, '#34908B', '#0E2A2E']}
+        args={[80, 40, '#007979', '#086288']}
         position={[0, 0.01, 0]}
       />
     </group>
@@ -138,7 +138,7 @@ const Node3D: React.FC<Node3DProps> = ({
       {/* Pillar anchoring node down to grid floor */}
       <mesh position={[0, -position[1] / 2, 0]}>
         <cylinderGeometry args={[0.04, 0.04, position[1], 8]} />
-        <meshBasicMaterial color="#1E474F" transparent opacity={0.35} />
+        <meshBasicMaterial color="#007979" transparent opacity={0.35} />
       </mesh>
 
       {/* Outer Pulse Halo for Candidate or Alert */}
@@ -170,7 +170,7 @@ const Node3D: React.FC<Node3DProps> = ({
           </mesh>
           <mesh position={[0, 1.25, 0]}>
             <coneGeometry args={[1.05, 0.6, 24]} />
-            <meshStandardMaterial color="#6FBEB2" metalness={0.5} roughness={0.3} />
+            <meshStandardMaterial color="#78A4CB" metalness={0.5} roughness={0.3} />
           </mesh>
         </group>
       ) : node.type === 'zone' ? (
@@ -203,7 +203,7 @@ const Node3D: React.FC<Node3DProps> = ({
       {isSelected && (
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.05, 0]}>
           <ringGeometry args={[0.85, 1.0, 32]} />
-          <meshBasicMaterial color="#A5E9DD" side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#24B1B1" side={THREE.DoubleSide} />
         </mesh>
       )}
 
@@ -211,7 +211,7 @@ const Node3D: React.FC<Node3DProps> = ({
       {isInTrueSpread && (
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
           <ringGeometry args={[0.7, 0.9, 24]} />
-          <meshBasicMaterial color="#FF5C5C" transparent opacity={0.6} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#D9D28B" transparent opacity={0.6} side={THREE.DoubleSide} />
         </mesh>
       )}
 
@@ -226,27 +226,27 @@ const Node3D: React.FC<Node3DProps> = ({
           <div
             className={`pointer-events-none select-none px-2 py-1 rounded-md text-xs font-mono font-bold whitespace-nowrap shadow-xl transition-all border ${
               isTrueSourceRevealed
-                ? 'bg-[#FF5C5C] text-white border-white scale-110'
+                ? 'bg-[#D9D28B] text-white border-white scale-110'
                 : isAlert
-                ? 'bg-[#FDF4AF] text-[#081416] border-[#34908B] scale-110 font-extrabold'
+                ? 'bg-[#D9D28B] text-[#086288] border-[#007979] scale-110 font-extrabold'
                 : candidate
-                ? 'bg-[#0F2226] text-[#A5E9DD] border-[#6FBEB2] scale-105'
+                ? 'bg-[#007979] text-[#24B1B1] border-[#78A4CB] scale-105'
                 : isRecommended
-                ? 'bg-[#34908B] text-[#FDF4AF] border-[#A5E9DD] animate-pulse'
+                ? 'bg-[#007979] text-[#D9D28B] border-[#24B1B1] animate-pulse'
                 : isSelected
-                ? 'bg-[#0F2226] text-[#A5E9DD] border-[#A5E9DD]'
-                : 'bg-[#081416]/90 text-[#A5E9DD] border-[#6FBEB2]/40'
+                ? 'bg-[#007979] text-[#24B1B1] border-[#24B1B1]'
+                : 'bg-[#086288]/90 text-[#24B1B1] border-[#78A4CB]/40'
             }`}
           >
             <div className="flex items-center gap-1.5 leading-none">
               <span>{node.id}</span>
-              {node.type === 'reservoir' && <span className="text-[9px] text-[#A5E9DD] font-sans">TANK</span>}
-              {node.type === 'zone' && <span className="text-[9px] text-[#FDF4AF] font-sans">VILLAGE</span>}
+              {node.type === 'reservoir' && <span className="text-[9px] text-[#24B1B1] font-sans">TANK</span>}
+              {node.type === 'zone' && <span className="text-[9px] text-[#D9D28B] font-sans">VILLAGE</span>}
             </div>
 
             {/* Candidate probability badge */}
             {candidate && (
-              <div className="text-[10px] text-[#A5E9DD] font-bold mt-0.5">
+              <div className="text-[10px] text-[#24B1B1] font-bold mt-0.5">
                 {(candidate.probability * 100).toFixed(0)}% likely
               </div>
             )}
@@ -255,7 +255,7 @@ const Node3D: React.FC<Node3DProps> = ({
             {reading && (
               <div
                 className={`text-[9px] mt-0.5 ${
-                  reading.is_alert ? 'text-[#FF5C5C] font-bold' : 'text-[#6FBEB2]'
+                  reading.is_alert ? 'text-[#D9D28B] font-bold' : 'text-[#78A4CB]'
                 }`}
               >
                 {reading.value.toFixed(0)} µS/cm
@@ -264,7 +264,7 @@ const Node3D: React.FC<Node3DProps> = ({
 
             {/* Collected field sample readout */}
             {sampleVal !== undefined && (
-              <div className="text-[9px] text-[#FDF4AF] font-bold mt-0.5">
+              <div className="text-[9px] text-[#D9D28B] font-bold mt-0.5">
                 Sample: {sampleVal.toFixed(0)}
               </div>
             )}
@@ -327,10 +327,10 @@ const Edge3D: React.FC<Edge3DProps> = ({
       <mesh position={midPoint} quaternion={orientation}>
         <cylinderGeometry args={[0.075, 0.075, distance, 12]} />
         <meshStandardMaterial
-          color={isAlarmed ? '#FF5C5C' : '#1E474F'}
+          color={isAlarmed ? '#D9D28B' : '#007979'}
           roughness={0.3}
           metalness={0.6}
-          emissive={isAlarmed ? '#FF5C5C' : '#34908B'}
+          emissive={isAlarmed ? '#D9D28B' : '#007979'}
           emissiveIntensity={isAlarmed ? 0.7 : 0.25}
         />
       </mesh>
@@ -420,14 +420,14 @@ export const NetworkScene3D: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full relative select-none bg-[#081416] overflow-hidden">
+    <div className="w-full h-full relative select-none bg-[#086288] overflow-hidden">
       {/* 3D Top Status Bar */}
       <div className="absolute top-3 left-3 z-20 flex items-center gap-2 pointer-events-none">
-        <div className="px-2.5 py-1 rounded-md bg-[#0F2226]/90 border border-[#6FBEB2]/40 text-[#EAF7F5] text-xs font-mono flex items-center gap-2 backdrop-blur-md shadow-lg">
-          <span className="w-2 h-2 rounded-full bg-[#A5E9DD] animate-pulse" />
-          <span className="font-bold">SCADA 3D Network Twin</span>
+        <div className="px-2.5 py-1 rounded-md bg-[#007979]/90 border border-[#78A4CB]/40 text-[#95BDD7] text-xs font-mono flex items-center gap-2 backdrop-blur-md shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[#24B1B1] animate-pulse" />
+          <span className="font-bold">SCADA 3D Infrastructure View</span>
         </div>
-        <div className="px-2 py-1 rounded-md bg-[#081416]/80 border border-[#6FBEB2]/30 text-[#6FBEB2] text-[11px] font-mono backdrop-blur-md">
+        <div className="px-2 py-1 rounded-md bg-[#086288]/80 border border-[#78A4CB]/30 text-[#78A4CB] text-[11px] font-mono backdrop-blur-md">
           {fps} FPS
         </div>
       </div>
@@ -438,8 +438,8 @@ export const NetworkScene3D: React.FC = () => {
           onClick={() => setShowLabels(prev => !prev)}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xl backdrop-blur-md ${
             showLabels
-              ? 'bg-[#34908B] text-[#EAF7F5] border-[#A5E9DD]'
-              : 'bg-[#0F2226] text-[#A5E9DD] border-[#6FBEB2]/40 hover:bg-[#163238]'
+              ? 'bg-[#007979] text-[#95BDD7] border-[#24B1B1]'
+              : 'bg-[#007979] text-[#24B1B1] border-[#78A4CB]/40 hover:bg-[#163238]'
           }`}
           title="Toggle 3D Node Labels"
         >
@@ -449,7 +449,7 @@ export const NetworkScene3D: React.FC = () => {
 
         <button
           onClick={resetView}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0F2226] hover:bg-[#163238] text-[#EAF7F5] border border-[#6FBEB2]/50 text-xs font-semibold transition-all shadow-xl backdrop-blur-md"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#007979] hover:bg-[#163238] text-[#95BDD7] border border-[#78A4CB]/50 text-xs font-semibold transition-all shadow-xl backdrop-blur-md"
           title="Reset Camera View"
         >
           <RotateCcw size={13} />

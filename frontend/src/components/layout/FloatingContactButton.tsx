@@ -12,10 +12,10 @@ export const FloatingContactButton: React.FC = () => {
   return (
     <button
       onClick={() => setContactModalOpen(true)}
-      className={`fixed z-30 flex items-center justify-center rounded-full bg-[#38D9E6] text-[#071018] border border-[#38D9E6] shadow-2xl hover:bg-[#38D9E6]/90 transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#38D9E6] no-print ${
+      className={`fixed z-30 flex items-center justify-center rounded-full bg-[#24B1B1] text-[#086288] border border-[#24B1B1] shadow-2xl hover:bg-[#24B1B1]/90 transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#24B1B1] no-print ${
         isCommandCenter
-          ? 'bottom-4 right-4 p-2.5 shadow-[#38D9E6]/30'
-          : 'bottom-6 right-6 px-4 py-2 text-xs gap-1.5 font-bold shadow-[#38D9E6]/30'
+          ? 'bottom-4 right-4 p-2.5 shadow-[#24B1B1]/30'
+          : 'bottom-6 right-6 px-4 py-2 text-xs gap-1.5 font-bold shadow-[#24B1B1]/30'
       }`}
       aria-label="Open contact and advisory form"
       title="Contact / Advisory"
