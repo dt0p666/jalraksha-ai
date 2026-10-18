@@ -22,7 +22,6 @@ export const Modal: React.FC<ModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       previouslyFocusedElement.current = document.activeElement as HTMLElement;
-      // Focus modal container
       modalRef.current?.focus();
 
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,7 +42,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
@@ -54,21 +53,22 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         tabIndex={-1}
-        className={`w-full ${maxWidth} bg-[#141E3D] text-[#EAF1F8] border border-[#425B9A]/40 rounded-xl shadow-2xl p-6 outline-none transition-all`}
+        className={`w-full ${maxWidth} bg-[#0F2226] text-[#EAF7F5] border border-[#6FBEB2]/40 rounded-xl shadow-2xl p-6 outline-none transition-all`}
       >
-        <div className="flex items-center justify-between pb-3 border-b border-[#425B9A]/30">
-          <h2 id="modal-title" className="text-xl font-serif font-semibold text-[#EAF1F8]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#6FBEB2]/30">
+          <h2 id="modal-title" className="text-xl font-serif font-semibold text-[#EAF7F5]">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-[#9FB0C9] hover:text-[#76C0EC] hover:bg-[#1D2A52] focus-visible:ring-2 focus-visible:ring-[#76C0EC]"
-            aria-label="Close dialog"
+            className="p-1 rounded-lg text-[#6FBEB2] hover:text-[#EAF7F5] hover:bg-[#163238] transition-colors"
+            aria-label="Close modal dialog"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
-        <div className="mt-4">{children}</div>
+
+        <div className="pt-4">{children}</div>
       </div>
     </div>
   );

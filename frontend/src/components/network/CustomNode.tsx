@@ -42,14 +42,14 @@ export const CustomNode = memo(({ data }: { data: CustomNodeData }) => {
   const isAlert = Boolean(sensorReading?.is_alert || (sampleValue && sampleValue >= 230.0));
 
   // Visual styling based on state and node type
-  let borderColor = '#1E474F';
-  let bgColor = '#080E18';
+  let borderColor = '#6FBEB2';
+  let bgColor = '#0F2226';
 
   if (isReservoir) {
     bgColor = '#34908B';
     borderColor = '#A5E9DD';
   } else if (isZone) {
-    bgColor = '#143033';
+    bgColor = '#163238';
     borderColor = '#6FBEB2';
   } else if (hasReading) {
     if (isAlert) {
@@ -57,92 +57,119 @@ export const CustomNode = memo(({ data }: { data: CustomNodeData }) => {
       bgColor = '#262208'; // solar yellow dark
     } else {
       borderColor = '#A5E9DD';
-      bgColor = '#0D1E26'; // tech dark cyan panel
+      bgColor = '#0F2226'; // tech dark cyan panel
     }
-  } else {
-    // Unmeasured junction
-    borderColor = '#1E474F';
-    bgColor = '#080E18';
   }
 
-  // Teacher View ground truth override
-  if (isRevealed && isContaminatedInTeacherView) {
-    borderColor = '#FF5C5C';
-    if (!isReservoir && !isZone) bgColor = '#2E0E12'; // crimson dark
+  // Candidate overrides
+  if (isCandidate && candidateRank === 1) {
+    borderColor = '#FDF4AF';
   }
+
+  // Recommended sample beacon
+  if (isRecommendedSample) {
+    borderColor = '#A5E9DD';
+  }
+
+  // Ground truth revelation overrides
+  if (isRevealed && isTrueSource) {
+    borderColor = '#FF5C5C';
+    bgColor = '#3D1414';
+  }
+
+  // Teacher view contaminated plume spread
+  if (isContaminatedInTeacherView) {
+    borderColor = '#FF5C5C';
+  }
+
+  // Selected node glow
+  const selectedRing = isSelected ? 'ring-2 ring-[#A5E9DD] ring-offset-2 ring-offset-[#081416]' : '';
 
   return (
-    <div className="relative group cursor-pointer">
-      {/* Invisible Handles for React Flow Edge Routing */}
-      <Handle type="target" position={Position.Top} className="!opacity-0 !w-1 !h-1" />
-      <Handle type="source" position={Position.Bottom} className="!opacity-0 !w-1 !h-1" />
+    <div
+      className={`relative px-2.5 py-1.5 rounded-lg border shadow-lg transition-all ${selectedRing}`}
+      style={{
+        backgroundColor: bgColor,
+        borderColor: borderColor,
+        minWidth: isReservoir ? '100px' : isZone ? '90px' : '70px',
+      }}
+    >
+      {/* Target input handle (top) */}
+      <Handle
+        type="target"
+        position={Position.Top}
+        className="w-1.5 h-1.5 !bg-[#6FBEB2] border-none"
+      />
 
-      {/* True Source Crown / Pulse after Reveal */}
-      {isRevealed && isTrueSource && (
-        <div className="absolute -inset-3 rounded-full border-2 border-[#D9534F] animate-ping opacity-75 pointer-events-none" />
-      )}
-
-      {/* Candidate Probability Pulse Ring */}
-      {isCandidate && candidateProbability && candidateProbability > 0.05 && !isRevealed && (
-        <div className="absolute -inset-2 rounded-full border border-[#76C0EC] animate-pulse pointer-events-none" />
-      )}
-
-      {/* Recommended Sample Highlight Badge */}
+      {/* Recommended Sample Pulsing Beacon */}
       {isRecommendedSample && (
-        <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-[#E8A33D] text-[#0D1630] font-mono text-[10px] font-bold shadow-md flex items-center gap-1 z-20 whitespace-nowrap animate-bounce">
-          <Target size={11} />
-          <span>Test here</span>
-        </div>
-      )}
-
-      {/* Probability Badge for Ranked Candidates */}
-      {isCandidate && candidateProbability !== undefined && (
-        <div
-          className={`absolute -top-3 -right-3 z-20 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold shadow ${
-            candidateRank === 1
-              ? 'bg-[#76C0EC] text-[#0D1630] ring-1 ring-white'
-              : 'bg-[#1D2A52] text-[#76C0EC] border border-[#76C0EC]/50'
-          }`}
-        >
-          {Math.round(candidateProbability * 100)}%
-        </div>
-      )}
-
-      {/* Main Node Body */}
-      <div
-        style={{ borderColor, backgroundColor: bgColor }}
-        className={`flex items-center justify-center transition-all duration-200 border-2 shadow-md ${
-          isReservoir
-            ? 'w-12 h-12 rounded-xl text-white'
-            : isZone
-            ? 'w-10 h-10 rounded-lg text-[#EAF1F8]'
-            : 'w-8 h-8 rounded-full text-[#76C0EC]'
-        } ${isSelected ? 'ring-2 ring-white scale-110 shadow-lg' : 'hover:scale-105'}`}
-      >
-        {isReservoir ? (
-          <Droplets size={22} className="text-[#76C0EC]" />
-        ) : isZone ? (
-          <Home size={18} className="text-white" />
-        ) : isSampled ? (
-          <Target size={16} className={isAlert ? 'text-[#E8A33D]' : 'text-[#76C0EC]'} />
-        ) : model.has_sensor ? (
-          <Activity size={16} className={isAlert ? 'text-[#E8A33D]' : 'text-[#76C0EC]'} />
-        ) : (
-          <Disc size={12} className="text-[#9FB0C9]" />
-        )}
-      </div>
-
-      {/* Node ID & Label */}
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 flex flex-col items-center pointer-events-none whitespace-nowrap z-10">
-        <span className="font-mono text-[11px] font-semibold text-[#EAF1F8] drop-shadow-sm bg-[#0D1630]/80 px-1 rounded">
-          {model.id}
-        </span>
-        {isZone && model.households && (
-          <span className="text-[9px] text-[#91AC67] font-mono">
-            {model.households} hh
+        <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FDF4AF] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#FDF4AF] items-center justify-center text-[8px] font-bold text-[#081416]">
+            ★
           </span>
-        )}
+        </span>
+      )}
+
+      {/* Node Content */}
+      <div className="flex items-center gap-1.5">
+        {/* Node Icon */}
+        <span className="text-white/80">
+          {isReservoir ? (
+            <Droplets size={13} className="text-[#A5E9DD]" />
+          ) : isZone ? (
+            <Home size={13} className="text-[#FDF4AF]" />
+          ) : isCandidate ? (
+            <Target size={12} className="text-[#FDF4AF]" />
+          ) : model.has_sensor ? (
+            <Activity size={12} className={isAlert ? 'text-[#FDF4AF]' : 'text-[#A5E9DD]'} />
+          ) : (
+            <Disc size={11} className="text-[#6FBEB2]" />
+          )}
+        </span>
+
+        {/* Node ID & Details */}
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1">
+            <span className="font-mono font-bold text-xs text-[#EAF7F5]">
+              {model.id}
+            </span>
+            {isCandidate && candidateProbability !== undefined && (
+              <span className="font-mono text-[9px] px-1 rounded bg-[#34908B] text-[#FDF4AF]">
+                {(candidateProbability * 100).toFixed(0)}%
+              </span>
+            )}
+          </div>
+
+          {/* Node secondary label */}
+          <span className="text-[9px] text-[#A5E9DD] leading-none truncate max-w-[85px]">
+            {isReservoir ? model.label : isZone ? model.label : `${model.elevation_m}m`}
+          </span>
+        </div>
       </div>
+
+      {/* Bottom telemetry or sample readout */}
+      {hasReading && (
+        <div className="mt-1 pt-1 border-t border-white/10 flex items-center justify-between text-[9px] font-mono">
+          <span className="text-[#6FBEB2]">
+            {isSampled ? 'Sample' : 'Sensor'}:
+          </span>
+          <span
+            className={`font-semibold ${
+              isAlert ? 'text-[#FDF4AF] font-bold' : 'text-[#A5E9DD]'
+            }`}
+          >
+            {(sampleValue || sensorReading?.value || 0).toFixed(0)}
+          </span>
+        </div>
+      )}
+
+      {/* Source output handle (bottom) */}
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        className="w-1.5 h-1.5 !bg-[#6FBEB2] border-none"
+      />
     </div>
   );
 });
