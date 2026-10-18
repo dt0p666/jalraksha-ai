@@ -18,34 +18,34 @@ export const Footer: React.FC = () => {
   })();
 
   return (
-    <footer className="w-full border-t border-[#3368A0]/30 bg-[#0F1E2E] text-[#C8DFDB] py-8 px-4 sm:px-8 text-sm transition-colors print:hidden">
+    <footer className="w-full border-t border-[#6FBEB2]/30 bg-[#081416] text-[#A5E9DD] py-8 px-4 sm:px-8 text-sm transition-colors print:hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Left: Disclaimer & Project identity */}
         <div className="space-y-1.5 max-w-xl">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-base text-[#F2EFE7]">JALRAKSHAK AI</span>
-            <span className="text-xs px-2 py-0.5 rounded bg-[#3368A0]/40 text-[#F2EFE7] border border-[#66A3BF]/40 font-mono">
+            <span className="font-serif font-bold text-base text-[#EAF7F5]">JALRAKSHAK AI</span>
+            <span className="text-xs px-2 py-0.5 rounded bg-[#34908B]/40 text-[#FDF4AF] border border-[#6FBEB2]/40 font-mono">
               v1.0.0
             </span>
           </div>
-          <p className="text-xs leading-relaxed text-[#C8DFDB]">
+          <p className="text-xs leading-relaxed text-[#A5E9DD]/80">
             Educational drinking-water contamination diagnostic simulation. This is a simplified educational tool,
             NOT a validated hydraulic or water-safety model. Never use for municipal or public health safety decisions.
           </p>
-          <div className="text-[11px] text-[#C8DFDB]/60 font-mono pt-1">
+          <div className="text-[11px] text-[#A5E9DD]/60 font-mono pt-1">
             Last updated {formattedBuildDate}
           </div>
         </div>
 
         {/* Right: Legal & Navigation Links */}
         <div className="flex flex-wrap items-center gap-4 text-xs">
-          <NavLink to="/about" className="hover:text-[#F2EFE7] underline transition-colors">
+          <NavLink to="/about" className="hover:text-[#FDF4AF] underline transition-colors">
             About
           </NavLink>
-          <NavLink to="/faq" className="hover:text-[#F2EFE7] underline transition-colors">
+          <NavLink to="/faq" className="hover:text-[#FDF4AF] underline transition-colors">
             FAQ
           </NavLink>
-          <NavLink to="/contact" className="hover:text-[#F2EFE7] underline transition-colors">
+          <NavLink to="/contact" className="hover:text-[#FDF4AF] underline transition-colors">
             Contact
           </NavLink>
           <button
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
               localStorage.removeItem('jalrakshak_cookie_consent');
               window.location.reload();
             }}
-            className="hover:text-[#F2EFE7] underline transition-colors text-left"
+            className="hover:text-[#FDF4AF] underline transition-colors text-left"
           >
             Cookie settings
           </button>

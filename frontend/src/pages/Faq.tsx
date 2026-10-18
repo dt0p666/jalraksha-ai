@@ -41,16 +41,16 @@ export const Faq: React.FC = () => {
   });
 
   return (
-    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF1F8]">
+    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-8 text-[#EAF7F5]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#425B9A]/30">
-        <div className="flex items-center gap-2 text-[#76C0EC]">
+      <div className="space-y-2 pb-6 border-b border-[#6FBEB2]/30">
+        <div className="flex items-center gap-2 text-[#A5E9DD]">
           <HelpCircle size={24} />
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF1F8]">
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF7F5]">
             Frequently Asked Questions
           </h1>
         </div>
-        <p className="text-sm text-[#9FB0C9]">
+        <p className="text-sm text-[#A5E9DD]">
           Direct, honest answers about the physics simulation, Bayesian mathematics, and open-weight AI report constraints.
         </p>
       </div>
@@ -58,78 +58,69 @@ export const Faq: React.FC = () => {
       {/* Search and Category Filters */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
         <div className="relative flex-1 max-w-sm">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9FB0C9]" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A5E9DD]" />
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Search FAQ questions or topics..."
-            className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#141E3D] border border-[#425B9A]/40 text-xs text-[#EAF1F8] placeholder-[#9FB0C9]/60 focus:border-[#76C0EC] focus:outline-none"
+            placeholder="Search questions or topics..."
+            className="w-full pl-9 pr-3 py-2 bg-[#0F2226] border border-[#6FBEB2]/40 rounded-lg text-xs text-[#EAF7F5] placeholder-[#6FBEB2] focus:outline-none focus:border-[#A5E9DD]"
           />
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto text-xs">
-          {['all', 'system', 'inference', 'data', 'safety'].map(cat => (
+        <div className="flex flex-wrap gap-1 text-xs">
+          {['all', 'physics', 'math', 'ai', 'education'].map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg capitalize font-medium transition-colors whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
                 activeCategory === cat
-                  ? 'bg-[#425B9A] text-white border border-[#76C0EC]/40'
-                  : 'bg-[#141E3D] text-[#9FB0C9] border border-[#425B9A]/30 hover:text-[#EAF1F8]'
+                  ? 'bg-[#34908B] text-[#FDF4AF] font-bold border border-[#6FBEB2]'
+                  : 'bg-[#0F2226] text-[#A5E9DD] hover:bg-[#163238] border border-[#6FBEB2]/30'
               }`}
             >
-              {cat}
+              {cat.toUpperCase()}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Accordion List */}
+      {/* FAQ Accordion List */}
       <div className="space-y-3">
-        {filteredFaqs.length === 0 ? (
-          <div className="py-12 text-center text-sm text-[#9FB0C9]">
-            No FAQ entries found matching &quot;{searchQuery}&quot;.
-          </div>
-        ) : (
-          filteredFaqs.map(item => {
-            const isOpen = openIds.has(item.id);
-            return (
-              <div
-                key={item.id}
-                id={item.id}
-                className={`rounded-xl border transition-all ${
-                  isOpen
-                    ? 'bg-[#141E3D] border-[#76C0EC]/50 shadow-md'
-                    : 'bg-[#141E3D]/70 border-[#425B9A]/30 hover:border-[#425B9A]/60'
-                }`}
+        {filteredFaqs.map(item => {
+          const isOpen = openIds.has(item.id);
+          return (
+            <div
+              key={item.id}
+              id={item.id}
+              className="rounded-xl bg-[#0F2226] border border-[#6FBEB2]/30 overflow-hidden transition-all shadow-md"
+            >
+              <button
+                onClick={() => toggleItem(item.id)}
+                className="w-full text-left p-4 flex items-center justify-between gap-4 hover:bg-[#163238]/50 transition-colors"
+                aria-expanded={isOpen}
               >
-                <button
-                  onClick={() => toggleItem(item.id)}
-                  aria-expanded={isOpen}
-                  aria-controls={`answer-${item.id}`}
-                  className="w-full flex items-center justify-between p-4 text-left gap-4"
-                >
-                  <span className="font-serif font-semibold text-sm sm:text-base text-[#EAF1F8]">
-                    {item.question}
-                  </span>
-                  <div className="p-1 rounded bg-[#0D1630] text-[#76C0EC] shrink-0">
-                    {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                  </div>
-                </button>
+                <span className="font-serif font-bold text-sm text-[#EAF7F5]">
+                  {item.question}
+                </span>
+                <span className="text-[#A5E9DD] shrink-0">
+                  {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </span>
+              </button>
 
-                {isOpen && (
-                  <div
-                    id={`answer-${item.id}`}
-                    role="region"
-                    className="px-4 pb-4 text-xs sm:text-sm text-[#9FB0C9] leading-relaxed border-t border-[#425B9A]/20 pt-3"
-                  >
-                    {item.answer}
-                  </div>
-                )}
-              </div>
-            );
-          })
+              {isOpen && (
+                <div className="p-4 pt-0 text-xs text-[#A5E9DD] leading-relaxed border-t border-[#6FBEB2]/20 mt-1">
+                  <p>{item.answer}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {filteredFaqs.length === 0 && (
+          <div className="text-center py-12 text-[#A5E9DD] text-sm">
+            No matching questions found for "{searchQuery}".
+          </div>
         )}
       </div>
     </main>

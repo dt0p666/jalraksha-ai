@@ -32,13 +32,13 @@ export const About: React.FC = () => {
   };
 
   return (
-    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-12 text-[#EAF1F8]">
+    <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-8 py-8 space-y-12 text-[#EAF7F5]">
       {/* Header */}
-      <div className="space-y-2 pb-6 border-b border-[#425B9A]/30">
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF1F8]">
+      <div className="space-y-2 pb-6 border-b border-[#6FBEB2]/30">
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[#EAF7F5]">
           About JALRAKSHAK AI
         </h1>
-        <p className="text-sm text-[#9FB0C9]">
+        <p className="text-sm text-[#A5E9DD]">
           Methodology, mathematical formulation, local AI constraints, and classroom instructor tools.
         </p>
       </div>
@@ -46,35 +46,35 @@ export const About: React.FC = () => {
       {/* Mathematical Methodology */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <BookOpen size={20} className="text-[#76C0EC]" />
-          <h2 className="text-xl font-serif font-bold text-[#EAF1F8]">
+          <BookOpen size={20} className="text-[#A5E9DD]" />
+          <h2 className="text-xl font-serif font-bold text-[#EAF7F5]">
             Hydraulic &amp; Mathematical Formulation
           </h2>
         </div>
 
-        <div className="p-5 bg-[#141E3D] border border-[#425B9A]/30 rounded-xl space-y-4 text-xs sm:text-sm text-[#9FB0C9] leading-relaxed">
+        <div className="p-5 bg-[#0F2226] border border-[#6FBEB2]/30 rounded-xl space-y-4 text-xs sm:text-sm text-[#A5E9DD] leading-relaxed">
           <div>
-            <strong className="text-[#EAF1F8] block mb-1">1. Discrete Transport Physics:</strong>
+            <strong className="text-[#EAF7F5] block mb-1">1. Discrete Transport Physics:</strong>
             <p>
-              For any candidate origin node <span className="font-mono text-[#76C0EC]">s</span> and target node <span className="font-mono text-[#76C0EC]">v</span>,
-              the plume concentration <span className="font-mono text-[#76C0EC]">C(v, t) = D(s, v)</span> for all time steps <span className="font-mono text-[#76C0EC]">t &gt;= t0 + d(s, v)</span>,
-              where <span className="font-mono text-[#76C0EC]">d(s, v)</span> is the cumulative pipe delay and <span className="font-mono text-[#76C0EC]">D(s, v)</span> is the cumulative dilution factor along the primary downstream path.
+              For any candidate origin node <span className="font-mono text-[#A5E9DD]">s</span> and target node <span className="font-mono text-[#A5E9DD]">v</span>,
+              the plume concentration <span className="font-mono text-[#A5E9DD]">C(v, t) = D(s, v)</span> for all time steps <span className="font-mono text-[#A5E9DD]">t &gt;= t0 + d(s, v)</span>,
+              where <span className="font-mono text-[#A5E9DD]">d(s, v)</span> is the cumulative pipe delay and <span className="font-mono text-[#A5E9DD]">D(s, v)</span> is the cumulative dilution factor along the primary downstream path.
             </p>
           </div>
 
           <div>
-            <strong className="text-[#EAF1F8] block mb-1">2. Bayesian Likelihood &amp; Posterior Marginalization:</strong>
+            <strong className="text-[#EAF7F5] block mb-1">2. Bayesian Likelihood &amp; Posterior Marginalization:</strong>
             <p>
-              Under Gaussian sensor noise <span className="font-mono text-[#76C0EC]">sigma = 15.0 umhos/cm</span>, the likelihood across all time-stamped sensor readings <span className="font-mono text-[#76C0EC]">Y</span> is computed and marginalized across a grid of unknown injection onset steps <span className="font-mono text-[#76C0EC]">t0</span>.
+              Under Gaussian sensor noise <span className="font-mono text-[#A5E9DD]">sigma = 15.0 umhos/cm</span>, the likelihood across all time-stamped sensor readings <span className="font-mono text-[#A5E9DD]">Y</span> is computed and marginalized across a grid of unknown injection onset steps <span className="font-mono text-[#A5E9DD]">t0</span>.
               Normalized using numerically stable log-sum-exp to ensure posteriors sum strictly to 1.0.
             </p>
           </div>
 
           <div>
-            <strong className="text-[#EAF1F8] block mb-1">3. Optimal Experimental Design (OED):</strong>
+            <strong className="text-[#EAF7F5] block mb-1">3. Optimal Experimental Design (OED):</strong>
             <p>
               Sampling recommendations maximize Expected Information Gain (EIG), computing the reduction in Shannon entropy:
-              <span className="font-mono text-[#76C0EC] block mt-1">IG(u) = H_curr - E[H(P | Y_u)]</span>
+              <span className="font-mono text-[#FDF4AF] block mt-1">IG(u) = H_curr - E[H(P | Y_u)]</span>
               This bisects competing hypotheses with the fewest possible grab samples.
             </p>
           </div>
@@ -84,23 +84,23 @@ export const About: React.FC = () => {
       {/* Dataset Provenance */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Database size={20} className="text-[#76C0EC]" />
-          <h2 className="text-xl font-serif font-bold text-[#EAF1F8]">
+          <Database size={20} className="text-[#A5E9DD]" />
+          <h2 className="text-xl font-serif font-bold text-[#EAF7F5]">
             Dataset Calibration &amp; Scope
           </h2>
         </div>
 
-        <div className="p-5 bg-[#141E3D] border border-[#425B9A]/30 rounded-xl space-y-2 text-xs sm:text-sm text-[#9FB0C9] leading-relaxed">
+        <div className="p-5 bg-[#0F2226] border border-[#6FBEB2]/30 rounded-xl space-y-2 text-xs sm:text-sm text-[#A5E9DD] leading-relaxed">
           <p>
             The simulation parameters are calibrated against historical Indian Central Pollution Control Board (CPCB) monitoring station records.
             The raw dataset (1,991 rows, 12 columns) contains real monitoring records for pH, Electrical Conductivity, Dissolved Oxygen, BOD, and Coliform.
           </p>
-          <p className="text-[#91AC67]">
+          <p className="text-[#FDF4AF]">
             • Normal electrical conductivity median: <strong>183.0 umhos/cm</strong><br />
             • Background sensor noise: <strong>15.0 umhos/cm</strong><br />
             • Anomaly alert threshold: <strong>230.0 umhos/cm</strong>
           </p>
-          <p className="text-[11px] text-[#9FB0C9]/80 pt-2 border-t border-[#425B9A]/20">
+          <p className="text-[11px] text-[#6FBEB2] pt-2 border-t border-[#6FBEB2]/20">
             Note: The dataset provides statistical distributions only. It is never used to predict safety verdicts for real drinking water.
           </p>
         </div>
@@ -109,15 +109,15 @@ export const About: React.FC = () => {
       {/* AI Model Rules */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
-          <Cpu size={20} className="text-[#76C0EC]" />
-          <h2 className="text-xl font-serif font-bold text-[#EAF1F8]">
+          <Cpu size={20} className="text-[#A5E9DD]" />
+          <h2 className="text-xl font-serif font-bold text-[#EAF7F5]">
             Open-Weight AI Analyst (Gemma 4)
           </h2>
         </div>
 
-        <div className="p-5 bg-[#141E3D] border border-[#425B9A]/30 rounded-xl space-y-2 text-xs sm:text-sm text-[#9FB0C9] leading-relaxed">
+        <div className="p-5 bg-[#0F2226] border border-[#6FBEB2]/30 rounded-xl space-y-2 text-xs sm:text-sm text-[#A5E9DD] leading-relaxed">
           <p>
-             Incident reports are synthesized locally by Google DeepMind&apos;s <strong>Gemma 4</strong> running via Ollama.
+            Incident reports are synthesized locally by Google DeepMind&apos;s <strong>Gemma 4</strong> running via Ollama.
             The model receives structured JSON evidence (sensor readings, candidate rankings, path delay equations) and writes a human engineering synthesis.
           </p>
           <ul className="list-disc pl-5 space-y-1 text-xs">
@@ -131,18 +131,18 @@ export const About: React.FC = () => {
       {/* Captured UTM Session Source */}
       <section className="space-y-3">
         <div className="flex items-center gap-2">
-          <Compass size={18} className="text-[#76C0EC]" />
-          <h3 className="font-serif font-bold text-base text-[#EAF1F8]">
+          <Compass size={18} className="text-[#A5E9DD]" />
+          <h3 className="font-serif font-bold text-base text-[#EAF7F5]">
             Session Source (UTM Parameters)
           </h3>
         </div>
-        <div className="p-3 bg-[#0D1630] rounded-xl border border-[#425B9A]/30 text-xs font-mono text-[#9FB0C9]">
+        <div className="p-3 bg-[#081416] rounded-xl border border-[#6FBEB2]/30 text-xs font-mono text-[#A5E9DD]">
           {Object.keys(utmParams).length > 0 ? (
             <div className="space-y-1">
               {Object.entries(utmParams).map(([k, v]) => (
                 <div key={k} className="flex justify-between">
-                  <span className="text-[#9FB0C9]">{k}:</span>
-                  <span className="text-[#76C0EC] font-semibold">{v}</span>
+                  <span className="text-[#6FBEB2]">{k}:</span>
+                  <span className="text-[#FDF4AF] font-semibold">{v}</span>
                 </div>
               ))}
             </div>
@@ -153,22 +153,22 @@ export const About: React.FC = () => {
       </section>
 
       {/* Classroom Instructor Unlock Tool */}
-      <section className="p-6 bg-[#141E3D] border border-[#425B9A]/40 rounded-xl space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#425B9A]/30">
-          <div className="flex items-center gap-2 text-[#76C0EC]">
+      <section className="p-6 bg-[#0F2226] border border-[#6FBEB2]/40 rounded-xl space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#6FBEB2]/30">
+          <div className="flex items-center gap-2 text-[#A5E9DD]">
             <KeyRound size={20} />
-            <h3 className="font-serif font-bold text-base text-[#EAF1F8]">
+            <h3 className="font-serif font-bold text-base text-[#EAF7F5]">
               Classroom Instructor Controls
             </h3>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#0D1630] text-[#9FB0C9] border border-[#425B9A]/30">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#081416] text-[#A5E9DD] border border-[#6FBEB2]/30">
             Classroom Lock
           </span>
         </div>
 
-        <p className="text-xs text-[#9FB0C9] leading-relaxed">
+        <p className="text-xs text-[#A5E9DD] leading-relaxed">
           Educators can unlock experimental parameters (sample budget modifications, sensor noise adjustment).
-          Default demo passcode: <code className="text-[#76C0EC]">jalrakshak-demo-2026</code>.
+          Default demo passcode: <code className="text-[#FDF4AF]">jalrakshak-demo-2026</code>.
           Notice: This classroom lock is for teaching demonstrations and does NOT reveal the hidden source.
         </p>
 
@@ -182,24 +182,24 @@ export const About: React.FC = () => {
             />
 
             {unlockError && (
-              <span className="text-xs text-[#D9534F] block">{unlockError}</span>
+              <span className="text-xs text-[#FF5C5C] block">{unlockError}</span>
             )}
 
             <button
               type="submit"
               disabled={submitting || !passcode}
-              className="px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold disabled:opacity-50 transition-colors"
+              className="px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-[#FDF4AF] text-xs font-bold border border-[#6FBEB2] disabled:opacity-50 transition-colors shadow-sm"
             >
               {submitting ? 'Verifying...' : 'Unlock classroom tools'}
             </button>
           </form>
         ) : (
-          <div className="p-3 bg-[#0D1630] rounded-lg border border-[#91AC67]/40 space-y-3">
-            <div className="flex items-center gap-2 text-xs text-[#91AC67] font-semibold">
+          <div className="p-3 bg-[#081416] rounded-lg border border-[#A5E9DD]/40 space-y-3">
+            <div className="flex items-center gap-2 text-xs text-[#A5E9DD] font-semibold">
               <CheckCircle size={16} />
               <span>{unlockStatus || 'Classroom instructor mode active.'}</span>
             </div>
-            <div className="text-xs text-[#9FB0C9] space-y-1">
+            <div className="text-xs text-[#A5E9DD]/80 space-y-1">
               <div>• Investigation Sample Budget: 6 samples (Fixed)</div>
               <div>• Noise Variance Sigma: 15.0 umhos/cm</div>
               <div>• Ground Truth Enclosure: Strictly Guarded</div>

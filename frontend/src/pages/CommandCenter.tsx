@@ -29,14 +29,14 @@ export const CommandCenter: React.FC = () => {
     >
       {/* Backend connection failure alert */}
       {backendError && (
-        <div className="w-full p-2.5 rounded-xl bg-[#D9534F]/20 border border-[#D9534F]/50 text-[#D9534F] text-xs flex items-center justify-between">
+        <div className="w-full p-2.5 rounded-xl bg-[#FF5C5C]/20 border border-[#FF5C5C]/50 text-[#FF5C5C] text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <AlertCircle size={15} className="shrink-0" />
             <span>Connection notice: {backendError}</span>
           </div>
           <button
             onClick={() => window.location.reload()}
-            className="px-2.5 py-1 rounded bg-[#D9534F] text-white font-semibold text-[11px]"
+            className="px-2.5 py-1 rounded bg-[#FF5C5C] text-white font-semibold text-[11px]"
           >
             Retry Connection
           </button>
@@ -45,14 +45,14 @@ export const CommandCenter: React.FC = () => {
 
       {/* Guided Walkthrough Quick Start Pill */}
       {!tourActive && (
-        <div className="flex items-center justify-between px-3.5 py-1.5 rounded-lg bg-[#152248]/80 border border-[#425B9A]/30 text-xs text-[#9FB0C9]">
+        <div className="flex items-center justify-between px-3.5 py-1.5 rounded-lg bg-[#0F2226]/80 border border-[#6FBEB2]/30 text-xs text-[#A5E9DD]">
           <div className="flex items-center gap-2">
-            <Compass size={14} className="text-[#76C0EC]" />
+            <Compass size={14} className="text-[#A5E9DD]" />
             <span>First time investigating? Follow the guided walkthrough.</span>
           </div>
           <button
             onClick={startTour}
-            className="text-[#76C0EC] font-semibold hover:underline flex items-center gap-1"
+            className="text-[#FDF4AF] font-bold hover:underline flex items-center gap-1"
           >
             Start walkthrough
           </button>
@@ -66,7 +66,7 @@ export const CommandCenter: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 flex-1 min-h-[520px]">
         {/* Left/Center Viewport (8 cols): 3D or 2D Canvas with Journey Bar */}
         <div className="lg:col-span-8 flex flex-col gap-2.5 relative">
-          <div className="w-full h-full min-h-[480px] flex-1 rounded-xl overflow-hidden border border-[#425B9A]/30 relative">
+          <div className="w-full h-full min-h-[480px] flex-1 rounded-xl overflow-hidden border border-[#6FBEB2]/30 relative bg-[#081416]">
             {viewMode === '3d' ? <NetworkScene3D /> : <NetworkCanvas />}
           </div>
 

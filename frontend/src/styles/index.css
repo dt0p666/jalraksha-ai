@@ -12,27 +12,27 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #0F1E2E;
-  --color-panel: #162C42;
-  --color-panel-raised: #1E3B57;
-  --color-border: rgba(102, 163, 191, 0.3);
-  --color-text: #F2EFE7;
-  --color-text-muted: #C8DFDB;
-  --color-brand-blue: #3368A0;
-  --color-brand-sky: #66A3BF;
-  --color-brand-olive: #C8DFDB;
-  --color-brand-sage: #F2EFE7;
+  --color-bg: #081416;
+  --color-panel: #0F2226;
+  --color-panel-raised: #163238;
+  --color-border: rgba(111, 190, 178, 0.3);
+  --color-text: #EAF7F5;
+  --color-text-muted: #A5E9DD;
+  --color-brand-yellow: #FDF4AF;
+  --color-brand-cyan: #A5E9DD;
+  --color-brand-teal: #6FBEB2;
+  --color-brand-deep: #34908B;
   --color-warning: #FDF4AF;
   --color-critical: #FF5C5C;
 }
 
 html.light {
-  --color-bg: #F2EFE7;
+  --color-bg: #F6FBF9;
   --color-panel: #FFFFFF;
-  --color-panel-raised: #C8DFDB;
-  --color-border: rgba(51, 104, 160, 0.25);
-  --color-text: #0F1E2E;
-  --color-text-muted: #3368A0;
+  --color-panel-raised: #E2F3F0;
+  --color-border: rgba(52, 144, 139, 0.25);
+  --color-text: #081416;
+  --color-text-muted: #34908B;
 }
 
 body {
@@ -56,7 +56,7 @@ code, kbd, samp, pre, .font-mono {
 
 /* Accessible focus visible outline */
 *:focus-visible {
-  outline: 2px solid var(--color-brand-sky);
+  outline: 2px solid var(--color-brand-cyan);
   outline-offset: 2px;
 }
 
@@ -69,11 +69,11 @@ code, kbd, samp, pre, .font-mono {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(66, 91, 154, 0.4);
+  background: rgba(52, 144, 139, 0.4);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(118, 192, 236, 0.6);
+  background: rgba(165, 233, 221, 0.7);
 }
 
 /* Motion preferences */
@@ -97,8 +97,5 @@ code, kbd, samp, pre, .font-mono {
   }
   .print-only {
     display: block !important;
-  }
-  .print-break-inside-avoid {
-    break-inside: avoid;
   }
 }

@@ -21,7 +21,7 @@ export const App: React.FC = () => {
   return (
     <AppProvider>
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-[#0D1630] text-[#EAF1F8] selection:bg-[#76C0EC]/30 selection:text-white transition-colors">
+        <div className="min-h-screen flex flex-col bg-[#081416] text-[#EAF7F5] selection:bg-[#A5E9DD]/30 selection:text-white transition-colors">
           <ScrollProgressBar />
           <Header />
 
