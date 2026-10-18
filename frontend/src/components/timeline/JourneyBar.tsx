@@ -89,7 +89,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={() => setStartModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold border border-[#76C0EC]/50 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-white text-xs font-semibold border border-[#A5E9DD]/60 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
         >
           <Play size={13} fill="currentColor" />
           <span>Start a contamination</span>
@@ -101,7 +101,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={() => advanceSimulation(5)}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold border border-[#76C0EC]/50 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-white text-xs font-semibold border border-[#A5E9DD]/60 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
         >
           <SkipForward size={13} />
           <span>Run 5 steps forward</span>
@@ -114,7 +114,7 @@ export const JourneyBar: React.FC = () => {
         <button
           onClick={runInvestigation}
           disabled={isInvestigating}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold border border-[#76C0EC]/50 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-white text-xs font-semibold border border-[#A5E9DD]/60 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
         >
           <Sparkles size={13} />
           <span>{isInvestigating ? 'Finding source...' : 'Run investigation'}</span>
@@ -126,7 +126,7 @@ export const JourneyBar: React.FC = () => {
       return (
         <button
           onClick={findBestSample}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold border border-[#76C0EC]/50 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-white text-xs font-semibold border border-[#A5E9DD]/60 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0"
         >
           <Search size={13} />
           <span>Find best sample spot</span>
@@ -139,7 +139,7 @@ export const JourneyBar: React.FC = () => {
         <button
           onClick={generateReport}
           disabled={aiReportLoading}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#425B9A] hover:bg-[#4f6cb6] text-white text-xs font-semibold border border-[#76C0EC]/50 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34908B] hover:bg-[#2c7d78] text-white text-xs font-semibold border border-[#A5E9DD]/60 shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
         >
           <FileText size={13} />
           <span>{aiReportLoading ? 'Writing report...' : 'Write incident report'}</span>
@@ -188,7 +188,7 @@ export const JourneyBar: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#152248]/95 backdrop-blur-md border border-[#425B9A]/40 rounded-xl p-2.5 sm:p-3 shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 select-none">
+    <div className="w-full bg-[#0D1626]/95 backdrop-blur-md border border-[#1E474F]/50 rounded-xl p-2.5 sm:p-3 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-3 select-none">
       {/* 6-Step Journey Indicator */}
       <div className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto max-w-full pb-1 md:pb-0">
         {steps.map(step => {
@@ -200,19 +200,19 @@ export const JourneyBar: React.FC = () => {
               key={step.num}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-all ${
                 isCurrent
-                  ? 'bg-[#425B9A] text-white border border-[#76C0EC]/60 shadow-sm'
+                  ? 'bg-[#34908B] text-white border border-[#A5E9DD]/70 shadow-sm'
                   : isDone
-                  ? 'bg-[#1E2F62]/60 text-[#91AC67] border border-[#91AC67]/30'
-                  : 'text-[#9FB0C9]/60'
+                  ? 'bg-[#14223B]/70 text-[#A5E9DD] border border-[#6FBEB2]/30'
+                  : 'text-[#7E9EB0]/60'
               }`}
             >
               <div
                 className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-mono ${
                   isCurrent
-                    ? 'bg-[#76C0EC] text-[#121D38] font-bold'
+                    ? 'bg-[#FDF4AF] text-[#080E18] font-bold'
                     : isDone
-                    ? 'bg-[#597928] text-white'
-                    : 'bg-[#1E2F62] text-[#9FB0C9]'
+                    ? 'bg-[#34908B] text-white'
+                    : 'bg-[#14223B] text-[#7E9EB0]'
                 }`}
               >
                 {isDone ? <Check size={10} /> : step.num}

@@ -15,14 +15,14 @@ import { useApp } from '../../state/appStore';
 import type { ObservationModel } from '../../api/types';
 
 const SENSOR_COLORS: Record<string, string> = {
-  'J-02': '#76C0EC',
-  'J-05': '#91AC67',
-  'J-08': '#E8A33D',
-  'J-11': '#D9534F',
-  'J-15': '#425B9A',
-  'J-17': '#597928',
-  'J-24': '#8FD3FA',
-  'J-26': '#5D7CC2',
+  'J-02': '#A5E9DD', // Aquamarine
+  'J-05': '#FDF4AF', // Solar Yellow
+  'J-08': '#6FBEB2', // Medium Teal
+  'J-11': '#FF5C5C', // Crimson Alert
+  'J-15': '#34908B', // Deep Marine Teal
+  'J-17': '#84D6C7', // Light Cyan
+  'J-24': '#FEEFA0', // Pale Amber
+  'J-26': '#4BA39E', // Bright Teal
 };
 
 export const SensorChart: React.FC = () => {

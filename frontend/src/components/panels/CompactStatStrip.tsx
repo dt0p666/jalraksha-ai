@@ -31,40 +31,40 @@ export const CompactStatStrip: React.FC = () => {
   const alertCount = simState?.alert_count || 0;
 
   return (
-    <div className="w-full flex flex-wrap items-center justify-between gap-2.5 p-2 px-3 rounded-xl bg-[#152248]/90 border border-[#425B9A]/35 text-xs text-[#EAF1F8] backdrop-blur-sm select-none">
+    <div className="w-full flex flex-wrap items-center justify-between gap-2.5 p-2 px-3 rounded-xl bg-[#0D1626]/90 border border-[#1E474F]/40 text-xs text-[#E8F8F5] backdrop-blur-md select-none">
       {/* 4 Compact Stat Chips */}
       <div className="flex flex-wrap items-center gap-2">
         {/* 1. Network Points */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0E1733]/80 border border-[#425B9A]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#080E18]/80 border border-[#1E474F]/30"
           title="Network structure: 2 water tanks, 32 pipe junctions, 8 village supply zones"
         >
-          <MapPin size={13} className="text-[#76C0EC]" />
+          <MapPin size={13} className="text-[#A5E9DD]" />
           <span>
-            <strong className="font-mono text-[#EAF1F8]">{totalNodes}</strong> points (
-            <span className="text-[#9FB0C9]">{reservoirsCount} tanks, {junctionsCount} junctions, {zonesCount} villages</span>)
+            <strong className="font-mono text-[#E8F8F5]">{totalNodes}</strong> points (
+            <span className="text-[#7E9EB0]">{reservoirsCount} tanks, {junctionsCount} junctions, {zonesCount} villages</span>)
           </span>
         </div>
 
         {/* 2. Sensors Online */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0E1733]/80 border border-[#425B9A]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#080E18]/80 border border-[#1E474F]/30"
           title="Automated conductivity sensors installed at key network junctions"
         >
-          <Radio size={13} className="text-[#76C0EC]" />
+          <Radio size={13} className="text-[#A5E9DD]" />
           <span>
-            <strong className="font-mono text-[#EAF1F8]">{sensorsCount}</strong> sensors online
+            <strong className="font-mono text-[#E8F8F5]">{sensorsCount}</strong> sensors online
           </span>
         </div>
 
         {/* 3. Storage Tanks */}
         <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#0E1733]/80 border border-[#425B9A]/30"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#080E18]/80 border border-[#1E474F]/30"
           title="Elevated clean water storage tanks feeding the gravity network"
         >
-          <Building2 size={13} className="text-[#425B9A]" />
+          <Building2 size={13} className="text-[#34908B]" />
           <span>
-            <strong className="font-mono text-[#EAF1F8]">{reservoirsCount}</strong> supply tanks
+            <strong className="font-mono text-[#E8F8F5]">{reservoirsCount}</strong> supply tanks
           </span>
         </div>
 
@@ -72,8 +72,8 @@ export const CompactStatStrip: React.FC = () => {
         <div
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition-colors ${
             alertCount > 0
-              ? 'bg-[#D9534F]/20 border-[#D9534F]/50 text-[#D9534F] animate-pulse'
-              : 'bg-[#597928]/25 border-[#91AC67]/40 text-[#91AC67]'
+              ? 'bg-[#FF5C5C]/20 border-[#FF5C5C]/50 text-[#FF5C5C] animate-pulse'
+              : 'bg-[#183638]/50 border-[#6FBEB2]/40 text-[#A5E9DD]'
           }`}
           title={
             alertCount > 0
@@ -95,19 +95,19 @@ export const CompactStatStrip: React.FC = () => {
           onClick={toggleSensorDrawer}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-medium transition-colors ${
             sensorDrawerOpen
-              ? 'bg-[#425B9A]/40 text-[#76C0EC] border-[#76C0EC]/40'
-              : 'bg-[#0E1733]/80 text-[#9FB0C9] hover:text-[#EAF1F8] border-[#425B9A]/30 hover:bg-[#1E2F62]'
+              ? 'bg-[#34908B]/40 text-[#A5E9DD] border-[#A5E9DD]/50'
+              : 'bg-[#080E18]/80 text-[#7E9EB0] hover:text-[#E8F8F5] border-[#1E474F]/40 hover:bg-[#14223B]'
           }`}
           title="Toggle sensor readings telemetry chart"
         >
-          <Activity size={13} className={alertCount > 0 ? 'text-[#E8A33D]' : 'text-[#76C0EC]'} />
+          <Activity size={13} className={alertCount > 0 ? 'text-[#FDF4AF]' : 'text-[#A5E9DD]'} />
           <span>Sensor readings</span>
           {sensorDrawerOpen ? <ChevronDown size={12} /> : <ChevronUp size={12} />}
         </button>
 
         {/* 3D | Map View Toggle */}
         <div
-          className="flex items-center p-0.5 rounded-lg bg-[#0E1733] border border-[#425B9A]/40 text-xs font-medium"
+          className="flex items-center p-0.5 rounded-lg bg-[#080E18] border border-[#1E474F]/50 text-xs font-medium"
           role="group"
           aria-label="View Mode Toggle"
         >
@@ -115,8 +115,8 @@ export const CompactStatStrip: React.FC = () => {
             onClick={() => setViewMode('3d')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
               viewMode === '3d'
-                ? 'bg-[#425B9A] text-white shadow-sm font-semibold'
-                : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                ? 'bg-[#34908B] text-white shadow-sm font-semibold'
+                : 'text-[#7E9EB0] hover:text-[#E8F8F5]'
             }`}
             aria-pressed={viewMode === '3d'}
           >
@@ -127,8 +127,8 @@ export const CompactStatStrip: React.FC = () => {
             onClick={() => setViewMode('2d')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
               viewMode === '2d'
-                ? 'bg-[#425B9A] text-white shadow-sm font-semibold'
-                : 'text-[#9FB0C9] hover:text-[#EAF1F8]'
+                ? 'bg-[#34908B] text-white shadow-sm font-semibold'
+                : 'text-[#7E9EB0] hover:text-[#E8F8F5]'
             }`}
             aria-pressed={viewMode === '2d'}
           >

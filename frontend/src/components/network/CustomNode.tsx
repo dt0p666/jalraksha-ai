@@ -42,33 +42,33 @@ export const CustomNode = memo(({ data }: { data: CustomNodeData }) => {
   const isAlert = Boolean(sensorReading?.is_alert || (sampleValue && sampleValue >= 230.0));
 
   // Visual styling based on state and node type
-  let borderColor = '#425B9A';
-  let bgColor = '#141E3D';
+  let borderColor = '#1E474F';
+  let bgColor = '#080E18';
 
   if (isReservoir) {
-    bgColor = '#425B9A';
-    borderColor = '#76C0EC';
+    bgColor = '#34908B';
+    borderColor = '#A5E9DD';
   } else if (isZone) {
-    bgColor = '#597928';
-    borderColor = '#91AC67';
+    bgColor = '#143033';
+    borderColor = '#6FBEB2';
   } else if (hasReading) {
     if (isAlert) {
-      borderColor = '#E8A33D';
-      bgColor = '#2C1F10'; // amber-dark, blue-shifted from brand dark
+      borderColor = '#FDF4AF';
+      bgColor = '#262208'; // solar yellow dark
     } else {
-      borderColor = '#76C0EC';
-      bgColor = '#152248'; // brand panel dark (matches --panel token)
+      borderColor = '#A5E9DD';
+      bgColor = '#0D1E26'; // tech dark cyan panel
     }
   } else {
     // Unmeasured junction
-    borderColor = '#425B9A';
-    bgColor = '#0E1733'; // brand bg dark
+    borderColor = '#1E474F';
+    bgColor = '#080E18';
   }
 
   // Teacher View ground truth override
   if (isRevealed && isContaminatedInTeacherView) {
-    borderColor = '#D9534F';
-    if (!isReservoir && !isZone) bgColor = '#2E1012'; // red-dark, brand-dark shifted
+    borderColor = '#FF5C5C';
+    if (!isReservoir && !isZone) bgColor = '#2E0E12'; // crimson dark
   }
 
   return (

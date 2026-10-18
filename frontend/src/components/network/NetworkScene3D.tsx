@@ -1,13 +1,17 @@
 /**
- * NetworkScene3D.tsx - Real-time 3D drinking-water network simulation view.
- * 
- * Built with Three.js via @react-three/fiber and @react-three/drei.
- * Reads exclusively from the central appStore (zero duplicate logic, zero fake state).
- * 
- * Terrain elevation function:
- *   cosmeticElevation(x, z) = smooth falloff from high northern reservoirs (Z < 0)
- *   down into southern village valleys (Z > 0), calibrated so reservoirs naturally sit
- *   on elevated hills matching the network's hydraulic head.
+ * NetworkScene3D.tsx - High-readability 3D drinking-water network digital twin.
+ *
+ * Modeled after modern industrial water dispatch control rooms:
+ * - High-contrast dark obsidian basemap with crisp grid coordinates
+ * - Vibrant neon water glow (#A5E9DD) along high-pressure trunk pipes
+ * - Flowing luminescent water pulses indicating real directional velocity
+ * - Sharp billboard 3D badges with node ID, sensor telemetry, and village labels
+ * - High-contrast alert indicators using the custom palette:
+ *     #FDF4AF (Solar Light) - Sensor alerts, optimal sampling beacon, key highlights
+ *     #A5E9DD (Aquamarine)  - Healthy flowing drinking water, telemetry glow
+ *     #6FBEB2 (Medium Teal) - Sub-sector junctions, branch pipelines
+ *     #34908B (Deep Teal)   - Storage tanks (R1, R2), core distribution trunks
+ *     #FF5C5C (Crimson)     - Verified contamination alarms
  */
 
 import React, { useRef, useState, useMemo, useCallback } from 'react';
@@ -16,69 +20,59 @@ import { OrbitControls, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { useApp } from '../../state/appStore';
 import type { NodeModel, EdgeModel } from '../../api/types';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, Layers } from 'lucide-react';
 
-// Palette constants strictly matching brand tokens
-const COLOR_BLUE = '#425B9A';
-const COLOR_SKY = '#76C0EC';
-const COLOR_OLIVE = '#597928';
-const COLOR_SAGE = '#91AC67';
-const COLOR_AMBER = '#E8A33D';
-const COLOR_RED = '#D9534F';
-const COLOR_MUTED = '#4F6182';
+// Custom 4-color palette tokens
+const COLOR_YELLOW = '#FDF4AF';    // Solar highlight & telemetry alert
+const COLOR_AQUAMARINE = '#A5E9DD';// Clean flowing water glow
+const COLOR_TEAL = '#6FBEB2';      // Junctions & secondary branch pipes
+const COLOR_DEEP_TEAL = '#34908B'; // Elevated reservoirs & primary trunk
+const COLOR_CRIMSON = '#FF5C5C';   // Contamination confirmed
+const COLOR_MUTED = '#4A6B70';     // Inactive / unmeasured network nodes
+const COLOR_BG = '#060B12';        // Obsidian deep navy basemap
 
-// World coordinate mapping:
-// Centers 2D (x: 100-890, y: 80-840) to origin and maps elevation_m (186-340) to vertical Y
+// Coordinate transformation: Maps 2D layout (x:100-900, y:80-840) to 3D world
 const to3D = (x: number, y: number, elev: number = 220): [number, number, number] => {
-  const wx = (x - 500) * 0.045;
-  const wz = (y - 460) * 0.045;
-  // Elevation scaled so highest reservoir is ~4.5 units high, lowest zone is ~0.8 units
-  const wy = Math.max(0.6, (elev - 180) * 0.024);
+  const wx = (x - 500) * 0.055;
+  const wz = (y - 460) * 0.055;
+  // Natural elevation slope matching hydraulic gravity head
+  const wy = Math.max(0.6, (elev - 180) * 0.026);
   return [wx, wy, wz];
 };
 
 // -------------------------------------------------------------
-// Procedural Terrain Ground
+// Control-Room Digital Basemap with Tech Grid Lines
 // -------------------------------------------------------------
-const Terrain: React.FC = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
-
-  // Ground plane with gentle natural contours reflecting northern high ground
-  const geometry = useMemo(() => {
-    const geo = new THREE.PlaneGeometry(60, 60, 48, 48);
-    const pos = geo.attributes.position;
-    for (let i = 0; i < pos.count; i++) {
-      const x = pos.getX(i);
-      const z = pos.getY(i); // PlaneGeometry lies in XY initially
-      // Cosmetic elevation function: northern slope + subtle undulation
-      const northSlope = (-z + 20) * 0.08;
-      const ripple = Math.sin(x * 0.15) * Math.cos(z * 0.15) * 0.35;
-      pos.setZ(i, Math.max(0, northSlope + ripple));
-    }
-    geo.computeVertexNormals();
-    return geo;
-  }, []);
-
+const TechBasemap: React.FC = () => {
   return (
-    <mesh
-      ref={meshRef}
-      geometry={geometry}
-      rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -0.2, 0]}
-      receiveShadow
-    >
-      <meshStandardMaterial
-        color={COLOR_OLIVE}
-        roughness={0.92}
-        metalness={0.05}
-        wireframe={false}
+    <group position={[0, -0.05, 0]}>
+      {/* Dark ground plane */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <planeGeometry args={[90, 90]} />
+        <meshStandardMaterial
+          color="#060C14"
+          roughness={0.95}
+          metalness={0.2}
+        />
+      </mesh>
+
+      {/* Grid coordinate helper */}
+      <gridHelper
+        args={[80, 40, '#15333A', '#0D1E24']}
+        position={[0, 0.01, 0]}
       />
-    </mesh>
+
+      {/* Subtle outer tech boundaries */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
+        <ringGeometry args={[36, 36.3, 64]} />
+        <meshBasicMaterial color="#1E474F" transparent opacity={0.35} />
+      </mesh>
+    </group>
   );
 };
 
 // -------------------------------------------------------------
-// Interactive Node Object (Reservoir, Junction, Sensor, Village)
+// Interactive 3D Node Object with Always-Readable High-Contrast Badges
 // -------------------------------------------------------------
 interface Node3DProps {
   node: NodeModel;
@@ -91,6 +85,7 @@ interface Node3DProps {
   isSelected: boolean;
   isTrueSourceRevealed: boolean;
   isInTrueSpread: boolean;
+  showLabels: boolean;
   onClick: (nodeId: string) => void;
   onDoubleClick: (pos: [number, number, number]) => void;
 }
@@ -106,39 +101,36 @@ const Node3D: React.FC<Node3DProps> = ({
   isSelected,
   isTrueSourceRevealed,
   isInTrueSpread,
+  showLabels,
   onClick,
   onDoubleClick,
 }) => {
   const [hovered, setHovered] = useState(false);
-  const meshRef = useRef<THREE.Group>(null);
   const ringRef = useRef<THREE.Mesh>(null);
 
-  // Derive honest observed state color
-  const stateColor = useMemo(() => {
-    if (isTrueSourceRevealed) {
-      return COLOR_RED;
-    }
-    if (isSampled) {
-      return (sampleVal || 0) > 230 ? COLOR_RED : COLOR_SAGE;
-    }
-    if (reading) {
-      return reading.is_alert ? (reading.value > 350 ? COLOR_RED : COLOR_AMBER) : COLOR_SKY;
-    }
-    return COLOR_MUTED;
-  }, [reading, isSampled, sampleVal, isTrueSourceRevealed]);
+  const isAlert = Boolean(reading?.is_alert || (sampleVal && sampleVal >= 230));
 
-  // Subtle pulsing animation for candidate or recommended node
+  // Determine vibrant node color based on hydraulic state
+  const nodeColor = useMemo(() => {
+    if (isTrueSourceRevealed) return COLOR_CRIMSON;
+    if (isAlert) return COLOR_YELLOW;
+    if (node.type === 'reservoir') return COLOR_DEEP_TEAL;
+    if (reading || isSampled) return COLOR_AQUAMARINE;
+    if (node.type === 'zone') return COLOR_TEAL;
+    return COLOR_MUTED;
+  }, [node.type, reading, isSampled, isAlert, isTrueSourceRevealed]);
+
+  // Pulse animation for alerts or candidates
   useFrame(({ clock }) => {
-    if (ringRef.current && (candidate || isRecommended)) {
+    if (ringRef.current && (candidate || isRecommended || isAlert)) {
       const t = clock.getElapsedTime();
-      const s = 1 + Math.sin(t * 3) * 0.15;
+      const s = 1 + Math.sin(t * 3.5) * 0.16;
       ringRef.current.scale.set(s, s, s);
     }
   });
 
   return (
     <group
-      ref={meshRef}
       position={position}
       onClick={e => {
         e.stopPropagation();
@@ -158,137 +150,172 @@ const Node3D: React.FC<Node3DProps> = ({
         document.body.style.cursor = 'default';
       }}
     >
-      {/* 1. Node Geometry depending on node type */}
+      {/* 1. Node Physical Mesh */}
       {node.type === 'reservoir' ? (
-        // Reservoir: Distinct elevated cylinder with sky water surface
-        <group>
-          <mesh castShadow position={[0, 0.4, 0]}>
-            <cylinderGeometry args={[0.9, 1.0, 0.8, 20]} />
-            <meshStandardMaterial color={COLOR_BLUE} roughness={0.3} metalness={0.2} />
+        // Reservoir: Distinct high-head storage tank with illuminated water surface
+        <group position={[0, 0.5, 0]}>
+          <mesh castShadow>
+            <cylinderGeometry args={[1.1, 1.2, 1.0, 24]} />
+            <meshStandardMaterial
+              color={COLOR_DEEP_TEAL}
+              roughness={0.25}
+              metalness={0.3}
+            />
           </mesh>
-          <mesh position={[0, 0.81, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <circleGeometry args={[0.85, 20]} />
-            <meshStandardMaterial color={COLOR_SKY} emissive={COLOR_SKY} emissiveIntensity={0.6} />
+          <mesh position={[0, 0.52, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <circleGeometry args={[1.05, 24]} />
+            <meshStandardMaterial
+              color={COLOR_AQUAMARINE}
+              emissive={COLOR_AQUAMARINE}
+              emissiveIntensity={0.8}
+            />
           </mesh>
         </group>
       ) : node.type === 'zone' ? (
-        // Village Supply Zone: House shape with Sage/Olive tint
-        <group position={[0, 0.35, 0]}>
+        // Village Zone: Architectural cluster with pitched roof
+        <group position={[0, 0.45, 0]}>
           <mesh castShadow>
-            <boxGeometry args={[0.8, 0.7, 0.8]} />
-            <meshStandardMaterial color={stateColor === COLOR_MUTED ? COLOR_SAGE : stateColor} />
+            <boxGeometry args={[1.0, 0.8, 1.0]} />
+            <meshStandardMaterial
+              color={isAlert ? COLOR_YELLOW : COLOR_TEAL}
+              roughness={0.4}
+            />
           </mesh>
-          <mesh position={[0, 0.55, 0]} rotation={[0, Math.PI / 4, 0]}>
-            <coneGeometry args={[0.7, 0.45, 4]} />
-            <meshStandardMaterial color={COLOR_OLIVE} />
+          <mesh position={[0, 0.65, 0]} rotation={[0, Math.PI / 4, 0]}>
+            <coneGeometry args={[0.9, 0.55, 4]} />
+            <meshStandardMaterial color="#16383B" />
           </mesh>
         </group>
       ) : (
-        // Junction / Sensor Node: Sphere with distinct ring if sensor
-        <group position={[0, 0.25, 0]}>
+        // Junction / Sensor Node: Glowing sphere
+        <group position={[0, 0.35, 0]}>
           <mesh castShadow>
-            <sphereGeometry args={[node.has_sensor ? 0.35 : 0.24, 16, 16]} />
+            <sphereGeometry args={[node.has_sensor ? 0.42 : 0.3, 20, 20]} />
             <meshStandardMaterial
-              color={stateColor}
-              emissive={stateColor}
-              emissiveIntensity={reading?.is_alert ? 0.8 : hovered ? 0.4 : 0.15}
+              color={nodeColor}
+              emissive={nodeColor}
+              emissiveIntensity={isAlert ? 1.0 : node.has_sensor ? 0.7 : hovered ? 0.5 : 0.25}
+              roughness={0.2}
             />
           </mesh>
 
-          {/* Sensor Ring & Antenna */}
+          {/* Glowing pulse ring around active sensors */}
           {node.has_sensor && (
-            <group>
-              <mesh rotation={[Math.PI / 2, 0, 0]}>
-                <torusGeometry args={[0.48, 0.04, 8, 24]} />
-                <meshStandardMaterial color={reading?.is_alert ? COLOR_AMBER : COLOR_SKY} />
-              </mesh>
-              <mesh position={[0, 0.4, 0]}>
-                <cylinderGeometry args={[0.02, 0.02, 0.3, 6]} />
-                <meshStandardMaterial color="#EAF1F8" />
-              </mesh>
-            </group>
+            <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
+              <torusGeometry args={[0.62, 0.05, 12, 32]} />
+              <meshBasicMaterial
+                color={isAlert ? COLOR_YELLOW : COLOR_AQUAMARINE}
+                transparent
+                opacity={0.85}
+              />
+            </mesh>
           )}
         </group>
       )}
 
-      {/* 2. Floating Candidate Probability Ring & Badge */}
-      {candidate && (
-        <group position={[0, 0.9, 0]}>
-          <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
-            <torusGeometry args={[0.7, 0.05, 8, 24]} />
-            <meshStandardMaterial
-              color={candidate.rank === 1 ? COLOR_SKY : COLOR_BLUE}
-              emissive={COLOR_SKY}
-              emissiveIntensity={0.6}
-            />
-          </mesh>
-          <Html position={[0, 0.4, 0]} center distanceFactor={14}>
-            <div className="px-1.5 py-0.5 rounded bg-[#152248]/90 border border-[#76C0EC]/60 text-[#76C0EC] font-mono text-[10px] font-bold shadow-md whitespace-nowrap pointer-events-none">
-              {(candidate.probability * 100).toFixed(1)}%
-            </div>
-          </Html>
-        </group>
-      )}
-
-      {/* 3. Optimal Sample Target Light Beam */}
-      {isRecommended && (
-        <group position={[0, 1.6, 0]}>
-          <mesh>
-            <cylinderGeometry args={[0.04, 0.3, 2.5, 12]} />
-            <meshBasicMaterial color={COLOR_SKY} transparent opacity={0.65} />
-          </mesh>
-          <Html position={[0, 1.4, 0]} center distanceFactor={14}>
-            <div className="px-2 py-0.5 rounded-full bg-[#76C0EC] text-[#121D38] font-bold text-[10px] shadow-lg whitespace-nowrap pointer-events-none">
-              Optimal sample
-            </div>
-          </Html>
-        </group>
-      )}
-
-      {/* 4. Selection Highlight Ring */}
-      {isSelected && (
-        <mesh position={[0, 0.05, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[0.8, 0.95, 24]} />
-          <meshBasicMaterial color={COLOR_SKY} side={THREE.DoubleSide} />
-        </mesh>
-      )}
-
-      {/* 5. Teacher View: expanding true spread glow */}
-      {isInTrueSpread && (
-        <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[0.5, 0.9, 24]} />
-          <meshBasicMaterial color={COLOR_RED} transparent opacity={0.4} side={THREE.DoubleSide} />
-        </mesh>
-      )}
-
-      {/* 6. Hover Tooltip Card */}
-      {hovered && (
-        <Html position={[0, 1.1, 0]} center distanceFactor={12}>
-          <div className="p-2 rounded-lg bg-[#0E1733]/95 border border-[#425B9A] shadow-xl text-xs text-[#EAF1F8] whitespace-nowrap pointer-events-none backdrop-blur-sm z-50">
-            <div className="font-semibold text-[#76C0EC]">{node.label}</div>
-            <div className="text-[10px] text-[#9FB0C9]">
-              ID: <span className="font-mono text-[#EAF1F8]">{node.id}</span> • Elev:{' '}
-              <span className="font-mono">{node.elevation_m}m</span>
-            </div>
+      {/* 2. Permanent High-Readability Badge */}
+      {showLabels && (
+        <Html
+          position={[0, node.type === 'reservoir' ? 1.6 : 1.1, 0]}
+          center
+          distanceFactor={18}
+          zIndexRange={[100, 0]}
+        >
+          <div
+            className={`px-2 py-0.5 rounded flex items-center gap-1.5 font-mono text-[11px] font-bold shadow-lg transition-all border whitespace-nowrap pointer-events-none ${
+              isAlert
+                ? 'bg-[#1D1705] text-[#FDF4AF] border-[#FDF4AF] ring-2 ring-[#FDF4AF]/30 animate-pulse'
+                : node.type === 'reservoir'
+                ? 'bg-[#061A19] text-[#A5E9DD] border-[#34908B]'
+                : node.type === 'zone'
+                ? 'bg-[#061719] text-[#6FBEB2] border-[#6FBEB2]/60'
+                : node.has_sensor
+                ? 'bg-[#09151C] text-[#A5E9DD] border-[#A5E9DD]/60'
+                : 'bg-[#080E18]/90 text-[#7E9EB0] border-[#1C363D]'
+            }`}
+          >
+            <span>{node.id}</span>
             {reading && (
-              <div className="text-[11px] font-mono mt-0.5 text-white">
-                Reading: {reading.value.toFixed(1)} µS/cm {reading.is_alert && '(Elevated)'}
-              </div>
+              <span className="text-[10px] opacity-90">
+                {Math.round(reading.value)} µS
+              </span>
             )}
             {node.type === 'zone' && (
-              <div className="text-[10px] text-[#91AC67]">
-                {node.households} households
-              </div>
+              <span className="text-[10px] text-[#A5E9DD]">
+                {node.households} hh
+              </span>
             )}
           </div>
         </Html>
       )}
 
-      {/* Village Household count tag */}
-      {node.type === 'zone' && !hovered && (
-        <Html position={[0, 1.2, 0]} center distanceFactor={16}>
-          <div className="px-1.5 py-0.5 rounded bg-[#152248]/85 border border-[#91AC67]/40 text-[#91AC67] font-mono text-[9px] pointer-events-none shadow-sm whitespace-nowrap">
-            {node.households} hh
+      {/* 3. Candidate Probability Floating Beacon */}
+      {candidate && (
+        <Html position={[0, 2.2, 0]} center distanceFactor={16}>
+          <div className="px-2 py-1 rounded bg-[#07191C] border-2 border-[#A5E9DD] text-[#A5E9DD] font-mono text-[11px] font-black shadow-2xl flex items-center gap-1 whitespace-nowrap pointer-events-none">
+            <span className="w-2 h-2 rounded-full bg-[#A5E9DD] animate-ping" />
+            <span>{(candidate.probability * 100).toFixed(1)}% probable</span>
+          </div>
+        </Html>
+      )}
+
+      {/* 4. Optimal Sample Target Light Beam */}
+      {isRecommended && (
+        <group position={[0, 2.5, 0]}>
+          <mesh>
+            <cylinderGeometry args={[0.08, 0.45, 4.0, 16]} />
+            <meshBasicMaterial color={COLOR_YELLOW} transparent opacity={0.7} />
+          </mesh>
+          <Html position={[0, 2.4, 0]} center distanceFactor={16}>
+            <div className="px-2.5 py-1 rounded-full bg-[#FDF4AF] text-[#081216] font-bold text-[11px] shadow-xl uppercase tracking-wider whitespace-nowrap pointer-events-none">
+              ★ Recommended sample
+            </div>
+          </Html>
+        </group>
+      )}
+
+      {/* 5. Selection Ring */}
+      {isSelected && (
+        <mesh position={[0, 0.05, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.9, 1.15, 32]} />
+          <meshBasicMaterial color={COLOR_YELLOW} side={THREE.DoubleSide} />
+        </mesh>
+      )}
+
+      {/* 6. True Spread Highlight (Ground Truth) */}
+      {isInTrueSpread && (
+        <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.6, 1.1, 32]} />
+          <meshBasicMaterial color={COLOR_CRIMSON} transparent opacity={0.55} side={THREE.DoubleSide} />
+        </mesh>
+      )}
+
+      {/* 7. Hover Detailed HUD Card */}
+      {hovered && (
+        <Html position={[0, 1.6, 0]} center distanceFactor={12} zIndexRange={[200, 0]}>
+          <div className="p-3 rounded-lg bg-[#08121A]/95 border border-[#A5E9DD] shadow-2xl text-xs text-[#E8F8F5] whitespace-nowrap pointer-events-none backdrop-blur-md min-w-[180px]">
+            <div className="font-bold text-[#A5E9DD] text-sm flex items-center justify-between pb-1 border-b border-[#1A3840]">
+              <span>{node.label}</span>
+              <span className="font-mono text-[10px] text-[#7E9EB0]">{node.id}</span>
+            </div>
+            <div className="mt-1.5 space-y-1 text-[11px]">
+              <div className="flex justify-between text-[#7E9EB0]">
+                <span>Elevation:</span>
+                <span className="font-mono text-[#E8F8F5]">{node.elevation_m} meters</span>
+              </div>
+              <div className="flex justify-between text-[#7E9EB0]">
+                <span>Type:</span>
+                <span className="capitalize text-[#E8F8F5]">{node.type}</span>
+              </div>
+              {reading && (
+                <div className="mt-1 pt-1 border-t border-[#1A3840] flex justify-between font-mono">
+                  <span className="text-[#7E9EB0]">Conductivity:</span>
+                  <span className={`font-bold ${reading.is_alert ? 'text-[#FDF4AF]' : 'text-[#A5E9DD]'}`}>
+                    {reading.value.toFixed(1)} µS/cm
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </Html>
       )}
@@ -297,7 +324,7 @@ const Node3D: React.FC<Node3DProps> = ({
 };
 
 // -------------------------------------------------------------
-// Realistic Flowing Water Pipe (Edge with Flowing Particles)
+// Realistic Water Pipe with Glowing Particle Motion
 // -------------------------------------------------------------
 interface Edge3DProps {
   startPos: [number, number, number];
@@ -307,12 +334,12 @@ interface Edge3DProps {
 }
 
 const Edge3D: React.FC<Edge3DProps> = ({ startPos, endPos, isAlarmed, isInSpread }) => {
-  const particleRef = useRef<THREE.Mesh>(null);
+  const particle1Ref = useRef<THREE.Mesh>(null);
+  const particle2Ref = useRef<THREE.Mesh>(null);
 
   const startV = useMemo(() => new THREE.Vector3(...startPos), [startPos]);
   const endV = useMemo(() => new THREE.Vector3(...endPos), [endPos]);
 
-  // Cylinder pipe curve
   const { curve, midPos, length, orientation } = useMemo(() => {
     const dir = new THREE.Vector3().subVectors(endV, startV);
     const len = dir.length();
@@ -325,35 +352,47 @@ const Edge3D: React.FC<Edge3DProps> = ({ startPos, endPos, isAlarmed, isInSpread
     return { curve: cur, midPos: mid, length: len, orientation: quat };
   }, [startV, endV]);
 
-  // Animate flowing particle along pipe
+  // Flowing particles along the line
   useFrame(({ clock }) => {
-    if (particleRef.current) {
-      const t = (clock.getElapsedTime() * 0.4) % 1;
-      const pt = curve.getPoint(t);
-      particleRef.current.position.copy(pt);
+    const t = clock.getElapsedTime() * 0.45;
+    if (particle1Ref.current) {
+      particle1Ref.current.position.copy(curve.getPoint(t % 1));
+    }
+    if (particle2Ref.current) {
+      particle2Ref.current.position.copy(curve.getPoint((t + 0.5) % 1));
     }
   });
 
-  const pipeColor = isAlarmed ? COLOR_AMBER : isInSpread ? COLOR_RED : COLOR_SKY;
+  const pipeColor = isAlarmed
+    ? COLOR_YELLOW
+    : isInSpread
+    ? COLOR_CRIMSON
+    : COLOR_AQUAMARINE;
 
   return (
     <group>
-      {/* Outer pipe cylinder */}
+      {/* Pipe cylinder */}
       <mesh position={midPos} quaternion={orientation}>
-        <cylinderGeometry args={[0.07, 0.07, length, 8]} />
+        <cylinderGeometry args={[0.08, 0.08, length, 12]} />
         <meshStandardMaterial
           color={pipeColor}
-          roughness={0.4}
-          metalness={0.1}
+          roughness={0.2}
+          metalness={0.3}
+          emissive={pipeColor}
+          emissiveIntensity={isAlarmed ? 0.7 : 0.4}
           transparent
-          opacity={0.82}
+          opacity={0.88}
         />
       </mesh>
 
-      {/* Water flow particle */}
-      <mesh ref={particleRef}>
-        <sphereGeometry args={[0.09, 8, 8]} />
+      {/* Water flow particle pulses */}
+      <mesh ref={particle1Ref}>
+        <sphereGeometry args={[0.13, 10, 10]} />
         <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh ref={particle2Ref}>
+        <sphereGeometry args={[0.1, 8, 8]} />
+        <meshBasicMaterial color={COLOR_YELLOW} />
       </mesh>
     </group>
   );
@@ -380,7 +419,7 @@ const FpsMonitor: React.FC<{ onFps: (f: number) => void }> = ({ onFps }) => {
 };
 
 // -------------------------------------------------------------
-// Main 3D Canvas Controller & Scene Manager
+// Main 3D Simulation Canvas
 // -------------------------------------------------------------
 export const NetworkScene3D: React.FC = () => {
   const {
@@ -397,8 +436,9 @@ export const NetworkScene3D: React.FC = () => {
 
   const controlsRef = useRef<any>(null);
   const [fps, setFps] = useState<number>(60);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
 
-  // Compute node 3D positions
+  // Compute 3D node positions
   const nodePositions = useMemo(() => {
     const map = new Map<string, [number, number, number]>();
     if (!network?.nodes) return map;
@@ -420,38 +460,50 @@ export const NetworkScene3D: React.FC = () => {
     return new Set(revealResult?.true_spread_nodes || []);
   }, [revealResult]);
 
-  // Smooth double-click fly-to node
   const handleDoubleClick = useCallback((pos: [number, number, number]) => {
     if (controlsRef.current) {
       controlsRef.current.target.set(pos[0], pos[1], pos[2]);
     }
   }, []);
 
-  // Reset view to default perspective
   const resetView = () => {
     if (controlsRef.current) {
       controlsRef.current.reset();
-      controlsRef.current.target.set(0, 1.5, 0);
+      controlsRef.current.target.set(0, 1.2, 0);
     }
   };
 
   return (
-    <div className="relative w-full h-full min-h-[500px] bg-[#0E1733] rounded-xl overflow-hidden border border-[#425B9A]/30 select-none">
-      {/* 3D Scene Controls & Badges Overlay */}
+    <div className="relative w-full h-full min-h-[540px] bg-[#060B12] rounded-xl overflow-hidden border border-[#1E474F]/50 select-none">
+      {/* Control Room Top Overlay Bar */}
       <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2 pointer-events-none">
-        <div className="px-2.5 py-1 rounded-md bg-[#152248]/85 border border-[#425B9A]/40 text-[11px] font-mono text-[#9FB0C9] backdrop-blur-sm">
-          3D Hydraulic View
+        <div className="px-3 py-1 rounded bg-[#09141D]/90 border border-[#34908B]/60 text-xs font-mono text-[#A5E9DD] backdrop-blur-md flex items-center gap-2 shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[#A5E9DD] animate-pulse" />
+          <span>SCADA 3D Network Twin</span>
         </div>
-        <div className="px-2 py-0.5 rounded-md bg-[#152248]/85 border border-[#425B9A]/40 text-[10px] font-mono text-[#76C0EC] backdrop-blur-sm">
-          {fps} fps
+        <div className="px-2.5 py-1 rounded bg-[#09141D]/90 border border-[#1E474F] text-[11px] font-mono text-[#7E9EB0] backdrop-blur-md">
+          {fps} FPS
         </div>
       </div>
 
-      {/* Floating View Controls */}
+      {/* Action Buttons Top Right */}
       <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
         <button
+          onClick={() => setShowLabels(prev => !prev)}
+          className={`flex items-center gap-1.5 px-3 py-1 rounded bg-[#09141D]/90 text-xs font-medium border transition-colors shadow-lg backdrop-blur-md ${
+            showLabels
+              ? 'text-[#A5E9DD] border-[#34908B]/70 hover:bg-[#122A30]'
+              : 'text-[#7E9EB0] border-[#1E474F] hover:bg-[#122A30]'
+          }`}
+          title="Toggle Billboard Labels"
+        >
+          <Layers size={13} />
+          <span>{showLabels ? 'Hide Labels' : 'Show Labels'}</span>
+        </button>
+
+        <button
           onClick={resetView}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#152248]/90 hover:bg-[#1E2F62] text-[#76C0EC] border border-[#425B9A]/40 text-xs font-medium transition-colors shadow-sm backdrop-blur-sm"
+          className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#09141D]/90 hover:bg-[#122A30] text-[#A5E9DD] border border-[#34908B]/70 text-xs font-medium transition-colors shadow-lg backdrop-blur-md"
           title="Reset Camera View"
         >
           <RotateCcw size={13} />
@@ -459,51 +511,50 @@ export const NetworkScene3D: React.FC = () => {
         </button>
       </div>
 
-      {/* Screen reader summary accessibility */}
+      {/* Screen Reader Accessibility */}
       <div className="sr-only" aria-live="polite">
-        3D view of the 42-node water distribution network. Use orbit controls to rotate,
-        scroll to zoom. Current step is {simState?.current_step || 0}. Alerts count:{' '}
-        {simState?.alert_count || 0}.
+        3D view of the 42-node drinking water distribution network.
       </div>
 
       {/* Three.js Canvas */}
       <Canvas
-        camera={{ position: [0, 26, 32], fov: 45 }}
+        camera={{ position: [0, 24, 30], fov: 42 }}
         dpr={Math.min(1.5, typeof window !== 'undefined' ? window.devicePixelRatio : 1)}
         gl={{ antialias: true, alpha: false }}
         onCreated={({ gl }) => {
-          gl.setClearColor('#0E1733');
+          gl.setClearColor(COLOR_BG);
         }}
       >
         <FpsMonitor onFps={setFps} />
 
-        {/* Environment Lights & Fog */}
-        <ambientLight intensity={0.65} />
+        {/* Ambient & Spotlight for Crisp High-Contrast Technical Visibility */}
+        <ambientLight intensity={0.9} color="#D2F6F0" />
         <directionalLight
-          position={[15, 30, 20]}
-          intensity={1.1}
+          position={[20, 35, 25]}
+          intensity={1.4}
+          color="#FFFFFF"
           castShadow
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
         />
-        <pointLight position={[-10, 15, -10]} intensity={0.4} color={COLOR_SKY} />
-        <fog attach="fog" args={['#0E1733', 35, 80]} />
+        <pointLight position={[-15, 20, -15]} intensity={0.8} color={COLOR_AQUAMARINE} />
+        <fog attach="fog" args={[COLOR_BG, 45, 95]} />
 
-        {/* Orbit Controls with bounded limits */}
+        {/* Orbit Controls */}
         <OrbitControls
           ref={controlsRef}
-          target={[0, 1.5, 0]}
+          target={[0, 1.2, 0]}
           maxPolarAngle={Math.PI / 2 - 0.05}
-          minDistance={10}
-          maxDistance={60}
+          minDistance={8}
+          maxDistance={65}
           enableDamping
           dampingFactor={0.08}
         />
 
-        {/* Procedural Terrain */}
-        <Terrain />
+        {/* Dark Obsidian Basemap */}
+        <TechBasemap />
 
-        {/* Network Edges (Pipes with Flow) */}
+        {/* Flowing Water Pipes */}
         {network?.edges.map((edge: EdgeModel) => {
           const sPos = nodePositions.get(edge.from);
           const tPos = nodePositions.get(edge.to);
@@ -525,7 +576,7 @@ export const NetworkScene3D: React.FC = () => {
           );
         })}
 
-        {/* Network Nodes */}
+        {/* 3D Network Nodes */}
         {network?.nodes.map((node: NodeModel) => {
           const pos = nodePositions.get(node.id);
           if (!pos) return null;
@@ -548,6 +599,7 @@ export const NetworkScene3D: React.FC = () => {
               isSelected={inspectedNodeId === node.id}
               isTrueSourceRevealed={Boolean(revealResult && revealResult.true_source === node.id)}
               isInTrueSpread={Boolean(teacherView && trueSpreadSet.has(node.id))}
+              showLabels={showLabels}
               onClick={setInspectedNodeId}
               onDoubleClick={handleDoubleClick}
             />

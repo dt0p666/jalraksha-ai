@@ -41,22 +41,22 @@ export const Header: React.FC = () => {
       <header
         className={`sticky top-0 z-40 w-full border-b backdrop-blur-md transition-colors ${
           theme === 'dark'
-            ? 'bg-[#0E1733]/92 border-[#425B9A]/30 text-[#EAF1F8]'
-            : 'bg-[#F3F6FA]/95 border-[#425B9A]/20 text-[#121D38]'
+            ? 'bg-[#080E18]/92 border-[#1E474F]/35 text-[#E8F8F5]'
+            : 'bg-[#F2FAF8]/95 border-[#34908B]/20 text-[#0C2022]'
         } py-2 px-4 sm:px-6`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           {/* Logo & Brand */}
           <NavLink
             to="/"
-            className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-[#76C0EC] rounded-lg p-1"
+            className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-[#A5E9DD] rounded-lg p-1"
           >
-            <div className="w-7 h-7 rounded-lg bg-[#425B9A] flex items-center justify-center text-[#76C0EC] group-hover:bg-[#4f6cb6] transition-colors border border-[#76C0EC]/40 shadow-sm">
-              <Droplet size={15} fill="#76C0EC" />
+            <div className="w-7 h-7 rounded-lg bg-[#34908B] flex items-center justify-center text-[#A5E9DD] group-hover:bg-[#2c7d78] transition-colors border border-[#A5E9DD]/50 shadow-sm">
+              <Droplet size={15} fill="#A5E9DD" />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-base leading-tight tracking-tight text-[#EAF1F8] dark:text-[#EAF1F8] light:text-[#121D38]">
-                JALRAKSHAK <span className="text-[#76C0EC] text-xs font-sans font-semibold tracking-normal">AI</span>
+              <span className="font-serif font-bold text-base leading-tight tracking-tight text-[#E8F8F5] dark:text-[#E8F8F5] light:text-[#0C2022]">
+                JALRAKSHAK <span className="text-[#A5E9DD] text-xs font-sans font-semibold tracking-normal">AI</span>
               </span>
             </div>
           </NavLink>

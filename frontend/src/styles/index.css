@@ -12,27 +12,27 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #0E1733;
-  --color-panel: #152248;
-  --color-panel-raised: #1E2F62;
-  --color-border: rgba(66, 91, 154, 0.38);
-  --color-text: #EAF1F8;
-  --color-text-muted: #9FB0C9;
-  --color-brand-blue: #425B9A;
-  --color-brand-sky: #76C0EC;
-  --color-brand-olive: #597928;
-  --color-brand-sage: #91AC67;
-  --color-warning: #E8A33D;
-  --color-critical: #D9534F;
+  --color-bg: #080E18;
+  --color-panel: #0D1626;
+  --color-panel-raised: #14223B;
+  --color-border: rgba(111, 190, 178, 0.25);
+  --color-text: #E8F8F5;
+  --color-text-muted: #7E9EB0;
+  --color-brand-blue: #34908B;
+  --color-brand-sky: #A5E9DD;
+  --color-brand-olive: #6FBEB2;
+  --color-brand-sage: #FDF4AF;
+  --color-warning: #FDF4AF;
+  --color-critical: #FF5C5C;
 }
 
 html.light {
-  --color-bg: #F3F6FA;
+  --color-bg: #F2FAF8;
   --color-panel: #FFFFFF;
-  --color-panel-raised: #E8F0FA;
-  --color-border: rgba(66, 91, 154, 0.22);
-  --color-text: #121D38;
-  --color-text-muted: #485B7D;
+  --color-panel-raised: #E3F4F1;
+  --color-border: rgba(52, 144, 139, 0.22);
+  --color-text: #0C2022;
+  --color-text-muted: #426868;
 }
 
 body {

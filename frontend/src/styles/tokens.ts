@@ -10,40 +10,40 @@
  */
 
 export const BRAND_COLORS = {
-  blue: '#425B9A',
-  sky: '#76C0EC',
-  olive: '#597928',
-  sage: '#91AC67',
-  warning: '#E8A33D',
-  critical: '#D9534F',
+  yellow: '#FDF4AF', // Warm Solar Light / Highlights / Sensor beacons / Peak Alert
+  sky: '#A5E9DD',    // Aquamarine / Flowing Water / Active telemetry / Healthy state
+  teal: '#6FBEB2',   // Medium Teal / Pipeline junctions / Sub-sectors
+  deepTeal: '#34908B', // Deep Marine Cyan / Primary tanks / Main brand
+  warning: '#FDF4AF', // High-contrast solar yellow alert
+  critical: '#FF5C5C', // Clear crimson alarm
 } as const;
 
 export const THEME_TOKENS = {
   dark: {
-    bg: '#0E1733',
-    panel: '#152248',
-    panelRaised: '#1E2F62',
-    border: 'rgba(66, 91, 154, 0.38)',
-    borderFocus: '#76C0EC',
-    text: '#EAF1F8',
-    textMuted: '#9FB0C9',
-    flowHealthy: '#76C0EC',
-    reservoirFill: '#425B9A',
-    zoneFill: '#597928',
-    zoneBorder: '#91AC67',
+    bg: '#080E18',         // Deep obsidian navy from reference slide
+    panel: '#0D1626',      // Midnight tech panel
+    panelRaised: '#14223B', // Raised dark console
+    border: 'rgba(111, 190, 178, 0.25)', // Subtle cyan wireframe border
+    borderFocus: '#A5E9DD',
+    text: '#E8F8F5',       // Crisp bright white-mint
+    textMuted: '#7E9EB0',  // Muted tech cyan-gray
+    flowHealthy: '#A5E9DD', // Flowing glowing water
+    reservoirFill: '#34908B',
+    zoneFill: '#1B383D',
+    zoneBorder: '#6FBEB2',
   },
   light: {
-    bg: '#F3F6FA',
+    bg: '#F2FAF8',
     panel: '#FFFFFF',
-    panelRaised: '#E8F0FA',
-    border: 'rgba(66, 91, 154, 0.22)',
-    borderFocus: '#425B9A',
-    text: '#121D38',
-    textMuted: '#485B7D',
-    flowHealthy: '#425B9A',
-    reservoirFill: '#425B9A',
-    zoneFill: '#91AC67',
-    zoneBorder: '#597928',
+    panelRaised: '#E3F4F1',
+    border: 'rgba(52, 144, 139, 0.22)',
+    borderFocus: '#34908B',
+    text: '#0C2022',
+    textMuted: '#426868',
+    flowHealthy: '#34908B',
+    reservoirFill: '#34908B',
+    zoneFill: '#A5E9DD',
+    zoneBorder: '#6FBEB2',
   },
 } as const;
 

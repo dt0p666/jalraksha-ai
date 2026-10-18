@@ -58,11 +58,11 @@ export const InvestigationStepCard: React.FC = () => {
   const modelBadge = aiStatus?.model_name || 'gemma4:e2b';
 
   return (
-    <div className="flex flex-col gap-3 p-4 bg-[#152248] border border-[#425B9A]/35 rounded-xl text-[#EAF1F8] shadow-md text-xs select-none">
+    <div className="flex flex-col gap-3 p-4 bg-[#0D1626] border border-[#1E474F]/40 rounded-xl text-[#E8F8F5] shadow-xl text-xs select-none">
       {/* 1. Card Header: Step Status & Guidance */}
-      <div className="pb-2.5 border-b border-[#425B9A]/30">
+      <div className="pb-2.5 border-b border-[#1E474F]/30">
         <div className="flex items-center justify-between">
-          <span className="font-serif font-bold text-sm tracking-wide text-[#EAF1F8]">
+          <span className="font-serif font-bold text-sm tracking-wide text-[#E8F8F5]">
             {isRevealed
               ? '6. Investigation Outcome'
               : hasInvestigated && sampleCount > 0
@@ -75,13 +75,13 @@ export const InvestigationStepCard: React.FC = () => {
               ? '2. Watching Network Flow'
               : '1. Ready to Start'}
           </span>
-          <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-[#0E1733] text-[#76C0EC] border border-[#425B9A]/30">
+          <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-[#080E18] text-[#A5E9DD] border border-[#1E474F]/40">
             Step {currentStepNum} of {simState?.total_steps || 60}
           </span>
         </div>
 
         {/* Human plain-English step instructions */}
-        <p className="mt-1 text-[#9FB0C9] text-xs leading-relaxed">
+        <p className="mt-1 text-[#7E9EB0] text-xs leading-relaxed">
           {isRevealed
             ? 'Ground truth revealed. Compare the inferred source with the real network injection point.'
             : hasInvestigated && sampleCount > 0
@@ -98,20 +98,20 @@ export const InvestigationStepCard: React.FC = () => {
 
       {/* 2. Inspected Node Quick Card (if user clicked any node on canvas/3D) */}
       {inspectedNode && (
-        <div className="p-3 bg-[#0E1733] border border-[#76C0EC]/40 rounded-lg space-y-2 animate-fadeIn">
+        <div className="p-3 bg-[#080E18] border border-[#A5E9DD]/50 rounded-lg space-y-2 animate-fadeIn">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-[#76C0EC]" />
-              <span className="font-mono font-bold text-sm text-[#76C0EC]">
+              <MapPin size={13} className="text-[#A5E9DD]" />
+              <span className="font-mono font-bold text-sm text-[#A5E9DD]">
                 {inspectedNode.id}
               </span>
-              <span className="text-[10px] text-[#9FB0C9] uppercase">
+              <span className="text-[10px] text-[#7E9EB0] uppercase">
                 ({inspectedNode.type})
               </span>
             </div>
             <button
               onClick={() => setInspectedNodeId(null)}
-              className="text-[#9FB0C9] hover:text-[#EAF1F8] text-[11px]"
+              className="text-[#7E9EB0] hover:text-[#E8F8F5] text-[11px]"
             >
               Close
             </button>

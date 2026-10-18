@@ -9,31 +9,32 @@ export default {
     extend: {
       colors: {
         brand: {
-          blue: '#425B9A',
-          sky: '#76C0EC',
-          olive: '#597928',
-          sage: '#91AC67',
+          blue: '#34908B',   // Deep marine cyan
+          sky: '#A5E9DD',    // Aquamarine / Flowing water
+          olive: '#6FBEB2',  // Medium teal
+          sage: '#FDF4AF',   // Solar yellow
+          yellow: '#FDF4AF',
         },
         status: {
-          warning: '#E8A33D',
-          critical: '#D9534F',
-          safe: '#91AC67',
+          warning: '#FDF4AF',
+          critical: '#FF5C5C',
+          safe: '#A5E9DD',
         },
         dark: {
-          bg: '#0E1733',
-          panel: '#152248',
-          raised: '#1E2F62',
-          border: 'rgba(66, 91, 154, 0.38)',
-          text: '#EAF1F8',
-          muted: '#9FB0C9',
+          bg: '#080E18',
+          panel: '#0D1626',
+          raised: '#14223B',
+          border: 'rgba(111, 190, 178, 0.25)',
+          text: '#E8F8F5',
+          muted: '#7E9EB0',
         },
         light: {
-          bg: '#F3F6FA',
+          bg: '#F2FAF8',
           panel: '#FFFFFF',
-          raised: '#E8F0FA',
-          border: 'rgba(66, 91, 154, 0.22)',
-          text: '#121D38',
-          muted: '#485B7D',
+          raised: '#E3F4F1',
+          border: 'rgba(52, 144, 139, 0.22)',
+          text: '#0C2022',
+          muted: '#426868',
         }
       },
       fontFamily: {
